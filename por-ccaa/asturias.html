@@ -1,0 +1,319 @@
+<!--
+ESTRUCTURA GENERAL DEL DOCUMENTO
+Esta página muestra todas las universidades de Asturias, diferenciando entre universidades públicas y privadas.
+La estructura del documento se compone de:
+- Cabecera con el logotipo y el menú principal de navegación.
+- Hero con el nombre de la comunidad autónoma, su bandera y un contador de universidades.
+- Contenido principal formado por:
+  - Texto introductorio sobre la comunidad.
+  - Sección de universidades públicas.
+  - Sección de universidades privadas.
+  - Tarjetas individuales con la información de cada universidad.
+  - Listado de comunidades autónomas relacionadas para favorecer el enlazado interno.
+- Pie de página con enlaces de navegación e información corporativa.
+-->
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todas las universidades de Asturias en 2026: guía completa</title>
+    <meta name="description"
+        content="Descubre cuáles son todas las universidades públicas y privadas de Asturias en 2026, su oferta, ubicación y las principales características de cada una">
+    <link rel="canonical" href="#">
+    <link rel="stylesheet" href="../css/index.css">
+    <script defer src="../js/index.js"></script>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.9.1/fonts/remixicon.min.css">
+    <link rel="icon" type="image/svg+xml" href="../media/logotipo-rojo-universidades.svg">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+        rel="stylesheet">
+    <meta property="og:site_name" content="UniversidadES">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="#">
+    <meta property="og:title" content="Todas las universidades de Asturias en 2026: guía completa">
+    <meta property="og:description"
+        content="Descubre cuáles son todas las universidades públicas y privadas de Asturias en 2026, su oferta, ubicación y las principales características de cada una.">
+    <meta property="og:image" content="#">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:description"
+        content="Descubre cuáles son todas las universidades públicas y privadas de Asturias en 2026, su oferta, ubicación y las principales características de cada una.">
+    <meta name="twitter:title" content="Todas las universidades de Asturias en 2026: guía completa">
+    <meta name="twitter:url" content="#">
+    <meta name="twitter:image" content="#">
+</head>
+
+<body>
+    <!-- INICIO: Header 
+        Funcionalidad: Contiene el logotipo del sitio, el menú de navegación principal y el botón para desplegar el menú móvil 
+    -->
+    <header class="header">
+        <div class="header__block block-3xl">
+            <a href="../index.html" title="home">
+                <!-- Picture: Elemento complejo
+                Se utiliza <picture> para permitir diferentes formatos de imagen, priorizando SVG cuando el navegador lo soporta.
+                También se utiliza el elemento complejo: fetchpriority="high" 
+                indica al navegador que priorice la descarga del logotipo al formar parte del contenido visible al cargar la página.
+            -->
+                <picture class="header__picture">
+                    <source srcset="../media/logotipo-rojo-universidades.svg" type="image/svg+xml">
+                    <img width="245" height="29" class="header__logo" src="../media/logotipo-rojo-universidades.png"
+                        alt="logotipo rojo universidadES" fetchpriority="high">
+                </picture>
+            </a>
+            <nav id="headerNav" class="header__nav" aria-label="main navigation">
+                <ul class="header__ul">
+                    <li class="header__li"><a class="header__a" title="pagina de universidades por comunidad autonoma"
+                            href="../por-ccaa.html">Por Comunidad</a>
+                    </li>
+                    <li class="header__li"><a class="header__a" title="pagina de universidades por tipos"
+                            href="../tipos.html">Tipos</a>
+                    </li>
+                    <li class="header__li"><a class="header__a" title="pagina de universidades por rankings"
+                            href="../rankings.html">Rankings</a>
+                    </li>
+                    <li class="header__li"><a class="header__a" title="guias para universitarios"
+                            href="../guias.html">Guías</a>
+                    </li>
+                    <li class="header__li"><a title="buscador de universidades" class="btn btn--red header__cta"
+                            href="/index.html#hero__home"><i class="ri-search-line icon" aria-hidden="true"></i>Buscar
+                            por CCAA</a>
+                    </li>
+                </ul>
+            </nav>
+            <!-- Elemento complejo
+                El botón controla la apertura y cierre del menú de navegación en dispositivos móviles mediante JavaScript.
+                    - aria-expanded indica el estado del menú.
+                    - aria-controls relaciona el botón con el elemento <nav> 
+            -->
+            <button class="header__button" aria-expanded="false" aria-controls="headerNav"
+                aria-label="Abrir menú de navegación" title="menu de navegacion en mobile">
+                <i class="ri-menu-line header__toggle-icon header__toggle-icon--open" aria-hidden="true"></i>
+            </button>
+        </div>
+    </header>
+    <!--FIN: Header-->
+    <!--INICIO: Contenido principal
+            Funcionalidad:
+            Agrupa todo el contenido principal de la página, incluyendo la presentación de la comunidad autónoma, el listado de universidades y las comunidades relacionadas.
+        -->
+    <main>
+        <!-- INICIO: Hero                                                   
+            Funcionalidad: Presenta el título principal de la página, la bandera de la comunidad autónoma, un contador de la cantidad de universidades por tipo
+        -->
+        <section class="ccaa__hero">
+            <div class="ccaa__hero-block block-3xl">
+                <div class="ccaa__hero-introduction">
+                    <a class="h5" title="volver hacia la pagina de todas las comunidades autonomas"
+                        href="../por-ccaa.html"><i class="ri-arrow-left-line icon" aria-hidden="true"></i>Todas las
+                        comunidades autónomas</a>
+                    <div class="ccaa__name">
+                        <h1>Asturias</h1>
+                        <!-- Elemento complejo:
+                                fetchpriority="high" indica al navegador que esta imagen es prioritaria durante la carga inicial, ya que aparece en el viewport.
+                            -->
+                        <picture class="ccaa__picture">
+                            <source srcset="../media/bandera-asturias.svg" type="image/svg+xml">
+                            <source srcset="../media/bandera-asturias.png" type="image/png">
+                            <img width="95" height="63" src="../media/bandera-asturias.jpg"
+                                alt="bandera de asturias" fetchpriority="high">
+                        </picture>
+                    </div>
+                </div>
+                <!-- INICIO: Contador de universidades
+                    Funcionalidad:
+                    Muestra el número total de universidades de la comunidad, diferenciando entre públicas y privadas.
+                    -->
+                <div class="counter">
+                    <div class="counter__block ">
+                        <ul class="counter__ul">
+                            <li class="counter__li">
+                                <p class="h2 h2--primary">1</p><span class="p">universidades</span>
+                            </li>
+                            <li class="counter__li">
+                                <p class="h2 h2--primary">0</p><span class="p">públicas</span>
+                            </li>
+                            <li class="counter__li">
+                                <p class="h2 h2--primary">0</p><span class="p">privadas</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- FIN: Contador de universidades -->
+            </div>
+        </section>
+        <!-- FIN: Hero -->
+        <!-- INICIO: Grid de universidades de Asturias                        
+            Funcionalidad: Muestra el número e información de todas las universidades que hay en Asturias, difernciando por comunidad. 
+            Los principales elementos son: 
+            - Texto introductorio
+            - Titulos
+            - Grid de cards. Cada card contiene: 
+                - Tipo de universidad
+                - Nombre de la universidad
+                - Ciudad y año de fundación
+
+        -->
+        <section class="ccaa__page">
+            <div class="ccaa__page-block block-3xl">
+                <p class="p--georgia">El Principado de Asturias cuenta con una sólida oferta universitaria liderada por
+                    la Universidad de Oviedo, una de las más antiguas del norte de España.</p>
+                <!--INICIO: Listado de universidades públicas
+                        Funcionalidad: Agrupa todas las tarjetas correspondientes a universidades públicas.
+                    -->
+                <div class="ccaa__page-publics">
+                    <h2 class="h3"><i aria-hidden="true"
+                            class="ri-graduation-cap-line icon p p--primary"></i>Universidades
+                        Públicas de Asturias</h2>
+                    <div class="university__grid">
+                        <!-- INICIO: Card de universidad
+                                Funcionalidad: Representa una universidad mostrando:
+                                    - Tipo de universidad.
+                                    - Nombre.
+                                    - Ciudad y año de fundación.
+                            -->
+                        <div class="university__card">
+                            <p class="badge">Pública</p>
+                            <h3 class="h4">Universidad de Oviedo</h3>
+                            <p class="p--secondary"><i class="ri-map-pin-line icon"></i>Oviedo · Fundada 1608</p>
+                        </div>
+                        <!-- FIN: Card de universidad -->
+                    </div>
+                    <!-- FIN: Listado de universidades públicas -->
+                </div>
+            </div>
+        </section>
+        <!-- FIN: Grid de universidades en Asturias -->
+        <!-- INICIO: Listado de comunidades autónomas relacionadas
+                Funcionalidad: Contiene un listado de todas las comunidades autonomas de España, todas con el correspondiente
+                enlace hacia la página
+            -->
+        <section class="related__links">
+            <div class="related__links-block block-3xl">
+                <h2 class="h5 h5--secondary">Otras Comunidades Autonómas</h2>
+                <ul class="related__links-list">
+                    <li class="related__links-li"><a href="./andalucia.html"
+                            title="Página de universidades en Andalucia">Andalucia</a></li>
+                    <li class="related__links-li"><a href="./aragon.html"
+                            title="Página de universidades en Aragón">Aragón</a></li>
+                    <li class="related__links-li"><a href="./baleares.html"
+                            title="Página de universidades en Baleares">Islas Baleares</a></li>
+                    <li class="related__links-li"><a href="./canarias.html"
+                            title="Página de universidades en Canarias">Canarias</a></li>
+                    <li class="related__links-li"><a href="./cantabria.html"
+                            title="Página de universidades en Cantabria">Cantabria</a></li>
+                    <li class="related__links-li"><a href="./castilla-la-mancha.html"
+                            title="Página de universidades en Castilla-La Mancha">Castilla-La Mancha</a></li>
+                    <li class="related__links-li"><a href="./castilla-y-leon.html"
+                            title="Página de universidades en Castilla y León">Castilla y León</a></li>
+                    <li class="related__links-li"><a href="./cataluna.html"
+                            title="Página de universidades en Cataluña">Cataluña</a></li>
+                    <li class="related__links-li"><a href="./valencia.html"
+                            title="Página de universidades en la Comunidad Valenciana">Valencia</a></li>
+                    <li class="related__links-li"><a href="./extremadura.html"
+                            title="Página de universidades en Extremadura">Extremadura</a></li>
+                    <li class="related__links-li"><a href="./galicia.html"
+                            title="Página de universidades en Galicia">Galicia</a></li>
+                    <li class="related__links-li"><a href="./la-rioja.html"
+                            title="Página de universidades en La Rioja">La
+                            Rioja</a></li>
+                    <li class="related__links-li"><a href="./madrid.html"
+                            title="Página de universidades en la Comunidad de Madrid">Madrid</a></li>
+                    <li class="related__links-li"><a href="./murcia.html"
+                            title="Página de universidades en la Región de Murcia">Murcia</a></li>
+                    <li class="related__links-li"><a href="./navarra.html"
+                            title="Página de universidades en Navarra">Navarra</a></li>
+                    <li class="related__links-li"><a href="./pais-vasco.html"
+                            title="Página de universidades en el País Vasco">País Vasco</a></li>
+                    <li class="related__links-li"><a href="./ceuta-y-melilla.html"
+                            title="Página de universidades en Ceuta y Melilla">Ceuta y Melilla</a></li>
+                </ul>
+            </div>
+        </section>
+        <!-- FIN: Listado de comunidades autónomas relacionadas -->
+    </main>
+    <!-- FIN: Contenido principal -->
+    <!-- INICIO: Footer                                                 
+        Funcionalidad: Contiene información corporativa y enlaces de Navegación secundarios del sitio web.
+    -->
+    <footer class="footer">
+        <div class="footer__block block-3xl">
+            <div class="footer__navegation">
+                <div class="footer__column">
+                    <!-- Elemento complejo
+                    Se utiliza <picture> para ofrecer el logotipo en formato SVG cuando el navegador lo soporta.
+                    El atributo loading="lazy" retrasa la carga de la imagen hasta que el usuario está próximo a visualizarla, mejorando el rendimiento de la página.
+                -->
+                    <picture class="header__picture">
+                        <source srcset="../media/logotipo-rojo-universidades.svg" type="image/svg+xml">
+                        <img width="245" height="29" class="header__logo" src="./media/logotipo-rojo-universidades.png"
+                            alt="logotipo rojo universidadES" loading="lazy">
+                    </picture>
+                    <p class="p p--secondary">El portal de referencia para estudiantes que buscan información
+                        universitaria en España.</p>
+                </div>
+                <div class="footer__column">
+                    <p class="footer__title h4">Explorar</p>
+                    <ul class="footer__ul">
+                        <li class="p p--secondary"><a href="../por-ccaa.html"
+                                title="universidades por comunidad autonoma">Por Comunidad Autónoma</a>
+                        </li>
+                        <li class="p p--secondary"><a href="../tipos.html"
+                                title="universidades publicas y privadas en españa">Universidades Públicas y Privadas en
+                                España</a>
+                        </li>
+                        <li class="p p--secondary"><a href="../rankings.html"
+                                title="rankings de universidades españolas">Rankings Universitarios</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="footer__column">
+                    <p class="footer__title h4">Rankings</p>
+                    <ul class="footer__ul">
+                        <li class="p p--secondary"><a href="../rankings/qs-world-university-rankings.html"
+                                title="ranking qs world university">QS World University</a>
+                        </li>
+                        <li class="p p--secondary"><a href="../rankings/times-higher-education-world-university.html"
+                                title="times higher education world university">Times Higher Education World
+                                University</a>
+                        </li>
+                        <li class="p p--secondary"><a href="../rankings/arwu.html" title="ranking shangai arwu">Shanghai
+                                ARWU</a>
+                        </li>
+                        <li class="p p--secondary"><a href="../rankings/us-news.html" title="ranking us new global">U.S.
+                                News Global</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="footer__column">
+                    <p class="footer__title h4">Guías</p>
+                    <ul class="footer__ul">
+                        <li class="p p--secondary"><a href="../guias/como-elegir-universidad.html"
+                                title="guia sobre como elegir una universidad">¿Cómo elegir una universidad en
+                                España?</a>
+                        </li>
+                        <li class="p p--secondary"><a href="../guias/publicas-vs-privadas.html"
+                                title="guia sobre universidades publicas y privadas">Universidades Públicas vs
+                                Privadas</a>
+                        </li>
+                        <li class="p p--secondary"><a href="../guias/acceso-a-la-universidad.html"
+                                title="guia de acceso a la universidad">Guía de acceso a las universidades españolas</a>
+                        </li>
+                        <li class="p p--secondary"><a href="../guias/becas-y-ayudas.html"
+                                title="guia de becas y ayudas para estudiar en españa">Guía de todas las becas y ayudas
+                                en España</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <p class="p p--secondary">© 2026 Universidades España · Información orientativa, sin carácter oficial</p>
+        </div>
+    </footer>
+    <!--FIN: Footer-->
+</body>
+
+</html>

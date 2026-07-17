@@ -1,0 +1,2670 @@
+/*
+Esta hoja de estilos centraliza toda la presentación visual del sitio web.
+Su organización sigue el mismo orden que la estructura de las páginas HTML, permitiendo localizar rápidamente los estilos asociados a cada componente.
+
+La estructura general es la siguiente:
+1. Reset y normalización.
+2. Variables globales (:root):
+   - Colores
+   - Tipografía
+   - Alturas de línea
+   - Bordes
+   - Transiciones
+3. Componentes globales reutilizables:
+   - Tipografía
+   - Enlaces
+   - Botones
+   - Estados de foco
+   - Espaciados
+   - Contenedores
+   - Utilizades responsive
+   - Grids
+   - Elementos y cajas destacadas
+5. Elementos de navegación: Header y Footer.
+6. Estilos específicos de cada página:
+   - Home o index.html
+   - Página pilar de Comunidades Aútonomas o por-ccaa.html
+   - Single page  de comunidad autónoma
+   - Página pilar de Rankings o rankings.html
+   - Single Page de Rankings
+   - Página pilar de Guías o guias.html
+   - Single page de guías
+
+Cabe destacar que algunos componentes y estilos son reutilizados en varias páginas del sitio.
+En esos casos se documentarán en la sección correspondiente para evitar duplicidades y facilitar su localización.
+
+*/
+
+/* INICIO: Reset Inicial
+
+Se eliminan los estilos por defecto del navegador para unificar el aspecto
+visual en todos los navegadores y establecer una base común sobre la que construir el resto de la hoja de estilos.
+
+*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+button {
+    border: none;
+}
+
+ul {
+    list-style: none;
+}
+
+/* FIN: Reset */
+
+/* INICIO: Hoja de estilos generales  */
+
+:root {
+    /* Colores Globales */
+    --color-background: #f5f5f7;
+    /* Fondo principal del sitio */
+    --color-secondary-background: #EAE8E3;
+    /* Fondo alternativo utilizado en tarjetas o bloques */
+    --color-paragraph: #2D2D2D;
+    /* Color principal para textos */
+    --color-secondary-paragraph: #636262;
+    /* Color para textos secundarios */
+    --color-primary: #8B1E3F;
+    /* Color corporativo principal */
+    --color-primary-light: #D4C9C0;
+    /* Variante clara del color corporativo */
+    --color-details: #8a6d3f;
+    /* Color utilizado para elementos destacados */
+    --color-border: #2d2d2d1f;
+    /* Color base de los bordes */
+    --color-white: #FFFFFF;
+    /* Blanco utilizado para fondos y textos */
+    --color-black: #000000;
+    /* Negro reservado para casos puntuales */
+    --color-transparent: #f7f7f500;
+    /* Color transparente utilizado en estados y botones */
+    --color-home: #7a203bd8;
+    /*Color degradado de la home */
+
+    /* Alto de Línea */
+    --leading-tight: 1.1;
+    /* Alto de linea para los encabezados h1 y h2 */
+    --leading-heading: 1.25;
+    /* Alto de linea para los encabezados h3 y h4 */
+    --leading-body: 1.5;
+    /* Alto de lína para el resto de textos */
+
+    /* Espaciado de la letra */
+    --tracking-wide: .12em;
+
+    /* Fuentes
+        Se utilizan propiedades abreviadas mediante font y tamaños responsive con
+        clamp() para adaptar automáticamente la tipografía a distintos tamaños de pantalla sin necesidad de media queries.
+    */
+    --text--xl: normal normal 400 normal clamp(3em, 5vw, 5em)/var(--leading-tight) "Georgia", serif;
+    /* Tipografía principal (H1) */
+    --text--l: normal normal 400 normal clamp(2em, 5vw, 3em)/var(--leading-tight) "Georgia", serif;
+    /* Tipografía para H2 */
+    --text--lg: normal normal 400 normal 1.75em/var(--leading-heading) "Georgia", serif;
+    /* Tipografía para H3 */
+    --text--md: normal normal 400 normal 1.25em/var(--leading-heading) "Georgia", serif;
+    /* Tipografía para H4 */
+
+    --text--m: normal normal 400 normal 1.05em/var(--leading-body) "Georgia", serif;
+    /* Texto con Georgia */
+    --text--sd: normal normal 400 normal 0.95em/var(--leading-body) "Inter", sans-serif;
+    /* Texto base del sitio */
+    --text--caption: normal normal 400 normal 0.75em/var(--leading-body) "Inter", sans-serif;
+    /* Textos auxiliares y captions */
+    --text--label: normal normal 500 normal 0.7em/var(--leading-body) "Inter", sans-serif;
+    /* Etiquetas y elementos en mayúsculas */
+
+
+    /* Contenedores
+        Anchuras máximas reutilizables para controlar el ancho del contenido.
+        Los valores utilizan clamp() para adaptarse progresivamente entre móviles y pantallas grandes.
+    */
+    --container-xs: 20rem;
+    --container-sm: clamp(20rem, 12.889rem + 14.815vw, 24rem);
+    --container-md: clamp(24rem, 9.778rem + 29.630vw, 32rem);
+    --container-lg: clamp(32rem, 17.778rem + 29.630vw, 40rem);
+    --container-xl: clamp(40rem, 25.778rem + 29.630vw, 48rem);
+    --container-2xl: clamp(48rem, 31.111rem + 35.185vw, 57.5rem);
+    --container-3xl: clamp(57.5rem, 35.278rem + 46.296vw, 70rem);
+    --container-4xl: clamp(70rem, 52.222rem + 37.037vw, 80rem);
+    --container-5xl: clamp(80rem, 64.444rem + 32.407vw, 88.75rem);
+
+    /* Espaciados
+       Escala de espaciados utilizada para márgenes, paddings y separación entre componentes. 
+       Se emplea clamp() en los tamaños principales para conseguir una  adaptación fluida entre dispositivos.
+    */
+    --space-0: .125rem;
+    --space-1: 0.25rem;
+    --space-2: 0.5rem;
+    --space-3: 0.75rem;
+    --space-4: clamp(0.875rem, 0.765rem + 0.368vw, 1rem);
+    --space-5: clamp(1rem, 0.779rem + 0.735vw, 1.25rem);
+    --space-6: clamp(1.125rem, 0.794rem + 1.103vw, 1.5rem);
+    --space-8: clamp(1.5rem, 1.059rem + 1.471vw, 2rem);
+    --space-9: clamp(1.625rem, 1.074rem + 1.838vw, 2.25rem);
+    --space-10: clamp(1.75rem, 1.088rem + 2.206vw, 2.5rem);
+    --space-12: clamp(2rem, 1.118rem + 2.941vw, 3rem);
+    --space-14: clamp(2.25rem, 1.147rem + 3.676vw, 3.5rem);
+    --space-16: clamp(2.5rem, 1.176rem + 4.412vw, 4rem);
+    --space-18: clamp(3rem, 1.235rem + 5.882vw, 5rem);
+    --space-20: clamp(3.5rem, 1.294rem + 7.353vw, 6rem);
+    --space-23: clamp(4rem, 0.471rem + 11.765vw, 8rem);
+
+    /* Radio de los bordes
+        Radios de borde reutilizables para mantener una misma identidad visual en tarjetas, botones y cajas.
+    */
+    --radius-sm: .25rem;
+    --radius-md: .375rem;
+    --radius-lg: .5rem;
+    --radius-xl: .75rem;
+
+
+    /* Transiciones
+     Transiciones reutilizables aplicadas principalmente a tarjetas y elementos interactivos para conseguir animaciones homogéneas.
+    */
+    --transition-card: transform .3s ease, box-shadow .3s ease;
+
+    /* Bordes
+        Borde estándar reutilizado en tarjetas, cajas y componentes del sitio. Añadimos variaciones por color.
+
+    */
+    --border: 0.05rem solid var(--color-border);
+    --border-primary: 0.05rem solid var(--color-primary);
+    --border-white: 0.05rem solid var(--color-white);
+
+
+}
+
+/* FIN: Hoja de estilos generales  */
+
+/* INICIO: Componentes generales
+    En este bloque agrupamos todos los elementos que reutilizan de manera general en la hoja de estilos del dominio
+   - Encabezados y Párrafos
+   - Botones
+   - Iconos
+   - Grids
+   - Cajas destacadas
+*/
+
+/* INICIO: ENCABEZADOS 
+Este bloque define la tipografía base del sitio. Se establecen los estilos para los distintos niveles
+de encabezado y para los párrafos, junto con clases reutilizables para mantener una presentación homogénea.
+
+Cada componente dispone de modificadores BEM para aplicar variantes de color según el contexto donde
+se utilicen dentro del HTML.
+
+Algunos modificadores incluyen pseudoclases (:hover y :active) para mantener un comportamiento visual
+consistente durante la interacción del usuario.
+*/
+/* H1: Estilo principal con modificadores de color. */
+h1,
+.h1 {
+    font: var(--text--xl);
+
+    &.h1--primary {
+        color: var(--color-primary);
+
+        &:hover,
+        &:active {
+            color: var(--color-primary);
+        }
+    }
+
+    &.h1--details {
+        color: var(--color-details);
+    }
+}
+
+/* H2: Segundo nivel de encabezado con variantes de color. */
+h2,
+.h2 {
+    font: var(--text--l);
+
+    &.h2--primary {
+        color: var(--color-primary);
+    }
+
+    &.h2--details {
+        color: var(--color-details);
+    }
+
+    &.h2--secondary {
+        color: var(--color-secondary-paragraph);
+    }
+}
+
+/* H3: Encabezado reutilizable con estados interactivos en la variante secundaria. */
+h3,
+.h3 {
+    font: var(--text--lg);
+
+    &.h3--primary {
+        color: var(--color-primary);
+    }
+
+    &.h3--details {
+        color: var(--color-details);
+    }
+
+    &.h3--secondary {
+        color: var(--color-secondary-paragraph);
+
+        &:hover,
+        &:active {
+            color: var(--color-secondary-paragraph);
+        }
+    }
+}
+
+/* H4: Encabezado de cuarto nivel con variantes de color. */
+h4,
+.h4 {
+    font: var(--text--md);
+
+    &.h4--primary {
+        color: var(--color-primary);
+    }
+
+    &.h4--details {
+        color: var(--color-details);
+    }
+}
+
+/* H5: Encabezado auxiliar en mayúsculas utilizado como etiqueta o subtítulo. */
+h5,
+.h5 {
+    font: var(--text--sd);
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-wide);
+
+    &.h5--primary {
+        color: var(--color-primary);
+    }
+
+    &.h5--details {
+        color: var(--color-details);
+    }
+
+    &.h5--secondary {
+        color: var(--color-secondary-paragraph);
+    }
+}
+
+/* Etiqueta reutilizable para textos cortos como categorías o indicadores. */
+.label {
+    font: var(--text--label);
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-wide);
+}
+
+/* Párrafo base con modificadores para adaptar el color del texto. */
+p,
+.p {
+    font: var(--text--sd);
+
+    &.p--secondary {
+        color: var(--color-secondary-paragraph);
+    }
+
+    &.p--primary {
+        color: var(--color-primary);
+    }
+
+    &.p--details {
+        color: var(--color-details);
+    }
+
+    &.p--background {
+        color: var(--color-secondary-background);
+    }
+}
+
+/* Variante del párrafo que utiliza la tipografía Georgia para textos destacados o de lectura. */
+.p--georgia {
+    font: var(--text--m);
+
+    &.p--secondary {
+        color: var(--color-secondary-paragraph);
+    }
+
+    &.p--primary {
+        color: var(--color-primary);
+    }
+
+    &.p--details {
+        color: var(--color-details);
+    }
+
+    &.p--background {
+        color: var(--color-secondary-background);
+    }
+}
+
+/* FIN: Encabezados y Párrafos */
+
+/* INICIO: Enlaces e iconografía
+   Se establece el estilo base de todos los enlaces del sitio,unificando tipografía, color heredado y transición visual.
+
+   A partir de esta base se crean modificadores para adaptar el color según el contexto donde se utilizan.
+
+   También se definen los estados interactivos (hover y active) para mantener un comportamiento homogéneo en toda la interfaz.
+
+   Finalmente se añade la clase base de los iconos de Remix Icons, utilizada para alinear correctamente los iconos con el texto
+   independientemente del componente donde aparezcan.
+*/
+a,
+.a {
+    font: var(--text--sd);
+    color: inherit;
+    transition: color .2s ease;
+
+    &.a--primary {
+        color: var(--color-primary);
+    }
+
+    &.a--secondary {
+        color: var(--color-secondary-paragraph);
+    }
+
+    &:hover,
+    &:active {
+        color: var(--color-primary);
+    }
+}
+
+.icon {
+    display: inline-flex;
+    align-items: center;
+    margin-inline: var(--space-2);
+
+}
+
+/* FIN: Enlaces e iconografía */
+
+/* -- INICIO: Botones
+   Se define el componente base de todos los botones del proyecto, unificando la alineación, espaciado, transición y comportamiento
+   interactivo.
+
+   A partir de este componente se crean distintas variantes reutilizables mediante modificadores:
+
+   - btn--arrow: enlaces con iconografía.
+   - btn--transparent: botón con fondo transparente.
+   - btn--red: botón principal del sitio. Se establecen variaciones de paddings para su reutilización en todo el sitio.
+   - btn--white: botón sobre fondos oscuros ( principalmente en la home)
+
+   Algunas variantes incorporan modificadores adicionales para adaptar pequeños cambios de apariencia, como el espaciado del
+   botón del menú o la versión transparente en color rojo.
+
+   También se definen los estados hover y active de cada variante para mantener una experiencia de usuario consistente.
+*/
+.btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    cursor: pointer;
+    gap: var(--space-2);
+    transition: background-color 200ms ease, color 200ms ease, border-color 200ms ease;
+    text-transform: uppercase;
+
+    &.btn--arrow {
+        color: var(--color-primary);
+
+        &:hover {
+            color: var(--color-details);
+        }
+
+        &:active {
+            color: var(--color-details);
+        }
+
+    }
+
+    &.btn--transparent {
+        background-color: var(--color-transparent);
+        color: var(--color-white);
+        border: var(--border-white);
+        padding: .625rem var(--space-4);
+
+        &:hover {
+            background-color: var(--color-white);
+            color: var(--color-primary);
+        }
+
+        &:active {
+            background-color: var(--color-background);
+            color: var(--color-primary);
+        }
+    }
+
+    &.btn--red {
+        background-color: var(--color-primary);
+        color: var(--color-white);
+        border: var(--border-primary);
+
+        &:hover {
+            background-color: var(--color-transparent);
+            color: var(--color-primary);
+        }
+
+        &:active {
+            background-color: var(--color-background);
+            color: var(--color-primary);
+        }
+
+        &.header__cta {
+            padding: var(--space-2) var(--space-4);
+        }
+
+        &.btn--red--block {
+            padding: var(--space-4);
+        }
+    }
+
+    &.btn--white {
+        padding: var(--space-4);
+        background-color: var(--color-white);
+        color: var(--color-primary);
+        border: var(--border-white);
+        white-space: nowrap;
+
+        &:hover {
+            background-color: var(--color-transparent);
+            color: var(--color-white);
+        }
+
+        &:active {
+            background-color: var(--color-transparent);
+            color: var(--color-white);
+        }
+    }
+
+}
+
+/* FIN: Botones */
+/* INICIO: Estados de foco
+   Se añade un indicador visual para la navegación mediante teclado.
+   Se utiliza :focus-visible para mostrar el contorno únicamente cuando el elemento recibe el foco mediante teclado, evitando que aparezca tras hacer
+   clic con el ratón.
+*/
+a:focus-visible,
+button:focus-visible,
+.btn:focus-visible {
+    outline: 0.125rem solid var(--color-primary);
+    outline-offset: 0.1875rem;
+}
+
+/* FIN: Estados de foco */
+/* INICIO:Espaciado 
+   Todas las secciones principales del sitio comparten el mismo padding vertical y horizontal para mantener una separación visual constante entre bloques.
+   El espaciado se controla mediante Custom Properties, facilitando su mantenimiento y adaptación responsive.
+*/
+section {
+    padding: var(--space-20) var(--space-8);
+}
+
+/* FIN: Espaciado */
+
+/* INICIO: Contenedores de layout
+   Estas clases limitan el ancho máximo delcontenido y lo centran horizontalmente mediante
+   margin: 0 auto.
+
+   Se utilizan en todos los documentos del proyecto para reutilizar la misma estructura de maquetación sin tener
+   que crear contenedores específicos para cada sección.
+
+   Cada variante (.block-xs, .block-sm, ..., .block-5xl) representa un ancho máximo distinto definido mediante
+   Custom Properties.
+*/
+
+.block-xs {
+    max-width: var(--container-xs);
+}
+
+.block-sm {
+    max-width: var(--container-sm);
+}
+
+.block-md {
+    max-width: var(--container-md);
+}
+
+.block-lg {
+    max-width: var(--container-lg);
+}
+
+.block-xl {
+    max-width: var(--container-xl);
+}
+
+.block-2xl {
+    max-width: var(--container-2xl);
+}
+
+.block-3xl {
+    max-width: var(--container-3xl);
+}
+
+.block-4xl {
+    max-width: var(--container-4xl);
+}
+
+.block-5xl {
+    max-width: var(--container-5xl);
+}
+
+.block-xs,
+.block-sm,
+.block-md,
+.block-lg,
+.block-xl,
+.block-2xl,
+.block-3xl,
+.block-4xl,
+.block-5xl {
+    margin: 0 auto;
+}
+
+/* FIN: Contenedores de layout */
+
+
+/* INICIO: Utilidad responsive
+   Clase auxiliar utilizada para ocultar determinados elementos en desktop.
+   Se aplica únicamente a componentes que deben existir exclusivamente en la versión móvil del sitio.
+*/
+
+.no-desktop {
+    @media (min-width: 768px) {
+        display: none;
+
+    }
+}
+.no-mobile {
+    @media (max-width: 768px) {
+        display: none;
+
+    }
+}
+
+/* FINAL: Utilidad responsive */
+
+/* INICIO: Grids 
+   En este bloque se agrupan los distintos sistemas de Grid que se reutilizan en varias secciones del sitio web.
+
+   Cada grid define la distribución general de sus elementos hijos, mientras que cada componente adapta su contenido mediante sus propias clases internas.
+
+   Centralizar estos layouts permite mantener una estructura consistente y reutilizar el mismo patrón visual en diferentes
+   páginas del proyecto.
+*/
+
+/* INICIO: Grid de universidades: University Grid
+
+   Este componente organiza automáticamente las tarjetas de universidades utilizando CSS Grid y un número flexible de
+   columnas mediante auto-fill.
+
+   Se reutiliza en:
+   - La página pilar de Tipos de universidades: tipos.html
+   - Las páginas individuales de cada comunidad autónoma.
+
+   Cada tarjeta muestra información básica de una universidad(tipo, nombre, ciudad y año de fundación) y añade un cambio
+   visual al interactuar mediante hover y active.
+*/
+
+
+.university__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(15.625rem, 1fr));
+    gap: var(--space-5);
+
+    /* Estilo de cada card individual */
+    .university__card {
+        background-color: var(--color-white);
+        padding: var(--space-5);
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        gap: var(--space-3);
+        border: var(--border);
+        .p--secondary {
+            margin-top: auto;
+        }
+
+        &:hover,
+        &:active {
+            border-color: var(--color-primary);
+        }
+    }
+}
+
+/* FINAL: Grid de universidades: University Grid */
+
+
+
+/* INICIO: Grid de guías
+
+   Distribuye las tarjetas de las distintas guías y artículos utilizando un diseño responsive basado en CSS Grid.
+
+   Este componente se reutiliza en varias páginas del sitio, adaptando únicamente el contenido de las tarjetas según el contexto.
+
+   Cada tarjeta incluye:
+   - Imagen destacada.
+   - Categoría e información auxiliar.
+   - Título.
+   - Indicador de acceso a la guía
+
+   Durante la interacción se aplican pequeñas animaciones para reforzar el efecto visual, ampliando la imagen y mostrando
+   el botón correspondiente.
+*/
+
+.guias__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(16.5625rem, 1fr));
+    gap: var(--space-6);
+    align-items: flex-start;
+
+    /* Estilo individual de cada tarjeta.
+                Se define la disposición interna de sus elementos, la presentación de la imagen destacada, la información contextual y los estados de interacción.
+            */
+    .guias__card {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--space-3);
+        transition: var(--transition-card);
+
+        h3 {
+            color: var(--color-paragraph);
+        }
+
+        .guias__title {
+            display: flex;
+            align-items: flex-start;
+
+            .guias__p:first-child::after {
+                content: "•";
+                margin: var(--space-2);
+            }
+        }
+
+        /* Contenedor de la imagen
+                    Se controla el recorte mediante overflow:hidden y se mantiene una proporción fija para que todas las tarjetas
+                    conserven la misma altura independientemente de la imagen.
+                */
+        .guias__picture {
+            overflow: hidden;
+            position: relative;
+            display: block;
+            width: 100%;
+            aspect-ratio: 16 / 9;
+
+            /* La imagen ocupa completamente el contenedor y utiliza object-fit para evitar deformaciones.*/
+            img {
+                display: block;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                transition: transform .35s ease;
+            }
+        }
+
+        .guias__button {
+            opacity: 0;
+            display: flex;
+            gap: var(--space-1);
+        }
+
+        &:hover,
+        &:active {
+            .guias__picture img {
+                transform: scale(1.06);
+            }
+
+            .guias__button {
+                opacity: 1;
+            }
+
+        }
+    }
+}
+
+/* FINAL: Grid de guías */
+
+
+/* INICIO: Elementos y cajas destacadas
+Este bloque agrupa distintos componentes reutilizables que aparecen en varias páginas del sitio y cuya función es destacar información
+relevante para el usuario.
+
+Componentes incluidos:
+
+- highlighted-box:
+  Caja de contenido destacada mediante un borde lateral. Se utilia para resaltar información importante en la página tipos.html y
+  en las páginas individuales de las guías.
+
+- badge:
+  Insignia utilizada para mostrar posiciones en rankings universitarios. También se reutiliza para indicar si una universidad es pública
+  o privada mediante una variación de color.
+
+- guias__category:
+  Etiqueta que identifica la categoría a la que pertenece una guía.
+
+- guias__new:
+  Etiqueta utilizada para indicar que una guía ha sido publicada recientemente.
+
+- ranking__podium:
+  Componente reutilizable que da formato al listado de posiciones de un ranking universitario.
+
+- section__intro:
+  Cabecera reutilizable para distintas secciones de la Home. Agrupa el título de la sección junto al botón o enlace de acción.
+
+- hero__section:
+  Contenedor común utilizado por todos los hero del proyecto, tanto en páginas de categoría como en páginas individuales,
+  manteniendo la misma estructura y espaciado.
+*/
+
+
+/* Caja destacada utilizada para resaltar contenido importante.
+Por defecto muestra un fondo blanco y un borde lateral con el color principal del proyecto.
+La variante .guias elimina el fondo para integrarse con el diseño de las páginas de guías. */
+
+.highlighted-box {
+    background-color: var(--color-white);
+    padding: var(--space-6);
+    border-left: 0.2rem solid var(--color-primary);
+
+    &.highlighted-box--guias {
+        background-color: var(--color-transparent);
+    }
+}
+
+/* Insignia utilizada para mostrar posiciones en rankings o información breve dentro de tarjetas.
+
+La variante .badge__details modifica el aspecto para indicar información secundaria, como la condición de universidad pública o privada. */
+
+.badge {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--color-primary);
+    padding: var(--space-1) var(--space-2);
+    color: var(--color-white);
+    text-align: center;
+    white-space: nowrap;
+    flex-shrink: 0;
+
+    &.badge--details {
+        background-color: var(--color-transparent);
+        color: var(--color-details);
+        border: .05rem solid var(--color-details);
+    }
+}
+
+
+/* Etiqueta que identifica la categoría de una guía.
+Su tamaño compacto permite reutilizarla en listados y tarjetas sin alterar la estructura del contenido. */
+
+.guias__category {
+    background-color: var(--color-secondary-background);
+    padding: var(--space-0) var(--space-2);
+    color: var(--color-secondary-paragraph);
+    text-align: center;
+    white-space: nowrap;
+    flex-shrink: 0;
+
+}
+
+/* Etiqueta utilizada para destacar las guías de nueva publicación. Se representa como una pequeña insignia con texto en mayúsculas
+para aumentar su visibilidad. */
+.guias__news {
+    display: flex;
+    gap: var(--space-1);
+    background-color: var(--color-primary);
+    padding: var(--space-0) var(--space-2);
+    color: var(--color-white);
+    text-align: center;
+    white-space: nowrap;
+    flex-shrink: 0;
+    text-transform: uppercase;
+
+}
+
+/* Listado reutilizable para representar clasificaciones universitarias. Está formado por:
+    - ranking__list: Contenedor vertical que agrupa todas las posiciones.
+
+    - ranking__li: Cada fila representa una universidad del ranking mostrando:
+        - Posición.
+        - Nombre.
+        - Insignia con su clasificación.
+*/
+
+.ranking__list {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+
+    .ranking__li {
+        display: flex;
+        align-items: center;
+        gap: var(--space-5);
+        justify-content: space-between;
+        color: var(--color-paragraph);
+
+    }
+}
+
+/* Cabecera reutilizable para las distintas secciones de la Home.
+    Distribuye el título y la acción principal (normalmente un botón o enlace) en una misma línea.
+    En dispositivos móviles ambos elementos pasan a disponerse verticalmente para mejorar la lectura.
+*/
+
+.section__intro {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+
+    @media (max-width: 480px) {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--space-8);
+    }
+}
+
+/* Contenedor reutilizable para los hero de páginas interiores. Define:
+    - Espaciado superior e inferior.
+    - Fondo blanco común.
+    - Distribución vertical del contenido.
+    - Anchura máxima del bloque de texto para mejorar la legibilidad.
+
+Este componente se reutiliza en páginas de categorías, rankings, guías y páginas individuales.
+*/
+.hero__section {
+    padding: var(--space-16) var(--space-8);
+    background-color: var(--color-white);
+
+    .block {
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        gap: var(--space-4);
+        width: 70%;
+        max-width: 60rem;
+
+        @media (max-width: 768px) {
+            width: 100%;
+        }
+
+    }
+}
+
+/* INICIO: Contenedor reutilizable de enlaces relacionados
+    Este componente muestra un listado de enlaces a contenidos relacionados que se reutiliza en las single pages de Comunidades Autónomas y Rankings.
+
+    Está formado por:
+        - related__links-block: Contenedor interno que organiza el contenido en una disposición vertical con separación uniforme.
+        - related__links-list: Grid responsive que distribuye automáticamente los enlaces relacionados.
+        - related__links-li: Tarjeta interactiva de cada enlace, con borde, área clicable completa y estilos de interacción mediante hover.
+
+    El componente añade además una separación visual mediante un borde superior para diferenciar esta sección del contenido principal.
+*/
+.related__links {
+    background-color: var(--color-background);
+    border-top: 0.05rem solid var(--color-secondary-paragraph);
+
+    .related__links-block {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-6);
+    }
+
+    .related__links-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: var(--space-8);
+
+        .related__links-li {
+            text-align: center;
+            padding: var(--space-2);
+            border: var(--border);
+            cursor: pointer;
+
+            &:hover {
+                color: var(--color-primary);
+                border-color: var(--color-primary);
+            }
+
+            a {
+                display: block;
+                width: 100%;
+                height: 100%;
+            }
+        }
+    }
+}
+
+/* FIN: Contenedor reutilizable de links*/
+
+/*FIN: Elementos y cajas destacadas */
+
+
+/* FIN: SECCIÓN DE Componentes globales reutilizables */
+
+
+/* INICIO: Elementos de navegación 
+   Este bloque contiene los componentes globales de navegación presentes en todas las páginas del sitio:
+   
+   - Header principal con logotipo, navegación y menú responsive.
+   - Footer con enlaces agrupados e información complementaria.
+
+   Ambos componentes utilizan una estructura basada en metodología BEM para separar bloques, elementos y estados, facilitando la
+   reutilización y mantenimiento del código.
+*/
+
+
+/* INICIO: Header
+   El header contiene:
+   - Logotipo enlazado con la página principal.
+   - Menú de navegación principal mediante <nav>.
+   - Botón para activar el menú móvil.
+
+   La distribución principal utiliza Flexbox para colocar el logotipo y la navegación horizontalmente en pantallas grandes.
+
+   Se utiliza position: sticky para mantener la barra de navegación visible durante el desplazamiento del usuario.
+
+   El valor de z-index mantiene el header por encima del contenido sin utilizar valores elevados que puedan generar problemas de
+   apilamiento o dificultar la gestión de otros elementos flotantes.
+
+   Adaptación responsive:
+   - Hasta 925px el menú horizontal se transforma en un menú hamburguesa.
+   - El botón de apertura pasa a estar visible.
+   - La navegación se posiciona de forma absoluta debajo del header.
+   - El menú permanece cerrado inicialmente mediante max-height, overflow: hidden y pointer-events.
+   - La clase .activo añadida mediante JavaScript controla la apertura y permite mostrar los enlaces de navegación.
+*/
+.header {
+    background-color: var(--color-background);
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+
+    .header__block {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-flow: nowrap;
+        height: var(--space-18);
+        padding: var(--space-8);
+    }
+
+    .header__logo {
+        max-width: 14rem;
+    }
+
+    .header__button {
+        display: none;
+    }
+
+    .header__nav {
+        .header__ul {
+            display: flex;
+            align-items: center;
+            gap: var(--space-6);
+
+            a {
+                &:hover {
+                    text-decoration-line: underline;
+                }
+
+                &:active {
+                    text-decoration-line: underline;
+                    color: var(--color-primary);
+                }
+            }
+        }
+    }
+
+    /* Adaptación del menú para dispositivos móviles */
+    @media (max-width: 925px) {
+        .header__button {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: var(--space-12);
+            height: var(--space-12);
+            background-color: var(--color-transparent);
+            cursor: pointer;
+        }
+
+        .header__toggle-icon {
+            font-size: var(--space-5);
+            line-height: 1;
+        }
+
+        .header__nav {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: var(--color-background);
+            width: 100%;
+            max-height: 0;
+            overflow: hidden;
+            pointer-events: none;
+            transition: max-height .5s ease;
+
+            &.activo {
+                pointer-events: auto;
+                max-height: 100vh;
+            }
+
+            .header__ul {
+                padding: var(--space-6);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-flow: column nowrap;
+
+                .header__li {
+                    margin: var(--space-2) 0;
+                }
+            }
+        }
+    }
+}
+
+/* INICIO: Footer
+   El footer contiene:
+
+   - Bloques de enlaces agrupados por categorías.
+   - Información complementaria del sitio.
+
+   La estructura interna utiliza CSS Grid para organizar las columnas de navegación.
+
+   La función repeat(auto-fit, minmax()) permite que el número de columnas se adapte automáticamente al espacio disponible.
+
+   Este sistema evita depender de breakpoints específicos para móviles, permitiendo que el footer reorganice su contenido de forma fluida
+   según el ancho de pantalla.
+*/
+.footer {
+    background-color: var(--color-white);
+    padding: var(--space-16) var(--space-8);
+
+    .footer__block {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-12);
+
+        .footer__navegation {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(15.3125rem, 1fr));
+            align-items: flex-start;
+            gap: var(--space-12);
+
+            /*Cada columna contiene un grupo independiente de enlaces del footer.*/
+            .footer__column {
+                display: flex;
+                flex-direction: column;
+                gap: var(--space-4);
+
+                .footer__title {
+                    text-transform: uppercase;
+                    font-weight: 600;
+                }
+
+                .footer__ul {
+                    display: flex;
+                    flex-direction: column;
+                    gap: var(--space-5);
+                }
+
+            }
+        }
+    }
+}
+
+/*FIN: Footer */
+
+/*FIN SECCIÓN: Elementos de Navegación */
+
+/* INICIO: INDEX.HTML o Home
+
+Las partes de la home son las siguientes:
+
+- Hero:
+con imagen de fondo
+texto h1
+buscador de CCAA y botones a las paginas principales dentro del dominio
+
+Contador con las cifras totales de paginas por categoria del dominio
+seccion de explorar por comunidad autonoma: mapa interactivo 
+seccion de universidades por tipo con un grid 
+
+seccion de mejores universidades españolas con un podium , el del ranking Times Higher Education World University Rankings
+seccion de guias para estudiantes con una serie de cards de los posts principales
+banner con boton hacia la seccino de universidades por comunidad autonoma
+
+*/
+
+
+/*Hero de la home:
+Este componente constituye la cabecera principal de la página de inicio.
+
+Se define una imagen de fondo con un degradado superpuesto para mejorar la legibilidad del contenido situado encima.
+
+El bloque interno organiza verticalmente:
+    - Título principal.
+    - Buscador (definido en su propio bloque de estilos).
+    - Accesos rápidos mediante botones.
+
+Los botones reutilizan el componente global .btn--white definido en la hoja de estilos generales.
+Adaptación responsive:
+    - En pantallas inferiores a 865px los accesos rápidos pasan de una disposición horizontal a una vertical para facilitar su visualización y pulsación en dispositivos móviles.
+
+*/
+.hero__home {
+    background: linear-gradient( 90deg, var(--color-home), var(--color-home) ), url("../media/banner-home-universidades.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    max-height: 40rem;
+    .hero__block {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: var(--space-10);
+        color: var(--color-white);
+    }
+    .hero__buttons {
+        display: flex;
+        gap: var(--space-4);
+        @media (max-width: 865px) {
+            flex-direction: column;
+        }
+    }
+}
+
+/* FIN: Hero de la home*/
+
+/* INICIO: Sección del Contador 
+    Este componente muestra las principales cifras generales del portal, proporcionando una visión rápida del contenido disponible.
+
+    Se reutiliza en distintas páginas del sitio, como las páginas individuales de cada Comunidad Autónoma.
+
+    La distribución utiliza CSS Grid mediante repeat(auto-fit, minmax()) para adaptar automáticamente el número de columnas según el espacio disponible, evitando el uso de media queries específicas.
+    Cada elemento del contador organiza verticalmente:
+        - La cifra destacada.
+        - La etiqueta descriptiva en mayúsculas.
+*/
+.counter {
+    background-color: var(--color-background);
+    padding: var(--space-5) var(--space-8);
+
+    .counter__block {
+        .counter__ul {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(12.5rem, 1fr));
+            justify-content: center;
+            align-items: center;
+            gap: var(--space-6);
+            padding: 0;
+            text-align: center;
+
+            .counter__li {
+                display: flex;
+                flex-direction: column;
+                gap: var(--space-3);
+            }
+
+            .p {
+                text-transform: uppercase;
+            }
+        }
+    }
+}
+
+/* FINAL: Contador */
+
+
+/* INICIO: Buscador 
+Buscador de domunidades autonomas por medio de JS
+
+
+*/
+
+.search {
+    padding: var(--space-6);
+
+    /* .search__block es el contenedor de referencia (position:relative)
+       para poder posicionar el listado de resultados por encima del hero
+       sin que este desplace el contenido inferior */
+    .search__block {
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        gap: var(--space-2);
+
+        .search__field {
+            display: flex;
+            align-items: center;
+            background-color: var(--color-white);
+            justify-content: space-between;
+            gap: var(--space-2);
+            border: var(--border);
+            border-radius: var(--radius-md);
+            transition: var(--transition-card);
+            padding-inline-start: var(--space-4);
+
+            &:focus-within {
+                border: var(--border-primary);
+                box-shadow: 0 0 0 2px var(--color-primary-light);
+
+            }
+
+            .ri-search-line {
+                color: var(--color-secondary-paragraph);
+                flex-shrink: 0;
+            }
+
+            .search__input {
+                padding: var(--space-4);
+                flex: 1;
+                min-width: 0;
+                border: none;
+                background-color: transparent;
+                color: var(--color-paragraph);
+
+                &::placeholder {
+                    color: var(--color-secondary-paragraph);
+                }
+
+                &:focus {
+                    outline: none;
+                }
+            }
+
+            /* Botón de limpiar: icono redondo oculto por defecto,
+               se muestra con la clase "activo" cuando hay texto escrito */
+            .search__clear {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-shrink: 0;
+                width: var(--space-10);
+                height: var(--space-10);
+                border: none;
+                background-color: transparent;
+                color: var(--color-primary);
+                border-radius: var(--radius-md);
+                cursor: pointer;
+                opacity: 0;
+                pointer-events: none;
+                transition: opacity 0.3s ease, background-color 0.2s ease, color 0.2s ease;
+
+                i {
+                    font-size: var(--space-5);
+                    line-height: 1;
+                }
+
+                &.activo {
+                    opacity: 1;
+                    pointer-events: auto;
+                }
+
+                &:hover,
+                &:active {
+                    background-color: var(--color-secondary-background);
+                    color: var(--color-primary);
+                }
+            }
+        }
+
+        /* Listado de resultados: absoluto respecto a .search__block para
+           que se superponga al hero en lugar de desplazarlo hacia abajo */
+        .search__results {
+            position: absolute;
+            top: calc(100% + var(--space-2));
+            left: 0;
+            right: 0;
+            z-index: 10;
+            background-color: var(--color-white);
+            border: var(--border);
+            border-radius: var(--radius-md);
+            box-shadow: 0 .5rem 1.5rem rgba(0, 0, 0, .15);
+            max-height: 16rem;
+            overflow-y: auto;
+            display: none;
+
+            &.activo {
+                display: block;
+            }
+
+            .search__result {
+                border-bottom: var(--border);
+
+                &:last-child {
+                    border-bottom: none;
+                }
+
+                &:hover,
+                &.is-active {
+                    background-color: var(--color-secondary-background);
+                }
+
+                .search__result-link {
+                    display: block;
+                    padding: var(--space-3) var(--space-4);
+                    color: var(--color-paragraph);
+                    text-decoration: none;
+                }
+            }
+
+            .search__empty {
+                padding: var(--space-4);
+                text-align: center;
+                color: var(--color-secondary-paragraph);
+            }
+        }
+    }
+}
+
+@media (max-width: 480px) {
+    .search {
+        padding: var(--space-4);
+
+        .search__block {
+            .search__field {
+                padding-inline-start: var(--space-3);
+
+                .search__input {
+                    padding: var(--space-3);
+                }
+            }
+
+            .search__results {
+                max-height: 12rem;
+            }
+        }
+    }
+}
+
+
+/* FINAL: Buscador */
+
+
+/* INICIO: Mapa interactivo
+
+Esta sección muestra un mapa SVG interactivo de España que permite acceder a las universidades de cada Comunidad Autónoma.
+
+El componente está formado por:
+
+- map__introduction:
+  Cabecera de la sección con el título y el texto descriptivo.
+
+- map__card:
+  Contenedor principal que agrupa el mapa y su alternativa para dispositivos móviles.
+
+- map__map:
+  Organiza verticalmente el contenido y centra el mapa dentro de la sección.
+
+- map__espana:
+  Contenedor del SVG interactivo. Se limita su anchura para mantener una correcta proporción en pantallas grandes.
+
+- map__comunidad:
+  Cada comunidad autónoma corresponde a un <path> independiente dentro del SVG. Se aplican estados hover y active para proporcionar una respuesta visual durante
+  la interacción del usuario. La navegación hacia cada página se gestiona mediante JavaScript utilizando el identificador de cada comunidad.
+
+- map__list:
+  Versión alternativa para dispositivos móviles donde el mapa se sustituye por un listado de enlaces.
+
+- map__ul:
+  Distribuye los enlaces mediante CSS Grid adaptando automáticamente el número de columnas según el espacio disponible.
+
+- map__li:
+  Cada elemento contiene un botón reutilizando el componente global .btn, haciendo que toda la superficie del enlace sea clicable y manteniendo la misma apariencia
+  que el resto de botones del sitio.
+
+Este componente también se reutiliza en la página pilar de Comunidades Autónomas para mantener una experiencia de navegación consistente.
+*/
+
+
+.map__block {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-10);
+    .map__introduction {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-4);
+    }
+    .map__card {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-4);
+        .map__map {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: var(--space-9);
+
+            .map__espana {
+                max-width: 60%;
+                flex-shrink: 0;
+                background-color: var(--color-secondary-background);
+
+                .map__comunidad {
+                    fill: var(--color-primary-light);
+                    stroke-width: 1.472px;
+                    stroke: var(--color-border);
+
+                    &:hover {
+                        fill: var(--color-primary);
+                    }
+
+                    &:active {
+                        fill: var(--color-details);
+                    }
+                }
+        }
+    }
+        .map__list {
+            .map__ul {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(12.5rem, 1fr));
+                gap: var(--space-10);
+                .map__li {
+                    display: flex;
+                    .btn {
+                        width: 100%;
+                        align-items: center;
+                        justify-content: center;
+                        text-align: center;
+                    }
+                }
+            }
+        }
+    }
+
+}
+/* FIN: Mapa interactivo */
+
+/* INICIO: Tipos de universidades
+
+    Esta sección reúne los principales accesos a las distintas categorías de universidades del sitio mediante un conjunto de tarjetas interactivas.
+
+    La distribución principal utiliza CSS Grid para destacar la tarjeta de universidades públicas como elemento principal, acompañada de:
+        - Universidades privadas.
+        - Rankings universitarios.
+        - Universidades por Comunidades Autónomas.
+
+    Cada tarjeta funciona como un enlace clicable y dispone de estados hover y active que modifican el color de fondo para reforzar la interacción del usuario.
+
+    Internamente, cada bloque organiza su contenido mediante Flexbox para alinear correctamente títulos, textos, iconografía y listados.
+
+    En dispositivos móviles el layout abandona la distribución en Grid y pasa a una estructura vertical mediante Flexbox, adaptando además la disposición interna 
+    de las tarjetas para mejorar la lectura y el aprovechamiento del espacio disponible.
+*/
+
+.type {
+    background-color: var(--color-background);
+    .type__block {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-10);
+        .type__grids {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: var(--space-3);
+            .type__grid {
+                padding: var(--space-5);
+                /* Tarjeta: Universidades públicas */
+                &.public {
+                    grid-column: 1 / 4;
+                    background-color: var(--color-primary);
+                    color: var(--color-white);
+                    display: flex;
+                    flex-direction: column;
+                    gap: var(--space-6);
+                    border: var(--border);
+
+                    .type__introduction {
+                        display: flex;
+                        flex-direction: column;
+                        gap: var(--space-2);
+                    }
+
+                    .type__info {
+                        display: flex;
+                        align-items: center;
+                        gap: var(--space-4);
+                    }
+                }
+                /* Tarjeta: Universidades privadas */
+                &.private {
+                    grid-column: 2;
+                    grid-row: 2;
+                    padding: var(--space-8);
+                    background-color: var(--color-white);
+                    display: flex;
+                    flex-direction: column;
+                    gap: var(--space-6);
+                    justify-content: flex-start;
+                    align-items: start;
+                    border: var(--border);
+                    color: var(--color-paragraph);
+
+                    .type__introduction {
+                        display: flex;
+                        flex-direction: column;
+                        gap: var(--space-2);
+                    }
+                }
+                /* Tarjeta: Rankings */
+                &.rankings {
+                    grid-column: 1;
+                    grid-row: 2;
+                    background-color: var(--color-secondary-background);
+                    gap: var(--space-5);
+                    color: var(--color-paragraph);
+
+                    .type__introduction {
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                    }
+
+                    .type__ul {
+                        display: flex;
+                        flex-direction: column;
+                        gap: var(--space-4);
+                        text-decoration: solid;
+
+                        .type__li {
+                            display: flex;
+                            justify-content: space-between;
+                            align-items: center;
+                            border-bottom: var(--border);
+
+                            .type__ranking {
+                                color: var(--color-secondary-paragraph);
+
+                            }
+                        }
+                    }
+
+                }
+                /* Tarjeta: Universidades por Comunidades Autónomas */
+                &.ccaa {
+                    grid-column: 3;
+                    grid-row: 2;
+                    background-color: var(--color-black);
+                    color: var(--color-white);
+                    padding: var(--space-3);
+
+                    .type__regions {
+                        display: flex;
+                        flex-direction: column;
+                        gap: .625rem;
+                        padding: var(--space-4) 0 0 0;
+
+                        .type__region {
+                            display: flex;
+                            justify-content: space-between;
+                            color: var(--color-white);
+                        }
+
+
+                    }
+
+                }
+                /* Estados interactivos de las tarjetas, cambian en función de su background base */
+                &:hover, &:active {
+                    &.public {
+                        background-color: var(--color-black);
+                    }
+                    &.private {
+                        background-color: var(--color-secondary-background);
+                    }
+                    &.rankings {
+                        background: var(--color-white);
+                    }
+                    &.ccaa {
+                        background: var(--color-primary);
+
+                    }
+                }
+            }
+            /* Adaptación responsive */
+            @media (max-width: 768px) {
+                display: flex;
+                flex-direction: column;
+                gap: var(--space-6);
+
+                &.type__grids .public {
+                    .type__info {
+                        display: flex;
+                        flex-direction: column;
+                        align-items: flex-start;
+                    }
+                }
+
+                &.type__grids .rankings {
+                    .type__introduction {
+                        display: flex;
+                        flex-direction: column;
+                        align-items: flex-start;
+                        gap: var(--space-3);
+                    }
+                }
+
+            }
+        }
+
+    }
+}
+
+/* FINAL: Tipos de universidades */
+
+
+/*
+INICIO: Sección de ranking
+
+Se reutiliza el componente section__intro para la cabecera de la sección.
+
+El ranking se presenta como una tarjeta clicable que dirige a su página correspondiente.
+
+Se reutiliza el componente badge para mostrar la posición de cada universidad y se añade una interacción hover que resalta la fila y muestra el icono de
+navegación.
+Incluye adaptación responsive para dispositivos móviles.
+*/
+
+
+.ranking {
+    background-color: var(--color-white);
+    .ranking__block {
+    display: flex;
+    flex-direction: column;
+    padding: var(--space-6);
+    gap: var(--space-6);
+    }
+
+
+}
+/* Listado de universidades del ranking */
+.ranking__list {
+    padding: var(--space-6);
+    .ranking__item {
+        display: grid;
+        grid-template-columns: 3rem max-content 1fr auto;
+        align-items: center;
+        padding: var(--space-5);
+        border-bottom: var(--border);
+        gap: var(--space-8);
+        color: var(--color-paragraph);
+        /* El icono de navegación permanece oculto hasta interactuar con la fila */
+        .ranking__score {
+            display: flex;
+            gap: var(--space-4);
+            i {
+                opacity: 0;
+            }
+        }
+                &:hover, &:active {
+            background-color: var(--color-background);
+            i {
+                opacity: 1;
+            }
+        }
+        @media (max-width: 480px) {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+    }
+}
+
+/* FIN: Sección de rankings */
+
+/* INICIO: Sección de Guías 
+Se reutiliza el componente general del grid de guías y la estructura section__intro para mantener la consistencia visual de la home.
+
+En esta sección únicamente se personalizan el fondo y la disposición del contenido.
+*/
+.guias {
+    background-color: var(--color-background);
+
+    .guias__block {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-14);
+    }
+}
+
+/* FIN: Sección de Guías */
+
+/*INICIO: Banner con CTA
+
+Banner de llamada a la acción que invita al usuario a explorar todas las universidades.
+
+Se utiliza el modificador banner__highlight para destacar la parte principal del mensaje mediante el color corporativo.
+
+*/
+.banner {
+    color: var(--color-white);
+    background-color: var(--color-black);
+    padding: var(--space-9);
+    .banner__block {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-6);
+        align-items: center;
+        text-align: center;
+    }
+    .banner__highlight {
+        display: block;
+        color: var(--color-primary-light);
+    }
+}
+
+/*FIN: Banner con CTA*/
+
+
+
+/* FINAL: Index.html o Home */
+
+
+
+/* INICIO : Página pilar de Comunidades Aútonomas o por-ccaa.html
+Esta sección contiene los estilos específicos de la página que agrupa las universidades por comunidad autónoma.
+Componentes reutilizados:
+    - hero__section.
+    - map__ccaa y sus elementos internos (mapa interactivo y listado alternativo para dispositivos móviles). 
+    Se añade como variación el color de fondo
+Componentes específicos:
+    - ccaa.
+    - ccaa__grids: distribución de las tarjetas mediante CSS Grid.
+    - ccaa__grid: tarjeta resumen de cada comunidad autónoma.
+
+La sección organiza las tarjetas mediante CSS Grid y mantiene la misma identidad visual utilizada en el resto del sitio.
+*/
+.map__ccaa {
+    background-color: var(--color-background);
+}
+.ccaa {
+    background-color: var(--color-background);
+
+    .ccaa__block {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-8);
+
+        /* Grid responsive: las tarjetas se distribuyen automáticamente
+        adaptándose al ancho disponible sin necesidad de media queries. */
+        .ccaa__grids {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(22.5rem, 100%), 1fr));
+            gap: var(--space-5);
+
+            /* Tarjeta / Card individual para cada CCAA 
+            La tarjeta ocupa toda la altura de su celda para mantener
+            una alineación uniforme entre todas las comunidades*
+            */
+            .ccaa__grid {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: var(--space-6);
+                background-color: var(--color-white);
+                padding: var(--space-6);
+                border: var(--border);
+                height: 100%;
+                transition: var(--transition-card), border-color .25s ease;
+                cursor: pointer;
+
+                &:hover {
+                    transform: translateY(-4px);
+                    box-shadow: 0 8px 24px var(--color-border);
+                    color: inherit;
+
+
+                }
+
+                /* Introducción de la tarjeta */
+                .ccaa__introduction {
+                    display: flex;
+                    align-items: center;
+                    width: 100%;
+                    gap: var(--space-6);
+
+                    .ccaa__context {
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: flex-end;
+                        flex: 1;
+
+                    }
+
+                }
+
+                /* Agrupa los contadores de universidades públicas y privadas. */
+                .ccaa__list {
+                    display: flex;
+                    align-items: center;
+
+                    .ccaa__ul {
+                        display: flex;
+                        gap: var(--space-3);
+
+                        .ccaa__li {
+                            display: flex;
+                            flex-direction: column;
+                            align-items: center;
+
+                            &:last-child {
+                                border-left: .05rem solid var(--color-border);
+                                padding-left: var(--space-3);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+/* FINAL: Página pilar de Comunidades Aútonomas o por-ccaa.html */
+
+
+/* INICIO: Single Page de CCAA: andalucia.html, aragon.html, etc
+    Esta sección contiene la estructura específica de las páginas de comunidades autónomas.
+    Elementos reutilizados:
+        - header_block: bloque común de títulos e introducciones.
+        - counter: contador reutilizado de la página principal.
+        - university__grid: sistema de tarjetas para mostrar universidades.
+        - related__links: bloque de enlaces relacionados.
+    Elementos específicos:
+        - ccaa__hero: hero principal de cada comunidad autónoma.
+        - ccaa__page: contenedor general de contenido.
+        - ccaa__page-publics: sección de universidades públicas.
+        - ccaa__page-privates: sección de universidades privadas.
+    Se aplican estilos responsive para adaptar:
+        - La distribución del nombre de la comunidad y su bandera en dispositivos móviles.
+        - La organización vertical de los bloques de información.
+*/
+.ccaa__hero {
+    background-color: var(--color-white);
+
+    .ccaa__hero-block {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-12);
+
+        .ccaa__hero-introduction {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-6);
+
+            .ccaa__name {
+                display: flex;
+                align-items: baseline;
+                justify-content: space-between;
+
+                .ccaa__picture {
+                    display: flex;
+
+                    .ccaa__flag {
+                        display: block;
+                    }
+                }
+
+                @media (max-width: 480px) {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    gap: var(--space-2);
+
+                }
+            }
+        }
+
+        .counter {
+            border-top: var(--border);
+            background-color: var(--color-white);
+        }
+    }
+}
+
+.ccaa__page {
+    background-color: var(--color-secondary-background);
+
+    .ccaa__page-block {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-14);
+
+        .ccaa__page-publics,
+        .ccaa__page-privates {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-8);
+        }
+    }
+}
+
+/* FIN: Single Page de CCAA */
+
+
+/* INICIO: Página de tipos de universidades o tipos.html
+    Esta sección recopila las universidades clasificadas según su tipología. Reutiliza componentes globales:
+        - hero__section.
+        - university__card.
+        - university__grid.
+    Añade componentes específicos:
+        - university__tabs.
+        - university__tab.
+    Los tabs son elementos interactivos controlados mediante JavaScript para mostrar la información correspondiente a cada tipo de universidad.
+*/
+
+.university__grids {
+    background-color: var(--color-secondary-background);
+
+    .university__grids-block {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-12);
+
+        .university__tabs {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--space-5);
+            justify-content: space-around;
+
+            .university__tab {
+                display: flex;
+                flex-direction: column;
+                gap: var(--space-3);
+                padding: var(--space-6);
+                color: var(--color-black);
+                background-color: var(--color-white);
+                align-items: flex-start;
+                border: var(--border);
+                cursor: pointer;
+
+                &:hover,
+                &:active,
+                &:focus-visible {
+                    color: var(--color-white);
+                    background-color: var(--color-primary);
+                }
+            }
+
+            @media (max-width: 480px) {
+                display: flex;
+                flex-direction: column;
+            }
+        }
+    }
+}
+
+/* FIN: Página de tipos de universidades o tipos.html */
+
+
+/* INICIO: Página pilar de Rankings o rankings.html
+   Esta sección da estilo a la página que recopila los 4 rankings universitarios del sitio.
+   Reutiliza el componente global .ranking__list (definido en la Home) para el podium de cada card, y añade los siguientes componentes específicos:
+   - ranking__grids: fondo de la sección.
+   - ranking__grids-block: grid responsive que distribuye las cards automáticamente mediante auto-fit, sin necesidad de media queries.
+   - ranking__card: tarjeta individual de cada ranking (QS, THE, ARWU, U.S. News).
+   - ranking__information: bloque final que explica en qué consisten los rankings universitarios, maquetado también en grid para mantener el mismo comportamiento responsive.
+*/
+
+/* Fondo de la sección que contiene el grid de rankings. */
+.ranking__grids {
+    background-color: var(--color-background);
+}
+/* Grid responsive de las cards de ranking. Cada columna tiene un ancho mínimo de 18.75rem; auto-fit calcula automáticamente cuántas columnas caben por fila
+   según el ancho disponible, repartiendo el espacio sobrante entre ellas. 
+*/
+.ranking__grids-block {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(28.125rem, 1fr));
+    gap: var(--space-5);
+    @media (max-width: 660px) {
+        grid-template-columns: repeat(auto-fit, minmax(15.625rem, 1fr));
+        }
+
+}
+/* El podium (top 3 de cada ranking) ocupa siempre el 100% del ancho de la card para que su contenido no descuadre respecto al resto de elementos. */
+.ranking__podium {
+    width: 100%;
+    .ranking__list {
+        gap: var(--space-4);
+    }
+}
+/* Card individual de cada ranking. Se estructura en columna: nombre de la entidad + título, podium con el top 3, y botón de acceso al ranking completo.
+   Toda la card actúa como enlace (title + href en el HTML). */
+.ranking__card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-12);
+    background-color: var(--color-white);
+    padding: var(--space-8);
+    align-items: flex-start;
+    border: var(--border);
+    color: var(--color-paragraph);
+    cursor: pointer;
+    /* Bloque superior: nombre de la entidad, título del ranking y descripción. */
+    .ranking__name {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-6);
+        /* Cabecera del nombre de la entidad junto al icono de flecha, que permanece oculto por defecto y se revela en :hover/:active para
+           reforzar visualmente la interacción con la card. */
+        .ranking__arrow {
+            display: flex;
+            justify-content: space-between;
+
+            i {
+                opacity: 0;
+                transition: opacity .2s ease;
+            }
+        }
+
+    }
+    /* Botón "Ver ranking completo": margin-top:auto empuja el botón al fondo de la card absorbiendo el espacio libre restante, de forma que queda
+       siempre a la misma altura entre cards aunque el título o la descripción tengan longitudes distintas. 
+       */
+    .btn {
+        margin-top: auto;
+    }
+
+    &:hover,
+    &:active {
+        border-color: var(--color-primary);
+        color: var(--color-paragraph);
+
+        .ranking__arrow i {
+            opacity: 1;
+            color: var(--color-primary);
+        }
+    }
+}
+
+/* Sección final de la página: explica brevemente qué son los rankings universitarios y cómo interpretarlos. Se maqueta en grid para que los
+   párrafos se reorganicen automáticamente en columnas según el ancho disponible, manteniendo el mismo patrón responsive que el resto del sitio. */
+.ranking__information {
+    background-color: var(--color-background);
+    border-top: var(--border);
+
+    .ranking__information-block {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-8);
+
+        .ranking__grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(18.75rem, 1fr));
+            gap: var(--space-8);
+        }
+    }
+}
+
+/*FIN: Página pilar de Rankings o rankings.html */
+
+
+/*INICIO: Single Page de Rankings 
+Esta sección contiene la estructura específica de la página individual de cada ranking universitario: qs-world-university-rankings.html, arwu.html, us-news.html, times-higher-education-world-university.html
+    Elementos reutilizados:
+        - hero__section: cabecera con título y descripción del ranking.
+        - badge: insignia utilizada para mostrar la posición internacional de cada universidad.
+        - related__links: bloque de enlaces hacia los demás rankings del sitio.
+    Elementos específicos:
+        - ranking__page: contenedor general que distribuye en dos columnas el listado del ranking y el bloque de metodología.
+        - ranking__item: cada fila individual del listado, con posición, nombre, ciudad y puntuación.
+        - ranking__method: bloque lateral con la metodología y la fuente oficial del ranking.
+    Comportamiento responsive:
+        - A partir de 660px el layout pasa de dos columnas a una sola columna en flujo vertical.
+        - El listado de universidades (ranking__item) pasa de grid a flex para simplificar su lectura en pantallas pequeñas.
+        - El bloque de metodología deja de ser sticky y ocupa el 100% del ancho disponible.
+
+*/
+
+
+.ranking__page {
+    display: flex;
+    gap: var(--space-12);
+    background-color: var(--color-secondary-background);
+
+    /* Columna del listado: ocupa el 60% del ancho disponible, dejando el 40% restante para la metodología */
+    .ranking__page--block {
+        width: 60%;
+        .ranking__list {
+            gap: var(--space-4);
+        }
+        
+    }
+    /* Fila individual del ranking.*/
+
+    .ranking__item {
+        display: grid;
+        grid-template-columns: 3rem 6rem 1fr 5rem;
+        padding: var(--space-2);
+        align-items: center;
+        &:hover, &:active {
+            background-color: var(--color-secondary-background);
+        }
+    }
+    /* 
+        Adaptación mobile: el contenedor principal pasa a columna única
+        y la fila de cada universidad se simplifica a flex para evitar problemas de recorte de texto 
+       */
+    @media (max-width: 660px) {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+
+        .ranking__page--block {
+            width: 100%;
+        }
+
+        .ranking__item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            .h3 {
+                flex-wrap: nowrap;
+            }
+
+        }
+
+        .ranking__method {
+            position: static;
+            align-self: stretch;
+            width: 100%;
+        }
+    }
+}
+
+/* Bloque lateral con la metodología del ranking y su fuente oficial.
+   Utiliza position: sticky para acompañar el scroll del usuario mientras consulta el listado, quedando fijado justo debajo del header (altura del header + un espacio adicional).
+*/
+
+.ranking__method {
+    background-color: var(--color-white);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-8);
+    padding: var(--space-6);
+    align-self: flex-start;
+    position: sticky;
+    top: calc(var(--space-18) + var(--space-4));
+    /* Listado de puntos que componen la metodología del ranking */
+    .ranking__items {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-3);
+        color: var(--color-secondary-paragraph);
+    }
+    /* Bloque con el nombre de la entidad responsable del ranking */
+    .ranking__source {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-3);
+    }
+}
+
+
+/* FINAL: Single Page de Rankings */
+
+
+
+/*  INICIO: Página pilar de Guías o guias.html
+
+Esta página reúne todas las guías publicadas en el sitio y combina componentes globales reutilizables con otros específicos para este listado.
+Componentes reutilizados:
+    - hero__section: Hero común utilizado en las páginas interiores.
+    - guias__grid: Grid general de tarjetas, adaptado mediante pequeñas variaciones.
+    - guias__category: Etiqueta reutilizable para indicar la categoría de cada guía.
+
+Componentes específicos:
+    - featured: Sección de guías destacadas presentada mediante un grid propio.
+    - guias__tabs: Sistema de pestañas utilizado como filtro de categorías mediante JavaScript.
+
+Las variaciones definidas en este bloque únicamente modifican la presentación de estos componentes para adaptarlos a la página de guías.
+*/
+
+/* INICIO: Guías destacadas
+
+Esta sección muestra una selección de las publicaciones más relevantes del sitio. La distribución utiliza un grid específico, diferente al componente reutilizable
+de guías, para destacar visualmente la primera publicación, que ocupa todo el ancho disponible.
+
+Cada tarjeta está formada por:
+    - Imagen destacada.
+    - Información introductoria.
+    - Categoría y tiempo de lectura.
+    - Título y resumen.
+Durante la interacción se resalta el borde de la tarjeta y se aplica un ligero escalado sobre la imagen.
+*/
+.featured {
+    background-color: var(--color-secondary-background);
+
+    .featured__block {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-8);
+        /* Grid de las guías destacadas.
+        Organiza las tarjetas mediante CSS Grid.
+        En pantallas grandes la primera publicación ocupa dos columnas para darle mayor protagonismo.
+        En dispositivos móviles el layout pasa a una disposición vertical para mejorar la lectura y el aprovechamiento del espacio disponible.
+    */
+
+        .featured__grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: var(--space-6);
+
+            /* Tarjeta individual de guía destacada.
+            Agrupa todos los elementos informativos de la publicación y reutiliza componentes globales como la categoría de la guía.
+            La imagen mantiene una proporción constante y se anima suavemente durante la interacción del usuario.
+            */
+            .featured__card {
+                background-color: var(--color-white);
+                border: var(--border);
+
+                &:first-child {
+                    grid-column: span 2;
+                }
+
+                /* Contenedor de la imagen destacada.
+                Mantiene una proporción uniforme y evita que el escalado de la imagen sobresalga del contenedor durante el efecto hover.
+            */
+                .featured__picture {
+                    display: block;
+                    overflow: hidden;
+
+                    img {
+                        width: 100%;
+                        height: 100%;
+                        aspect-ratio: 16/9;
+                        object-fit: cover;
+                        transition: transform .35s ease;
+                    }
+                }
+
+                /* Contenido informativo de la tarjeta.
+                    Organiza verticalmente la categoría, el tiempo estimado de lectura, el título y el resumen de la guía.
+                */
+                .featured__introduction {
+                    padding: var(--space-5);
+                    display: flex;
+                    flex-direction: column;
+                    gap: var(--space-3);
+
+                    .featured__clasification {
+                        display: flex;
+                        gap: var(--space-2);
+                    }
+
+                    .featured__information {
+                        display: flex;
+                        flex-direction: column;
+                        gap: var(--space-2);
+                        color: var(--color-paragraph);
+                    }
+                }
+
+                &:hover,
+                &:active {
+                    border-color: var(--color-primary);
+
+                    .featured__picture img {
+                        transform: scale(1.05);
+                    }
+                }
+            }
+
+            @media (max-width: 480px) {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: var(--space-8);
+            }
+        }
+    }
+}
+
+/* FIN: Guías destacadas */
+/* INICIO: Información y filtros de las guías
+    Agrupa el encabezado de la sección junto al sistema de pestañas utilizado para filtrar las guías por categoría mediante JavaScript.
+    Las pestañas incorporan estados visuales de interacción para indicar la opción seleccionada por el usuario.
+*/
+.guias {
+    .guias__information {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-14);
+
+        /* Listado horizontal de categorías.
+        En pantallas pequeñas las pestañas se reorganizan verticalmente para facilitar la interacción táctil.
+    */
+        .guias__tabs {
+            display: flex;
+            gap: var(--space-5);
+
+            /* Pestaña individual del filtro.
+        Representa una categoría disponible y modifica su aspecto durante la interacción mediante un cambio de color y un borde inferior.
+    */
+            .guias__tab {
+                cursor: pointer;
+                transition: border-color .2s ease, color .2s ease;
+                border-bottom: 2px solid transparent;
+                background-color: var(--border);
+
+                &:hover,
+                &:active {
+                    color: var(--color-primary);
+                    border-bottom-color: var(--color-primary);
+                }
+            }
+
+            @media (max-width: 580px) {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: var(--space-8);
+            }
+        }
+    }
+
+    /* Variaciones del grid general de guías.
+    La página reutiliza el componente global guias__grid y adapta únicamente la disposición de los elementos informativos de cada tarjeta, manteniendo el resto
+    de estilos definidos en el componente reutilizable.
+*/
+    .guias__grid {
+        .guias__card {
+            .guias__title {
+                display: flex;
+                gap: var(--space-3);
+                align-items: center;
+                justify-content: flex-start;
+
+                .guias__badges {
+                    display: flex;
+                    align-items: center;
+                }
+
+            }
+        }
+    }
+}
+
+/* FINAL: Página pilar de Guías o guias.html  */
+
+/* INICIO: Single Page de Guías
+Esta sección agrupa todos los estilos específicos de las páginas individuales de las guías.
+Su estructura sigue el mismo orden que el HTML y está formada por los siguientes componentes:
+- picture__header: Imagen principal del artículo que ocupa todo el ancho de la ventana.
+
+- hero__section: Reutiliza el componente global del Hero y añade pequeñas variaciones visuales
+  propias de las páginas de guía, como el cambio de fondo y la distribución de la información introductoria. 
+
+- content: Contenedor principal del artículo. Organiza mediante Flexbox la distribución entre el contenido principal y la información complementaria.
+  Dentro de este bloque se definen:
+    - Tabla de contenidos.
+    - Desarrollo del artículo.
+    - Preguntas frecuentes.
+    - Tarjetas laterales con el resumen y los enlaces relacionados.
+
+- guias__related:  Sección final que muestra otras guías del sitio utilizando el componente global guias__grid, incorporando únicamente pequeñas adaptaciones de diseño
+  específicas para esta página.
+
+*/
+
+/* INICIO: Imagen principal
+    La imagen destacada ocupa todo el ancho disponible y mantiene una altura fija para unificar la presentación visual de todas las guías.
+    El recorte se controla mediante object-fit: cover, evitando deformaciones independientemente de las dimensiones originales de la imagen.
+*/
+.picture__header {
+    width: 100%;
+    overflow: hidden;
+    display: block;
+
+    img {
+        display: block;
+        width: 100%;
+        height: 300px;
+        object-fit: cover;
+    }
+}
+
+/* FINAL: Imagen principal */
+
+/* INICIO: Hero 
+    Esta página reutiliza el componente global hero__section.
+    En esta variante:
+    - Se sustituye el fondo blanco por el fondo principal del sitio.
+    - Se añade un borde inferior para separar visualmente la introducción del artículo.
+    - La información auxiliar (autor, fecha, tiempo de lectura y categoría) se distribuye horizontalmente y pasa a organizarse en columna en móviles.
+*/
+.hero__section {
+    border-bottom: var(--border);
+
+    .introduction__info {
+        display: flex;
+        align-items: center;
+        gap: var(--space-4);
+
+        @media (max-width: 580px) {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+    }
+}
+
+/* FINAL: Hero */
+
+/* INICIO: Contenido principal del artículo
+    Este componente organiza toda la información de la guía.
+    En escritorio distribuye el contenido mediante dos columnas:
+    - Contenido principal.
+    - Información complementaria.
+
+    En dispositivos móviles ambos bloques pasan a mostrarse en una única columna.
+
+    Dentro del componente se incluyen:
+    - Tabla de contenidos.
+    - Desarrollo del artículo.
+    - Preguntas frecuentes.
+    - Información complementaria.
+*/
+.content {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--color-background);
+    padding: var(--space-9) var(--space-8);
+
+    .content__block {
+        display: flex;
+        gap: var(--space-12);
+
+        @media (max-width: 768px) {
+            display: flex;
+            flex-direction: column;
+        }
+
+    }
+
+    .content__body {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-10);
+    }
+
+    /* Tabla de contenidos
+            Presenta un índice con los principales apartados del artículo. Su disposición vertical facilita una lectura rápida del contenido
+        */
+    .table__content {
+        background-color: var(--color-white);
+        padding: var(--space-6);
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-4);
+
+        .table__list {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-2);
+            align-items: flex-start;
+        }
+
+        .table__li {
+            display: flex;
+            gap: var(--space-3);
+            align-items: center;
+        }
+
+        /* FINAL: Tabla de contenidos */
+    }
+
+    /* Desarrollo del artículo
+            Agrupa todos los apartados de la guía.
+            Cada elemento contiene:
+            - Numeración.
+            - Título.
+            - Texto descriptivo.
+        */
+    .article__section {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-10);
+
+        .content__list {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-10);
+
+            .content__li {
+                display: flex;
+                flex-direction: column;
+                gap: var(--space-4);
+
+                .li__title {
+                    display: flex;
+                    align-items: center;
+                    gap: var(--space-2);
+                }
+            }
+        }
+
+        /* FINAL: Desarrollo del artículo */
+    }
+
+    /* Información complementaria
+    Columna lateral que permanece visible mediante position: sticky mientras el usuario recorre el artículo.
+    Incluye:
+    - Resumen de la guía.
+    - Enlaces internos relacionados.
+*/
+    .content__cards {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-6);
+        align-self: flex-start;
+        position: sticky;
+        top: calc(var(--space-18) + var(--space-4));
+
+        /* Tarjeta resumen
+            Resume el objetivo principal de la guía y proporciona contexto adicional antes de comenzar la lectura.
+        */
+        .content__about {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-3);
+            background-color: var(--color-white);
+            padding: var(--space-5);
+        }
+
+        /* Tarjeta de enlaces relacionados
+            Facilita la navegación hacia otras páginas relacionadas del sitio mediante enlaces internos.
+        */
+        .content__related {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-3);
+            background-color: var(--color-white);
+            padding: var(--space-5);
+            .content__a {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                border-bottom: var(--border);
+            }
+        }
+    }
+
+    /* Preguntas frecuentes
+    Agrupa las preguntas más habituales relacionadas con el contenido.
+    Las respuestas reutilizan el componente global highlighted-box, añadiendo únicamente la distribución vertical del contenido.
+*/
+    .content__faqs {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-6);
+        .highlighted-box {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-2);
+        }
+    }
+}
+
+/* FINAL: Contenido principal del artículo */
+
+/* INICIO: Guías relacionadas
+    Sección que muestra otras guías del sitio para fomentar la navegación interna.
+
+    Reutiliza el componente global guias__grid, incorporando únicamente pequeñas adaptaciones en la presentación de las tarjetas para ajustarse al diseño de
+    esta página.
+    La estructura interna de las tarjetas se mantiene gracias al componente global, modificando únicamente la disposición de
+    algunos elementos para adaptarse al diseño de esta página.
+*/
+.guias__related {
+    background-color: var(--color-secondary-background);
+}
+
+.related__block {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-8);
+
+    .guias__title {
+        display: flex;
+        gap: var(--space-3);
+        align-items: center;
+        justify-content: flex-start;
+
+        .guias__badges {
+            display: flex;
+            align-items: center;
+        }
+    }
+}
+
+/* FINAL: Single Page de Guías */

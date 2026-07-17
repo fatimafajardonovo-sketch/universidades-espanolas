@@ -1,0 +1,353 @@
+<!--
+ESTRUCTURA GENERAL DEL DOCUMENTO
+Esta página recopila todos los rankings universitarios disponibles en el sitio web.
+
+Su estructura se compone de:
+- Cabecera con el menú de navegación principal.
+- Hero con el título y una breve descripción.
+- Contenido principal:
+    - Grid de tarjetas con los distintos rankings.
+    - Sección informativa sobre los rankings universitarios.
+- Pie de página con enlaces de navegación e información del sitio.
+-->
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clasificación en los rankings de las universidades españolas</title>
+    <meta name="description"
+        content="Conoce en este post cómo los principales rankings internacionales clasifican a las universidades, qué criterios usan y cómo interpretar sus resultados para elegir la mejor opción">
+    <link rel="canonical" href="#">
+    <link rel="stylesheet" href="./css/index.css">
+    <script defer src="./js/index.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.9.1/fonts/remixicon.min.css">
+    <link rel="icon" type="image/svg+xml" href="./media/logotipo-rojo-universidades.svg">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+        rel="stylesheet">
+    <meta property="og:site_name" content="UniversidadES">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="#">
+    <meta property="og:title" content="Todas las universidades privadas de Andalucía en 2026">
+    <meta property="og:description"
+        content="Conoce en este post cómo los principales rankings internacionales clasifican a las universidades, qué criterios usan y cómo interpretar sus resultados para elegir la mejor opción">
+    <meta property="og:image" content="#">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:description"
+        content="Conoce en este post cómo los principales rankings internacionales clasifican a las universidades, qué criterios usan y cómo interpretar sus resultados para elegir la mejor opción">
+    <meta name="twitter:title" content="Todas las universidades privadas de Andalucía en 2026">
+    <meta name="twitter:url" content="#">
+    <meta name="twitter:image" content="#">
+</head>
+
+<body>
+    <!-- INICIO: Header Funcionalidad: Contiene el logotipo del sitio, el menú de navegación principal y el botón para desplegar el menú móvil -->
+    <header class="header">
+        <div class="header__block block-3xl">
+            <a href="./index.html" title="home">
+                <!-- Picture: Elemento complejo
+                Se utiliza <picture> para permitir diferentes formatos de imagen, priorizando SVG cuando el navegador lo soporta.
+                También se utiliza el elemento complejo: fetchpriority="high" 
+                indica al navegador que priorice la descarga del logotipo al formar parte del contenido visible al cargar la página.
+            -->
+                <picture class="header__picture">
+                    <source srcset="./media/logotipo-rojo-universidades.svg" type="image/svg+xml">
+                    <img width="245" height="29" class="header__logo" src="./media/logotipo-rojo-universidades.png"
+                        alt="logotipo rojo universidadES" fetchpriority="high">
+                </picture>
+            </a>
+            <nav id="headerNav" class="header__nav" aria-label="main navigation">
+                <ul class="header__ul">
+                    <li class="header__li"><a class="header__a" title="pagina de universidades por comunidad autonoma"
+                            href="./por-ccaa.html">Por Comunidad</a></li>
+                    <li class="header__li"><a class="header__a" title="pagina de universidades por tipos"
+                            href="./tipos.html">Tipos</a></li>
+                    <li class="header__li"><a class="header__a" title="pagina de universidades por rankings"
+                            href="./rankings.html">Rankings</a></li>
+                    <li class="header__li"><a class="header__a" title="guias para universitarios"
+                            href="./guias.html">Guías</a></li>
+                    <li class="header__li"><a title="buscador de universidades" class="btn btn--red header__cta"
+                            href="./index.html#hero__home"><i class="ri-search-line icon" aria-hidden="true"></i>busca
+                            tu CCAA</a></li>
+                </ul>
+            </nav>
+            <!-- Elemento complejo
+                El botón controla la apertura y cierre del menú de navegación en dispositivos móviles mediante JavaScript.
+                    - aria-expanded indica el estado del menú.
+                    - aria-controls relaciona el botón con el elemento <nav> 
+            -->
+            <button class="header__button" aria-expanded="false" aria-controls="headerNav"
+                aria-label="Abrir menú de navegación" title="menu de navegacion en mobile">
+                <i class="ri-menu-line header__toggle-icon header__toggle-icon--open" aria-hidden="true"></i>
+            </button>
+        </div>
+    </header>
+    <!--FIN: Header-->
+    <main>
+        <!-- INICIO: Hero                                                   
+            Funcionalidad: Presenta el título principal de la página y una breve descripción del contenido mostrado.
+        -->
+        <section class="hero__section ">
+            <div class="block block-3xl">
+                <a class="btn btn--arrow" href="./index.html" title="pagina de inicio">
+                    <i class="ri-arrow-left-line icon" aria-hidden="true"></i>
+                    Página de inicio
+                </a>
+                <h1>Rankings Universitarios</h1>
+                <p class="p--secondary">Los principales rankings universitarios internacionales y la posición de las
+                    universidades españolas en cada uno de ellos.</p>
+            </div>
+        </section>
+        <!-- FIN: Hero -->
+        <!-- INICIO: Grid rankings                           
+            Funcionalidad: Muestra todos los rankings universitarios disponibles en el sitio mediante tarjetas enlazadas.   
+            Cada tarjeta incluye:                                 
+                - Entidad responsable del ranking.                    
+                - Nombre del ranking.                                 
+                - Top 3 de universidades españolas.                   
+                - Enlace a la página del ranking.  
+        -->
+        <section class="ranking__grids">
+            <div class="ranking__grids-block block-3xl">
+                <a class="ranking__card" title="pagina de qs world university rankings"
+                    href="./rankings/qs-world-university-rankings.html">
+                    <div class="ranking__name">
+                        <div class="ranking__arrow">
+                            <p class="h5 h5--secondary">Quacquarelli Symonds</p>
+                            <!-- Elemento complejo
+                                Este icono permanece oculto mediante CSS y se muestra durante el estado hover para reforzar la interacción visual de la tarjeta.
+                            -->
+                            <i class="ri-arrow-right-line icon" aria-hidden="true"></i>
+                        </div>
+                        <h2 class="h3">QS World University Rankings</h2>
+                        <p class="p--secondary">Uno de los rankings universitarios más influyentes del mundo, publica
+                            anualmente la clasificación de las mejores universidades globales basándose en seis
+                            indicadores de reputación.</p>
+                    </div>
+                    <div class="ranking__podium">
+                        <ul class="ranking__list">
+                            <li class="ranking__li">
+                                <p class="h3 h3--secondary">1</p>
+                                <p>Universitat de Barcelona</p>
+                                <p class="badge">#171</p>
+                            </li>
+                            <li class="ranking__li">
+                                <p class="h3 h3--secondary">2</p>
+                                <p>Universidad Autónoma de Madrid</p>
+                                <p class="badge">#201</p>
+                            </li>
+                            <li class="ranking__li">
+                                <p class="h3 h3--secondary">3</p>
+                                <p>Universitat Autònoma de Barcelona</p>
+                                <p class="badge">#208</p>
+                            </li>
+                        </ul>
+                    </div>
+                    <p class="btn btn--arrow">Ver ranking completo<i class="ri-arrow-drop-right-line icon"></i></p>
+                </a>
+                <a class="ranking__card" title="Página del ranking de Time Higher Education"
+                    href="./rankings/times-higher-education-world-university.html">
+                    <div class="ranking__name">
+                        <div class="ranking__arrow">
+                            <p class="h5 h5--secondary">Times Higher Education</p>
+                            <!-- Elemento complejo
+                                    Este icono permanece oculto mediante CSS y se muestra durante el estado hover para reforzar la interacción visual de la tarjeta.
+                                -->
+                            <i class="ri-arrow-right-line icon" aria-hidden="true"></i>
+                        </div>
+                        <h2 class="h3">Times Higher Education World University Rankings</h2>
+                        <p class="p--secondary">El ranking THE evalúa a las universidades del mundo según su misión
+                            central de docencia, investigación, transferencia de conocimiento e internacionalización.
+                        </p>
+                    </div>
+                    <div class="ranking__podium">
+                        <ul class="ranking__list">
+                            <li class="ranking__li">
+                                <p class="h3 h3--secondary">1</p>
+                                <p>Universitat de Barcelona</p>
+                                <p class="badge">#201-250</p>
+                            </li>
+                            <li class="ranking__li">
+                                <p class="h3 h3--secondary">2</p>
+                                <p>Universitat Autònoma de Barcelona</p>
+                                <p class="badge">#201-250</p>
+                            </li>
+                            <li class="ranking__li">
+                                <p class="h3 h3--secondary">3</p>
+                                <p>Universidad Autónoma de Madrid</p>
+                                <p class="badge">#251-300</p>
+                            </li>
+                        </ul>
+                    </div>
+                    <p class="btn btn--arrow">Ver ranking completo<i class="ri-arrow-drop-right-line icon"></i></p>
+                </a>
+                <a class="ranking__card" title="Página del ranking de U.S News Best Global Universities"
+                    href="./rankings/us-news.html">
+                    <div class="ranking__name">
+                        <div class="ranking__arrow">
+                            <p class="h5 h5--secondary">U.S. News & World Report</p>
+                            <!-- Elemento complejo
+                                    Este icono permanece oculto mediante CSS y se muestra durante el estado hover para reforzar la interacción visual de la tarjeta.
+                                -->
+                            <i class="ri-arrow-right-line icon" aria-hidden="true"></i>
+                        </div>
+                        <h2 class="h3">U.S. News Best Global Universities</h2>
+                        <p class="p--secondary">El ranking global de U.S. News evalúa las universidades por su desempeño
+                            en investigación y reputación académica, siendo una referencia especialmente valorada en el
+                            ámbito anglosajón.</p>
+                    </div>
+                    <div class="ranking__podium">
+                        <ul class="ranking__list">
+                            <li class="ranking__li">
+                                <p class="h3 h3--secondary">1</p>
+                                <p>Universitat de Barcelona</p>
+                                <p class="badge">#128</p>
+                            </li>
+                            <li class="ranking__li">
+                                <p class="h3 h3--secondary">2</p>
+                                <p>Universidad Autónoma de Madrid</p>
+                                <p class="badge">#165</p>
+                            </li>
+                            <li class="ranking__li">
+                                <p class="h3 h3--secondary">3</p>
+                                <p>Universidad Complutense de Madrid</p>
+                                <p class="badge">#181</p>
+                            </li>
+                        </ul>
+                    </div>
+                    <p class="btn btn--arrow">Ver ranking completo<i class="ri-arrow-drop-right-line icon"></i></p>
+                </a>
+                <a class="ranking__card" title="Página del ranking de ARWU" href="./rankings/arwu.html">
+                    <div class="ranking__name">
+                        <div class="ranking__arrow">
+                            <p class="h5 h5--secondary">Shanghai Ranking Consultancy</p>
+                            <!-- Elemento complejo
+                                    Este icono permanece oculto mediante CSS y se muestra durante el estado hover para reforzar la interacción visual de la tarjeta.
+                                -->
+                            <i class="ri-arrow-right-line icon" aria-hidden="true"></i>
+                        </div>
+                        <h2 class="h3">Academic Ranking of World Universities (ARWU)</h2>
+                        <p class="p--secondary">Conocido como el "Ranking de Shanghai", fue el primer ranking
+                            universitario mundial y sigue siendo uno de los más respetados.</p>
+                    </div>
+                    <div class="ranking__podium">
+                        <ul class="ranking__list">
+                            <li class="ranking__li">
+                                <p class="h3 h3--secondary">1</p>
+                                <p>Universitat de Barcelona</p>
+                                <p class="badge">#151-200</p>
+                            </li>
+                            <li class="ranking__li">
+                                <p class="h3 h3--secondary">2</p>
+                                <p>Universidad Autónoma de Madrid</p>
+                                <p class="badge">#151-200</p>
+                            </li>
+                            <li class="ranking__li">
+                                <p class="h3 h3--secondary">3</p>
+                                <p>Universidad Complutense de Madrid</p>
+                                <p class="badge">#201-300</p>
+                            </li>
+                        </ul>
+                    </div>
+                    <p class="btn btn--arrow">Ver ranking completo<i class="ri-arrow-drop-right-line icon"></i></p>
+                </a>
+            </div>
+        </section>
+        <!-- FIN: Grid de rankings -->
+        <!-- INICIO: Información sobre rankings                            
+                Funcionalidad: Explica qué son los rankings universitarios y cómo deben interpretarse.
+            -->
+        <section class="ranking__information">
+            <div class="ranking__information-block block-3xl">
+                <h2 class="h3">¿Qué son los rankings universitarios?</h2>
+                <div class="ranking__grid">
+                    <p class="p--secondary">Los rankings universitarios son clasificaciones que evalúan y comparan la
+                        calidad de las instituciones de educación superior a nivel mundial. Se basan en diferentes
+                        indicadores como la reputación académica, la producción científica, la empleabilidad de los
+                        graduados y la internacionalización.</p>
+                    <p class="p--secondary">Cada ranking tiene su propia metodología y criterios de evaluación, lo que
+                        explica por qué una misma universidad puede ocupar posiciones diferentes en distintos rankings.
+                        Es recomendable consultar varios rankings para obtener una visión más completa.</p>
+                    <p class="p--secondary">Los rankings más reconocidos internacionalmente son el QS World University
+                        Rankings, el Times Higher Education (THE), el Academic Ranking of World Universities (ARWU, o
+                        Ranking de Shanghai) y el U.S. News Best Global Universities.</p>
+                </div>
+            </div>
+        </section>
+        <!-- FIN: Información sobre rankings-->
+    </main>
+    <!-- INICIO: Footer                                                 
+        Funcionalidad: Contiene información corporativa y enlaces de Navegación secundarios del sitio web.
+    -->
+    <footer class="footer">
+        <div class="footer__block block-3xl">
+            <div class="footer__navegation">
+                <div class="footer__column">
+                    <!-- Elemento complejo
+                    Se utiliza <picture> para ofrecer el logotipo en formato SVG cuando el navegador lo soporta.
+                    El atributo loading="lazy" retrasa la carga de la imagen hasta que el usuario está próximo a visualizarla, mejorando el rendimiento de la página.
+                -->
+                    <picture class="header__picture">
+                        <source srcset="./media/logotipo-rojo-universidades.svg" type="image/svg+xml">
+                        <img width="245" height="29" class="header__logo" src="./media/logotipo-rojo-universidades.png"
+                            alt="logotipo rojo universidadES" loading="lazy">
+                    </picture>
+                    <p class="p p--secondary">El portal de referencia para estudiantes que buscan información
+                        universitaria en España.</p>
+                </div>
+                <div class="footer__column">
+                    <p class="footer__title h4">Explorar</p>
+                    <ul class="footer__ul">
+                        <li class="p p--secondary"><a href="./por-ccaa.html"
+                                title="universidades por comunidad autonoma">Por Comunidad Autónoma</a></li>
+                        <li class="p p--secondary"><a href="./tipos.html"
+                                title="universidades publicas y privadas en españa">Universidades Públicas y Privadas en
+                                España</a></li>
+                        <li class="p p--secondary"><a href="./rankings.html"
+                                title="rankings de universidades españolas">Rankings Universitarios</a></li>
+                    </ul>
+                </div>
+                <div class="footer__column">
+                    <p class="footer__title h4">Rankings</p>
+                    <ul class="footer__ul">
+                        <li class="p p--secondary"><a href="./rankings/qs-world-university-rankings.html"
+                                title="ranking qs world university">QS World University</a></li>
+                        <li class="p p--secondary"><a href="./rankings/times-higher-education-world-university.html"
+                                title="times higher education world university">Times Higher Education World
+                                University</a></li>
+                        <li class="p p--secondary"><a href="./rankings/arwu.html" title="ranking shangai arwu">Shanghai
+                                ARWU</a></li>
+                        <li class="p p--secondary"><a href="./rankings/us-news.html" title="ranking us new global">U.S.
+                                News Global</a></li>
+                    </ul>
+                </div>
+                <div class="footer__column">
+                    <p class="footer__title h4">Guías</p>
+                    <ul class="footer__ul">
+                        <li class="p p--secondary"><a href="../guias/como-elegir-universidad.html"
+                                title="guia sobre como elegir una universidad">¿Cómo elegir una universidad en
+                                España?</a></li>
+                        <li class="p p--secondary"><a href="../guias/publicas-vs-privadas.html"
+                                title="guia sobre universidades publicas y privadas">Universidades Públicas vs
+                                Privadas</a></li>
+                        <li class="p p--secondary"><a href="../guias/acceso-a-la-universidad.html"
+                                title="guia de acceso a la universidad">Guía de acceso a las universidades españolas</a>
+                        </li>
+                        <li class="p p--secondary"><a href="../guias/becas-y-ayudas.html"
+                                title="guia de becas y ayudas para estudiar en españa">Guía de todas las becas y ayudas
+                                en España</a></li>
+                    </ul>
+                </div>
+            </div>
+            <p class="p p--secondary">© 2026 Universidades España · Información orientativa, sin carácter oficial</p>
+        </div>
+    </footer>
+    <!--FIN: Footer-->
+</body>
+
+</html>

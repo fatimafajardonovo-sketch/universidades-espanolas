@@ -1,0 +1,790 @@
+<!--
+ESTRUCTURA GENERAL DEL DOCUMENTO
+Esta página actúa como portal principal del sitio UniversidadES.
+Su estructura se compone de:
+- Cabecera con la navegación principal.
+- Hero con título, buscador y accesos rápidos.
+- Contador con las principales cifras del portal.
+- Mapa interactivo para explorar universidades por comunidad autónoma.
+- Sección de universidades por tipo.
+- Sección con las mejores universidades según rankings internacionales.
+- Sección de guías para estudiantes.
+- Banner con llamada a la acción.
+- Pie de página con información y enlaces de navegación.
+-->
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UniversidadES: Portal de Universidades Españolas 2026</title>
+  <meta name="description"
+    content="UniversidadES, el portal informativo sobre cuáles son las universidades para estudiar en España.">
+  <link rel="canonical" href="#">
+  <link rel="stylesheet" href="./css/index.css">
+  <script defer src="./js/index.js"></script>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.9.1/fonts/remixicon.min.css" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="./media/logotipo-rojo-universidades.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+    rel="stylesheet">
+  <meta property="og:site_name" content="UniversidadES">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="#">
+  <meta property="og:title" content="UniversidadES: Portal de Universidades Españolas 2026">
+  <meta property="og:description"
+    content="UniversidadES, el portal informativo sobre cuáles son las universidades para estudiar en España.">
+  <meta property="og:image" content="#">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:description"
+    content="UniversidadES, el portal informativo sobre cuáles son las universidades para estudiar en España.">
+  <meta name="twitter:title" content="UniversidadES: Portal de Universidades Españolas 2026">
+  <meta name="twitter:url" content="#">
+  <meta name="twitter:image" content="#">
+</head>
+
+<body>
+  <!-- INICIO: Header 
+        Funcionalidad: Contiene el logotipo del sitio, el menú de navegación principal y el botón para desplegar el menú móvil 
+    -->
+  <header class="header">
+    <div class="header__block block-3xl">
+      <a href="./index.html" title="home">
+        <!-- Picture: Elemento complejo
+                Se utiliza <picture> para permitir diferentes formatos de imagen, priorizando SVG cuando el navegador lo soporta.
+                También se utiliza el elemento complejo: fetchpriority="high" 
+                indica al navegador que priorice la descarga del logotipo al formar parte del contenido visible al cargar la página.
+          -->
+        <picture class="header__picture">
+          <source srcset="./media/logotipo-rojo-universidades.svg" type="image/svg+xml">
+          <img width="245" height="29" class="header__logo" src="./media/logotipo-rojo-universidades.png"
+            alt="logotipo rojo universidadES" fetchpriority="high">
+        </picture>
+      </a>
+      <nav id="headerNav" class="header__nav" aria-label="main navigation">
+        <ul class="header__ul">
+          <li class="header__li"><a class="header__a" title="pagina de universidades por comunidad autonoma"
+              href="./por-ccaa.html">Por Comunidad</a></li>
+          <li class="header__li"><a class="header__a" title="pagina de universidades por tipos"
+              href="./tipos.html">Tipos</a></li>
+          <li class="header__li"><a class="header__a" title="pagina de universidades por rankings"
+              href="./rankings.html">Rankings</a></li>
+          <li class="header__li"><a class="header__a" title="guias para universitarios" href="./guias.html">Guías</a>
+          </li>
+          <li class="header__li"><a title="buscador de universidades" class="btn btn--red header__cta"
+              href="./index.html#hero__home"><i class="ri-search-line icon" aria-hidden="true"></i>Busca tu CCAA</a>
+          </li>
+        </ul>
+      </nav>
+      <!-- Elemento complejo
+                El botón controla la apertura y cierre del menú de navegación en dispositivos móviles mediante JavaScript.
+                    - aria-expanded indica el estado del menú.
+                    - aria-controls relaciona el botón con el elemento <nav> 
+            -->
+      <button class="header__button" aria-expanded="false" aria-controls="headerNav"
+        aria-label="Abrir menú de navegación" title="menu de navegacion en mobile">
+        <i class="ri-menu-line header__toggle-icon header__toggle-icon--open" aria-hidden="true"></i>
+      </button>
+    </div>
+    <!--FIN: Header-->
+  </header>
+  <!-- INICIO: Contenido principal
+     Funcionalidad: Agrupa todas las secciones principales del portal: Hero, contador, mapa interactivo, universidades por tipo, rankings, guías y banner final.
+    -->
+  <main>
+    <!--INICIO: Hero
+      Funcionalidad: Presenta el contenido principal de la página mediante el título, el buscador y los accesos directos a las principales secciones del portal.
+    -->
+    <section class="hero__home" id="hero__home">
+      <div class="hero__block block-lg">
+        <h1>Encuentra tu Universidad en España</h1>
+        <!-- INICIO: Buscador
+                  Funcionalidad: Permite localizar rápidamente una comunidad autónoma mediante una búsqueda dinámica.
+
+                  Elementos:
+                  - Campo de búsqueda.
+                  - Botón para limpiar la consulta.
+                  - Lista de resultados generada mediante JavaScript.
+                -->
+        <div class="search">
+
+          <div class="search__block block-xs">
+            <div class="search__field">
+              <i class="ri-search-line" aria-hidden="true"></i>
+              <!-- Elemento complejo:
+                   aria-controls vincula el campo de búsqueda con el listado de resultados.
+                   aria-expanded indica si dicho listado está desplegado.
+                  -->
+              <input type="text" id="searchInput" class="search__input" placeholder="Encuentra tu CCAA" role="combobox"
+                aria-autocomplete="list" aria-haspopup="listbox" aria-expanded="false" aria-controls="searchResults"
+                autocomplete="off">
+              <button type="button" id="searchClearBtn" class="search__clear" title="Limpiar búsqueda"
+                aria-label="Limpiar búsqueda">
+                <i class="ri-close-line" aria-hidden="true"></i>
+              </button>
+            </div>
+            <!-- Elemento complejo: 
+                Los resultados son insertados dinámicamente mediante JavaScript.
+                role="listbox" identifica el componente como una lista de opciones seleccionables para tecnologías de asistencia.
+              -->
+            <ul class="search__results" id="searchResults" role="listbox" aria-label="Resultados de búsqueda"></ul>
+            <!-- FIN: Buscador -->
+          </div>
+        </div>
+        <!-- INICIO: Accesos rápidos
+            Funcionalidad: Facilita el acceso a las principales categorías del portal:
+            - Universidades por comunidad autónoma.
+            - Rankings.
+            - Guías para estudiantes.
+          -->
+        <div class="hero__buttons">
+          <a class="btn btn--white" href="./por-ccaa.html" title="pagina de universidades por ccaa"><i
+              aria-hidden="true" class="ri-map-pin-line"></i>Explorar por CCAA</a>
+          <a class="btn btn--white" href="./rankings.html" title="pagina de rankings"><i aria-hidden="true"
+              class="ri-award-line"></i>Rankings QS 2026</a>
+          <a class="btn btn--white" href="./guias.html" title="pagina de guias educativas"><i aria-hidden="true"
+              class="ri-book-open-line"></i>Guías educativas</a>
+        </div>
+        <!-- FIN: Accesos rápidos -->
+      </div>
+      <!-- FIN: Hero -->
+    </section>
+
+    <!--INICIO: Contador
+            Funcionalidad: Muestra las principales cifras del portal, como el número de universidades, su distribución por tipo, las comunidades autónomas y los rankings disponibles.
+            Esete contador se va a utilizar en otras páginas del sitio. Por ejemplo, en las single page de cada comunidad autónoma: /por-ccaa/andalucia.html, /por-ccaa/aragon.html,...
+          -->
+    <div class="counter">
+      <div class="counter__block block-3xl">
+        <ul class="counter__ul">
+          <li class="counter__li">
+            <p class="h3 h3--primary">72</p><span class="p p--secondary">universidades</span>
+          </li>
+          <li class="counter__li">
+            <p class="h3 h3--primary">49</p><span class="p p--secondary">públicas</span>
+          </li>
+          <li class="counter__li">
+            <p class="h3 h3--primary">23</p><span class="p p--secondary">privadas</span>
+          </li>
+          <li class="counter__li">
+            <p class="h3 h3--primary">17</p><span class="p p--secondary">comunidades</span>
+          </li>
+          <li class="counter__li">
+            <p class="h3 h3--primary">4</p><span class="p p--secondary">rankings</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <!-- FIN: Contador -->
+
+    <!--INICIO: Mapa interactivo
+
+            Funcionalidad: Permite explorar las universidades por comunidad autónoma mediante un mapa interactivo y un listado de enlaces alternativo  para dispositivos móviles.
+            Este componente es reutilizable en otras páginas del sitio, como /por-ccaa.html. 
+          -->
+    <section class="map">
+      <div class="map__block block-3xl">
+        <div class="map__introduction">
+          <h2>Explora por Comunidad Autónoma</h2>
+          <p class="p--secondary">Haz clic en la Comunidad autónoma para ver todas sus universidades</p>
+        </div>
+        <!-- Elemento complejo: SVG interactivo.
+               Cada comunidad autónoma está representada por un elemento <path> identificado mediante un id único.
+                JavaScript utiliza los identificadores de cada <path> para detectar la comunidad autónoma seleccionada y redirigir al usuario a su página correspondiente.
+              -->
+        <div class="map__card">
+          <div class="map__map">
+            <svg class="map__espana no-mobile" viewBox="0 0 900.4 670.2" xmlns="http://www.w3.org/2000/svg">
+              <path class="map__comunidad" id="andalucia" d="M302.6,405.2c2.3-0.1,3.5,3.9,6,4.2c2.4,0.2,3.2-0.3,4.4,0.6c1.2,0.9,2.4,4.2,5.4,4.5s3.5-0.2,6.1,0
+                      s3.3,0.2,6.5,1.8c3.2,1.6,6.4,3.9,11.6,3.8s10-4.3,11.8-6.5s4.9-6.8,7.1-6.6c2.2,0.2,3.3,1,4.2,4.5c1,3.5,3,2.4,4.5,1.1
+                      s6.1-5.8,6-8.4c-0.2-2.6-0.8-14.2,0-15.2s4.3-4.5,7.7-6.5c3.3-2,8.8-8.2,10.7-9.8s5.7-4.6,7.9-4.3c2.3,0.3,2.1,1.1,2.9,3.5
+                      c0.7,2.4,4.9,4.5,6.7,5.6s9,5.1,11.1,6.5s6.1,4.8,8.5,7.3s6.1,3.9,8.7,3.8s5.9-3,8.4-2.9s5.5,3.1,9.5,3s7.3-1.9,9-3.5
+                      s4.5-0.4,5.9-0.3s3.2-2,4.8-1.9s4.4,4.1,6.5,3.9s3.2-5.9,7-6s6.7,3.2,11.5,3.7s7.1,1,10.2-1.3s6.1-6.1,9.8-6.1
+                      c3.7-0.1,9.1,3.2,10.9,8.5s3.8,8.3,4.5,10.3s0.2,5.6-0.7,8.4s0.1,5.5,2.6,5.6s4.8-0.7,5.1,0.6c0.4,1.3,1.2,7.6,7.2,8.2
+                      s9,1.3,9.8,3.3s-0.1,9.8,2.4,13.7s3.4,5.6,4.3,7.5c0.9,1.8,8.9,9.3,11.3,11.5c2.3,2.2,3.8,2.8,2.8,5.9s-4.9,4.4-6.4,10
+                      s-9.3,24.5-14.1,27.9s-6.6,2.7-8.6,0.5s-6.4-7-10.3-6.8c-3.9,0.1-8.9,5.8-11.3,8.7c-2.3,2.9-5.6,2.9-8.4,2.9s-10.6-3.3-15.3-3.3
+                      s-16.4,2.7-20.5,2.4c-4.2-0.2-12.2-2.6-16.8-2.2c-4.5,0.4-18.2,2.6-29.8,2.4c-6.2,0-7.7,2-13.7,8.6c-6,6.6-13,6.7-20.8,6.8
+                      s-14.7,6-17.6,10.3s-4.4,8.9-4.5,10.9s-1.1,2.1-2.7,1.5s-2.9-1.3-4.5,0.3s-4.5,7.5-9.7,7.3c-5.1-0.2-18.1-8.4-23.4-13.3
+                      s-9.9-7.3-10.2-17.6c-0.4-7.3-2.6-7.9-4.9-10s-4.5-2.1-3.8-12.7c0.5-4.5-3.1-7.5-8.8-12c-5.7-4.5-15.9-15.3-23.8-16.8
+                      s-17-0.4-19.7-0.7c-2.7-0.4-3.8-11-3.7-18.2c0.1-7.2,2-14.3,6.7-19.1s7-12.6,8.3-15.3c1.3-2.7,6.7-6,10.5-7.6
+                      C299.5,410.2,301.4,405.2,302.6,405.2z" />
+              <path class="map__comunidad" id="asturias" d="M416.9,68c-1-0.8-1-2.3-2.1-2.6c-2.3-0.5-5.1,1.1-7,3.4c-2,2.3-2.1,2.1-6.2,2.1s-7.7-0.2-9.9,3.3
+                      c-2.3,3.4-8.3,1.3-10.9,1s-5.2-0.2-7.5,2.6s-3.6,2.9-6,2.8s-9.6-5.4-11.4-6c-1.8-0.7-2.1,1.3-4.1,2.4s-4.4,1.3-7.2-0.8
+                      c-2.8-2.1-4.2-1.5-5.7,0.8s-3.6,6.4-11.6,8.2c-8,1.8-10.1,0.5-10.1,0.5c-0.2-0.1-0.1-0.5-0.1-0.5s0.9-2.5-2.3-6
+                      c-3.2-3.4-0.1-6.4,1.1-8.4c1.2-2.1-1.3-2.7-4.9-5.5s-5.3-8.3-5.9-11.6s4.9-9.8,7.3-11.3s1.4-3.5,2-3.5c4.4-0.1,7.9-2.1,14.1,0
+                      s27.2,1,29.2,0.7s7.2-3.4,10.4-4.1c3.3-0.7,7.5,2.6,12.2,4.1s11.9,3.3,14.8,3.6s9.6,4.4,16.5,5.4s11.9,2.3,15.8,2.9
+                      c3.9,0.7,8.2,2,5.2,5.9c-2.9,3.9-9.1,7-11.4,8.8C418.9,67.9,418.5,69.2,416.9,68z" />
+              <path class="map__comunidad" id="aragon" d="M667.2,230.5c-0.8,0.3-2.9,1.1-6.4-0.1c-3.4-1.2-5.1-2.9-7.5-2.9c-2.3,0-4.2,5.5-5.9,7.2s-2.7,2-2.8,3.2
+                      s0,1.7,1.3,3.3s1.6,1.3,2.1,7.2s-2.7,10.8-5.7,13.7s-7.8,9.3-10.6,11.9s-2.7,3.1-5,4.4s-6,7.8-7.5,8.9s-2.7-0.1-5.2-1.6
+                      c-2.4-1.5-7.8-2.9-7.7-5c0.3-4.4-2.9-6.5-5.1-8.7c-2.2-2.2-4.9-4-7.6-4.2c-2.7-0.1-3.8,1.8-5.9,1.8s-3.3-0.7-4.2-2
+                      c-0.9-1.2-5.7-5.3-8.7-7.3c-2.9-2.1-3.1-4-2.7-6.6c0.4-2.6,4.3-5.6,5.1-7.5c0.9-1.8-0.5-2.8,1.1-4.8s3.4-0.9,3.9-3.4
+                      c0.3-1.5,0-7.6-2.2-14.8s-13.9-17.7-18.1-17.2s-6.1,0.2-6.8,0s-2.6-4.2-3.9-11.1s3.1-8.7,6.1-8.7s3.4-0.4,3.3-4.2
+                      c-0.1-3.8,0.2-7.8,1.3-8.8s6.5-7,7-11.3s-0.9-5.5-3.1-7.8c-2.2-2.3-4.4-4.8-1.7-5s9.2,0,12.1,0.2c2.9,0.2,3.4,2,6.4,2.2
+                      c2.9,0.2,4.8-0.1,5.4-1c0.6-0.9,0.2-3.2,0.5-4.4c0.2-1.2,0.9-4.4,0.9-6.7s-2.2-5.1-2.2-6.8s2.3-6.6,5.5-14.4s5.4-13.1,12.4-17.5
+                      s13.7-18.6,13.9-19.8c1.7,0.6,4.3,2.8,6.1,5.1c1.8,2.3,3.1,2.8,5.1,2.7c2-0.1,3.8,0.2,5.9-0.9s3.1-1.3,4.8-1.2
+                      c1.7,0.1,4.8,0,6.5,1.4s6,4,7.4,5.2c1.5,1.2,3.1,1.7,4.5,1.5s2.9-2.8,5.2-2.9s3.3-0.4,4.9-0.2c1.6,0.2,3.4,2.2,4.9,2.3
+                      c1.5,0.1,14.7,0.5,15.2,0.1c0,0,4.3,5.2,4.3,12.9c0,3.8,0.7,8.8,0,11.3c-0.7,2.4-1.8,5.9-2.3,11.3c-0.7,18.3-3.4,23.5-6.7,26.6
+                      s-7.3,5.1-7.8,8.2c-0.5,3.1,3.1,3.8,3.1,7.8c0,4.1-2.8,5.7-3.1,8.8s2.4,5.2,2.4,9.1c0,3.9-1.3,5.7-5.5,9.3s-3.1,7.2-1.6,9.5
+                      s2.6,4.2,2.9,7.5s-2.6,9.8-2.9,11.3C672.1,227.4,667.7,230.3,667.2,230.5z" />
+              <path class="map__comunidad" id="castilla-y-leon" d="M540.9,137.6c-3.8,0-5.4,4.4-8.3,6.5c-2.9,2.1-4.2,2.9-6.7,2.9s-3.3-3.4-4.6-4.7s-1.5-1.5-2.8-1.3
+                      s-2.6,2.3-4.2,2.4s-7.8-0.2-9.3-4.6c-1.5-4.4-0.8-6.2-1.6-7.5c-0.8-1.3-2.4-2.1-2.3-3.8c0.2-1.6,2.3-3.4,3.4-4.7
+                      c1.1-1.3-0.7-8.5,0.5-11.3c1.1-2.8,3.8-5.9,7.8-5.4c4.1,0.5,5.7-0.8,5.7-0.8s-6.7-3.8-8.3-5.4s-3.8-2-5.1-3.6
+                      c-1.3-1.6-2.9-3.9-5.9-5.2s-5.7-2-4.7-3.6s2.1-2.3,4.4-2.1c2.3,0.2,6.5,2.1,7.3-0.4c0.8-2.4-3.8-3.9-4.9-6.2c-1.1-2.3-1.5-5.2-1.5-7
+                      s-0.5-2.6-4.2-2.6c-3.8,0-9.6,0.7-13.2,0.7s-4.4,1-7,1.1s-4.2,1.5-5.4,3.1c-1.1,1.6-4.1,4.2-5.4,5.2s-1.6,2-1.1,3.6s3.1,8,0.7,11.4
+                      s-4.6,3.8-7.5,3.1c-2.9-0.7-10.3-12.6-14.7-15.3c-4.4-2.8-8.3-5.4-11.9-5.2c-3.6,0.2-3.1,1.1-6.7,1c-3.6-0.2-5.9-3.9-6-6.2
+                      s-0.3-6-2.6-6.5s-5.1,1.1-7,3.4c-2,2.3-2.1,2.1-6.2,2.1s-7.7-0.2-9.9,3.3c-2.3,3.4-8.3,1.3-10.9,1s-5.2-0.2-7.5,2.6s-3.6,2.9-6,2.8
+                      s-9.6-5.4-11.4-6c-1.8-0.7-2.1,1.3-4.1,2.4s-4.4,1.3-7.2-0.8c-2.8-2.1-4.2-1.5-5.7,0.8s-3.6,6.4-11.6,8.2c-8,1.8-10.1,0.5-10.1,0.5
+                      s-1.5,6.4-2.9,8c-1.5,1.6-4.7,7.5-4.9,11.3s0.2,5.5,6,10.1c5.9,4.6,3.8,16.1,2,17.9s-10.4,4.7-9.9,9.6c0.5,4.9,2,7,12.2,7
+                      s7.8,14.8,10.3,17.1s3.9,2.1,8.6,5.1c4.7,2.9,3.3,9.3,2.9,10.1c-0.3,0.8-18.3,21.8-21,23.3c-2.8,1.5-12.6,8.2-13.1,11.1
+                      s4.3,10.3,4.3,12.1s1.1,21.7,1,23.3c-0.2,1.6-2,5.4-3.6,7.3s-4.2,3.8-0.5,4.4c3.8,0.7,7.5,3.1,11.4,1.8c3.9-1.3,10.4-5.9,13.7-8.2
+                      c3.3-2.3,7.3-5.4,9.6-5.2s7.3,2.8,11.1,8.5c1,1.6,1,5.4,2.9,4.4c2-1,4.7-5.3,6-4.9c2.1,0.7,1.6,2.4,5.5,4.2c3.9,1.8,5.4,5.2,7.7,5.5
+                      s4.1,0,6.4,0s3.9,1.6,4.1,2.6s0.8,2.9,1.3,3.6s2.3-0.3,4.1,0c1.8,0.3,2.1,2.4,4.1,2.4s2.6-1.5,4.6-2.3s5.4-0.2,7-0.3
+                      c1.6-0.2,3.6-2.1,5.4-4.4s4.1-4.7,5.5-4.4c1.5,0.3,1,3.3,3.8,3.4c2.8,0.2,11.1-5.7,12.7-7.8c1.6-2.1,3.9-6.5,5.8-8.8
+                      s6.9-10.1,8.2-12.4s7-9.5,8.9-11.1c2-1.6,2.3-3.9,4.1-7.3s7.3-8.6,12.9-11.6c5.5-2.9,8.2-4.6,11.9-7.2c3.8-2.6,6.7-6.7,9.6-6.7
+                      s3.4,1,6.5,0.8s6.2-4.7,11.4-4.4c5.2,0.3,11.4,5.7,15.3,8.2s8,8,13.7,8.2c7,0.2,11.4-4,11.4-4c-0.7-0.2-2.6-4.2-3.9-11.1
+                      s3.1-8.7,6.1-8.7c3.1,0,3.4-0.4,3.3-4.2c-0.1-3.8,0.2-7.8,1.3-8.8s6.5-7,7-11.3s-0.9-5.5-3.1-7.8c-1-1-1.9-2.1-2.5-2.9
+                      c0,0-3.2,0.3-4.4-0.1s-6.1-3.3-7.6-5.5C550.1,143.6,545.2,137.6,540.9,137.6z" />
+              <path class="map__comunidad" id="cantabria" d="M487.5,70c-1.9,0.1-3.6,0.2-5.1,0.2c-3.6,0-4.4,1-7,1.1s-4.2,1.5-5.4,3.1c-1.1,1.6-4.1,4.2-5.4,5.2
+                      s-1.6,2-1.1,3.6s3.1,8,0.7,11.4s-4.6,3.8-7.5,3.1c-2.9-0.7-10.3-12.6-14.7-15.3s-8.3-5.4-11.9-5.2s-3.1,1.1-6.7,1s-5.9-3.9-6-6.2
+                      c-0.1-1.1-0.2-2.6-0.5-3.9c0,0,0.3,0.6,1.2,0.4c0.9-0.2,1.3-0.8,1.3-0.8c1.4-1.4,1.8-1.6,7.1-5c5.3-3.4,6.1-5.4,6.8-6.6
+                      s0.1-0.4,0.7-1.5c0.6-1.2,3.4-3.1,8-3.4s7.5,0.3,11.4-0.8s7.5-2.4,10.4-2.6c2.9-0.2,13.4-3.8,16-3.9s7.8,2.9,10.3,5.7
+                      c2.4,2.8,6.4,3.1,8.2,3.6c1.8,0.5,1.8,4.4-2,7s-5.2,3.9-8,5.4C485.6,67,487.5,70,487.5,70z" />
+              <path class="map__comunidad" id="comunidad-valenciana" d="M631.5,426.3c-2-1.5-3.5-2-6.6-4.6c-3.1-2.7-10.8-7-10.8-15.7c0.1-8.6-0.1-10.7-1.1-12.6s-2-3.3-1.1-5.4
+                      c0.9-2,3.2-2.4,3.1-6.4s0-9.9,0-9.9c1,0.1,1.8-0.2,2.3-0.7c0.9-0.9,3.7-3.7,2.4-8.7c-1.2-5-4.4-8.1-7.2-8.6s-11.5-5.5-11.7-8.4
+                      s0.6-4.6,1.8-6.7s1-6.6,0.7-8.8c-0.2-2.2,0-4-3.2-4s-4.2,1.1-5.9-0.6s-3.5-3.7-6.4-5.3s-3.8-3.8,0.4-7.1c4.2-3.3,10.6-11,11.4-12.7
+                      c0.7-1.7,2.2-11.3,3.5-12.5s3-4.8,4.8-4.9l-0.1,0.1c1.8,1,4.4,1.9,5.9,2.8c2.4,1.5,3.6,2.7,5.2,1.6c1.5-1.1,5.2-7.6,7.5-8.9
+                      s2.2-1.8,5-4.4S639,265,642,262c3.1-2.9,6.2-7.8,5.7-13.7s-0.7-5.6-2.1-7.2s-1.5-2.1-1.3-3.3c0.1-1.2,1.1-1.5,2.8-3.2
+                      s3.5-7.2,5.9-7.2c2.3,0,4,1.7,7.5,2.9s5.6,0.4,6.4,0.1c0.5-0.2,4.9-3.1,4.9-3.1l0,0c-0.3,1.5,13.2,13.2,16.5,15
+                      c1.5,0.8,2.5,1,3.4,0.6c0,0,1.9,3.4-2.9,8.9c-4.8,5.5-10.9,19.2-12,20.1s-6,5.9-7,8.3s-3.9,7.8-6.4,10.8c-2.4,2.9-5.3,10-6.2,12.5
+                      s-2.4,6.7-4.5,10.2c-2.1,3.4-1.6,7.9,0.9,11.4s3.5,5.1,4.8,11.6c1.2,6.5,5.7,13.9,8.1,16.4c2.3,2.4,6.1,3.5,8.6,4.6
+                      c2.4,1.1,7.1,4.2,6.8,6.6c-0.2,2.4-4.2,7.2-10.8,11.5s-12.8,8.4-14.8,10.4s-12.5,16.3-16.9,25.8
+                      C635.1,421.5,633.6,426.7,631.5,426.3z" />
+              <path class="map__comunidad" id="pais-vasco"
+                d="M570.1,54.8c0,0,0.2,5.6-4,10.7s-20.9,25.9-21.5,26.7c-0.7,0.8-2.1,2.3-1.5,9.1c0.2,2.8-3.4,2.4-5.2,2.6
+                      s-3.1,1.1-2,4.9c0.3,0.9,0.8,1.6,0.8,2.2c0.1,1.5-2.4,2-4.3,2.5c-1.9,0.4-6.4-1.5-7.1-2.5c-0.7-1-7-5.7-7-5.7s-6.7-3.8-8.3-5.4
+                      c-1.6-1.6-3.8-2-5.1-3.6c-1.3-1.6-2.9-3.9-5.9-5.2c-2.9-1.3-5.7-2-4.7-3.6s2.1-2.3,4.4-2.1c2.3,0.2,6.5,2.1,7.3-0.4
+                      c0.8-2.4-3.8-3.9-4.9-6.2c-1.1-2.3-1.5-5.2-1.5-7s-0.5-2.6-4.2-2.6c-2.3,0-5.3,0.2-8.1,0.4c0,0-1.8-2.3,0.4-4.1
+                      c2.9-2.3,10-6.7,10.6-7.8c0.7-1.1,1.3-1.9,1.9-1.9c0.6-0.1,7.1,0.3,7.7,0c0.7-0.2,3.3-4.7,4.8-5.4s1.5-1.2,4.8-1s7.9,0.2,12.4,2.5
+                      c4.4,2.3,12.3,5.1,14.8,5.4c2.5,0.3,8.6,0.6,10.3,0.4c1.8-0.2,5.1-1.1,8.2-3.5S570.3,52.5,570.1,54.8z" />
+              <path class="map__comunidad" id="ceuta-melilla" d="M280.6,670.1c4.9-4.2,16.6-12.5,19.3-14.2c2.7-1.7,13-10,15.7-13.2s8.6-7.6,11.5-10.5s4.9-4.4,6.6-10.5
+                      s1.2-6.1,3.9-10.3s4.6-13.5,7.6-21.5s8.3-20.8,12.5-20.5c4.2,0.2,4.2,1.5,9.8-0.7s7.6-4.6,10.8-4.2s3.7,2.8,5.1,6.2
+                      c0.8,2,2.2,1.1,2.2,3.1s-1.7,8.3,2.4,11.7c4.2,3.4,25.2,24.9,27.1,26.2c2,1.2,9.3,7.8,18.3,7.6s8.1-0.6,12-2s4.9-1.4,13.7-1.7
+                      s13-5.1,16.1-5.6s7.8,2.2,13.9,3.9s13.5,1,17.1-3.9s6.7-15.3,11.7-15.7c3.3-0.4,3.6,2.4,3.4,5.6c-0.4,6.1-0.3,7.1,0.2,15
+                      c0.2,2.8-0.4,4.9,5.5,5.1c5.9,0.2,43.5,0.5,47.9,0.2c4.4-0.2,20.8-8.6,25.4-13.5c4.6-4.9,4.9-4.2,7.8-5.9c2.9-1.7,10.3-7.8,13-12.5
+                      c2.7-4.6,10.3-11.7,11.7-13c1.5-1.2,1.7-2,4.6-0.5s4.2,0.2,5.9-1s2.9-1.7,4.9,0.2c2,2,1.7,3.4,5.1,2.2s4.9-3.4,5.6-5.6
+                      s7.5-8.1,10.3-8.1s5.5,4.3,7.9,6s5.2,1.8,7,1.1s8.8-7.1,11.7-11.6s4.9-5,6-7.5s2.6-5.3,16.2-11c13.6-5.7,18-10.4,20.5-12
+                      s19.4-9,21.8-10.5s1.7-2.9,18.8-2.4s23,1,25.9-0.1s7.2-4.4,13.1-4.2c6,0.2,11.4,3,14.4,2.9c3.1-0.1,7.2-3,12.5-8.5
+                      s15.8-6.2,19.6-6.3c3.8-0.1,15.4,0.2,18.6-0.8c3.2-1,14.2-8.1,16.6-8.2L899.5,670L280.6,670.1z" />
+              <path class="map__comunidad" id="murcia" d="M583,463.7c-0.6-0.8-1.5-1.6-2.7-2.7c-2.3-2.2-10.4-9.7-11.3-11.5c-0.9-1.8-1.7-3.5-4.3-7.5
+                      c-2.6-3.9-1.7-11.7-2.4-13.7s-3.8-2.7-9.8-3.3s-6.8-6.8-7.2-8.2l0,0c0,0,2.7-6.3,6-9.6c3.3-3.3,14.6-12.2,16.8-12.5
+                      c2.2-0.2,11-0.4,13.8-0.5s6-1.6,7.2-7.7s3.1-17.4,10.5-18.7c7.5-1.3,11.5,1,13.2,2.7c0.7,0.7,1.5,1.1,2.2,1.2c0,0-0.2,6,0,9.9
+                      s-2.2,4.3-3.1,6.4c-0.9,2,0.1,3.5,1.1,5.4s1.1,3.9,1.1,12.6c-0.1,8.6,7.7,13,10.8,15.7s4.6,3.1,6.6,4.6c0.7,0.5,2.5,2,1.1,3.6
+                      s-3.5,4.4-3.3,5.5s0,2.2,3.8,2.1s3.9,0.7,3.9,1.7s-3.1,7.9-10.9,9c-7.8,1.1-16.3,1.5-20,2.1s-8.2,2.7-13.9,7c-5.6,4.3-6.9,6-7.4,6.4
+                      C584.4,464.1,583.6,464.5,583,463.7z" />
+              <path class="map__comunidad" id="navarra"
+                d="M564.3,149.2c2.7-0.2,9.2,0,12.1,0.2c2.9,0.2,3.4,2,6.4,2.2c2.9,0.2,4.8-0.1,5.4-1c0.6-0.9,0.2-3.2,0.5-4.4
+                      c0.2-1.2,0.9-4.4,0.9-6.7s-2.2-5.1-2.2-6.8s2.3-6.6,5.5-14.4s5.4-13.1,12.4-17.5S619,82.2,619.2,81c-1.7-0.6-8.7-1-10.3-1.1
+                      c-1.5-0.1-5.5-0.9-7.5-3c-4.9-5.3-7-4.6-8.3-4c-1.2,0.6-2,2.4-4.1,2.6s-2.9-2.6-2.9-4.6s2.8-4,2.4-7.5c-0.4-3.5-4.9-3.8-11-3.8
+                      s-6.1-2.7-7.1-4.6c0,0,0.2,5.6-4,10.7s-20.9,25.9-21.5,26.7c-0.7,0.8-2.1,2.3-1.5,9.1c0.2,2.8-3.4,2.4-5.2,2.6s-3.1,1.1-2,4.9
+                      s2,3.9,4.7,5.4c2.8,1.5,3.3,3.6,5.7,3.8c2.4,0.2,3.8-0.2,5.4,0.3c1.6,0.5,4.6,4.4,7.2,5.5c2.6,1.1,8.6,3.9,11.3,6.5
+                      c2.6,2.6,4.4,2.8,3.6,5.5c-0.8,2.8-2.1,2.9-5.2,3.9c-3.1,1-4.9,4.1-4.7,5.9C564,147.6,564.3,149.2,564.3,149.2z" />
+              <path class="map__comunidad" id="la-rioja" d="M563.5,151.2c0,0-3.2,0.3-4.4-0.1s-6.1-3.3-7.6-5.5c-1.5-2.1-6.4-8.1-10.7-8.1c-3.8,0-5.4,4.4-8.3,6.5
+                      c-2.9,2.1-4.2,2.9-6.7,2.9s-3.3-3.4-4.6-4.7s-1.5-1.5-2.8-1.3s-2.6,2.3-4.2,2.4s-7.8-0.2-9.3-4.6c-1.5-4.4-0.8-6.2-1.6-7.5
+                      c-0.8-1.3-2.4-2.1-2.3-3.8c0.2-1.6,2.3-3.4,3.4-4.7c1.1-1.3-0.7-8.5,0.5-11.3c1.1-2.8,3.8-5.9,7.8-5.4c4.1,0.5,5.7-0.8,5.7-0.8
+                      s2.5,1.2,3.6,2.5s7.7,6.1,9.6,5.8c2-0.3,4.4-0.4,5-2.7c0.8,1.7,1.8,2.1,3.9,3.2c2.8,1.5,3.3,3.6,5.7,3.8c2.4,0.2,3.8-0.2,5.4,0.3
+                      c1.6,0.5,4.6,4.4,7.2,5.5c2.6,1.1,8.6,3.9,11.3,6.5c2.6,2.6,4.4,2.8,3.6,5.5c-0.8,2.8-2.1,2.9-5.2,3.9c-3.1,1-4.9,4.1-4.7,5.9
+                      c0.2,1.8,0.4,3.4,0.4,3.4S562.1,149.3,563.5,151.2z" />
+              <path class="map__comunidad" id="galicia"
+                d="M221.3,147.2c2.3-0.6,13.9-9.5,16-10.6s4.3-1.2,6.7,0s2.2,1.6,4.2,3.8s-0.6,3.9-1.5,7.5s2.8,7.6,5.5,7.9
+                      c2.7,0.2,5-1.2,6.7-2.7c1.7-1.5,5.1-2.9,9-2.4s15.4,6.2,18.7,6.2c3.3,0,6.5-0.4,7.8-1.5s6.4-7.1,9.5-7.5s5.3,0,5.3,0
+                      c0.2,0,0.3-0.3,0.1-0.4c-1.6-1.1-2-2.9-2.3-5.2c-0.5-4.9,8.2-7.8,9.9-9.6s3.9-13.4-2-17.9c-5.9-4.6-6.2-6.4-6-10.1s3.4-9.6,4.9-11.3
+                      c1.5-1.6,2.9-8,2.9-8V85c0,0,0.9-2.5-2.3-6c-3.2-3.4-0.1-6.4,1.1-8.4s-1.3-2.7-4.9-5.5c-3.5-2.9-5.3-8.3-5.9-11.6s4.9-9.8,7.3-11.3
+                      s1.6-3.2,2-3.5c0,0-2.2-0.3-3.8-0.7c-1.5-0.3-5.1,0.2-7.3,0c-2.2-0.2-5.9-1.9-9.5-6s-5-6.4-6.8-6.2c-1.8,0.2-3.6,2.5-5.5,2.5
+                      s-2.9-4.2-5.4-4.2s-4.1,4.1-5.9,3.8c-1.8-0.3-2.1-3.2-5.4-3.1s-12.5,8.2-15.6,10.6s-3.9,4.7-1.6,8c2.3,3.3,2.6,4.2,1.5,5.2
+                      s-3.5,0.4-6.4,0.4s-4.2,1.8-9.5,1.8s-12.6-0.9-16.6,1.2c-4.1,2.1-16.1,10.9-18,12.7c-2,1.8-3.8,5.5-2.5,8.9c1.2,3.4,3.3,4.5,3.8,6.4
+                      s0.6,6.6,1.1,7.5c0.6,0.9,1.2,2.3,2.9,1.8s2.4-2.4,3.6-2s1.9,1.1,1.1,2.3s-3.3,3.3-3.2,5.4s1.1,6.4,3.1,6.3s2.9-2,5.2-3.3
+                      c2.4-1.3,4.2-1.6,4.7-0.6c0.6,1.1,0.2,3.3-2.7,6s-2.1,5.1-1.1,6c1,0.8,3.4,1.1,2.1,4s-3.4,4.6-2.4,6.1s2.4,1.6,4.7,1.7
+                      c2.4,0.1,2.9,1.9,1,3.6s-9.7,9-10.7,10.5c-1.2,1.9-2.1,6.4,0.4,9.5C212.3,147.9,217.9,148.1,221.3,147.2z" />
+              <path class="map__comunidad" id="cataluna"
+                d="M689.3,93.9c0.5-0.4,0.2-5.5,1.6-6.7s3.2-3.9,9.2-3.8s7.9,1,10,3s4.4,6,6.8,6s8.2-0.5,9.2-0.1
+                      c1.1,0.4,1.8,2.2,2.8,2.5s2.1,0.6,3.3,0s4.4-1.4,6.5-0.8c1.9,0.5,6.4,2.3,7.2,6.5c0,0-0.3,2.9,1.5,4.3c1.9,1.5,9.6,4.6,10.5,5.2
+                      c0.9,0.7,3.1,1.3,5.3,1.3s5.6-2.8,9.2-2.7c3.6,0.1,9.9,3.2,10.7,3.9s3.1,0.9,4.8,0.7c1.7-0.2,6.9-4.2,9-5.5c2-1.3,6.1-5.2,9.7-4.8
+                      c3.6,0.4,5.1,2.1,8.5,3.1s4.9,0.7,5.5,0.4c0.9-0.5,5.1,3,5.1,5.6s-6.2,8.4-6.3,9.7c-0.2,1.3,1.3,4.6,3.6,8.5
+                      c2.3,3.9,2,12.7-7.3,19.7s-19.6,13-25.9,15.7c-6.4,2.6-11.1,8.3-12.7,13.9c-1.6,5.5-3.9,7.5-11.4,8.5s-15.2,6.5-16.6,6.7
+                      c-1.5,0.2-6.5,2.9-9,3.9s-8.8,1.5-11.7,1.6c-2.9,0.2-19.9,14.8-23.3,18.1c-3.4,3.3,1.6,6.5,2.3,8.2s3.1,5.2-1.3,10.8
+                      c-3.1,3.9-4.6,2.4-4.9-0.8c-0.3-3.3-4.2-2-6.2,2.3s-3.1,5.4-6.4,3.6c-3.3-1.8-16.8-13.5-16.5-15s3.3-8,2.9-11.3s-1.5-5.2-2.9-7.5
+                      c-1.5-2.3-2.6-5.9,1.6-9.5c4.2-3.6,5.5-5.4,5.5-9.3s-2.8-6-2.4-9.1c0.3-3.1,3.1-4.7,3.1-8.8s-3.6-4.7-3.1-7.8s4.6-5.1,7.8-8.2
+                      s6-8.3,6.7-26.6c0.5-5.4,1.6-8.8,2.3-11.3c0.7-2.4,0.2-7.5,0-11.3s-1-6.8-2-9.3C690.7,95.2,689.3,93.9,689.3,93.9z" />
+              <path class="map__comunidad" id="castilla-la-mancha"
+                d="M608.1,282.7c1.2-0.1-1.8-1.3-1.7-2.1c0.3-4.4-2.9-6.5-5.1-8.7c-2.2-2.2-4.9-4-7.6-4.2
+                      c-2.7-0.1-3.8,1.8-5.9,1.8s-3.3-0.7-4.2-2s-5.7-5.3-8.7-7.3c-2.9-2.1-3.1-4-2.7-6.6c0.4-2.6,4.3-5.6,5.1-7.5
+                      c0.9-1.8-0.5-2.8,1.1-4.8s3.4-0.9,3.9-3.4c0.3-1.5,0-7.6-2.2-14.8s-13.9-17.7-18.1-17.2c-4.2,0.5-6.1,0.2-6.9-0.1
+                      c0,0-4.4,4.2-11.4,4c-5.7-0.1-9.8-5.7-13.7-8.2s-10.1-7.8-15.3-8.2c-5.2-0.3-8.3,4.2-11.4,4.4s-3.6-0.8-6.5-0.8s-5.9,4.1-9.6,6.7
+                      s-6.4,4.2-11.9,7.2c-5.5,2.9-11.1,8.2-12.9,11.6c-1.8,3.4-2.1,5.7-4.1,7.3s-7.7,8.8-8.9,11.1c-1.3,2.3-6.8,10.7-8.8,13
+                      c-2,2.3-3.6,6.1-5.2,8.2s-9.9,8-12.7,7.8s-2.3-3.1-3.8-3.4s-3.8,2.1-5.5,4.4c-1.8,2.3-3.8,4.2-5.4,4.4s-5.1-0.5-7,0.3
+                      c-2,0.8-2.6,2.3-4.6,2.3s-2.3-2.1-4.1-2.4s-3.6,0.7-4.1,0c0,0-2.3,7.3-1.5,10.4c0.7,3.2,0,7.6,8.8,12.2c2.2,1.5,0.5,7.6,0,9.5
+                      c-0.5,2,6.1,12,12.2,14.9s5.9,0.7,7.6,0s4.6-0.2,4.9,3.7c0.2,3.9,2.4,7,2.4,8.6s-1,5.1-5.1,6.3c-4.2,1.2-4.6,5.1-6.4,6.4
+                      s-4.6,0.5-4.4,2.4c0.2,2,2.7,4.2,4.4,6.1c1.7,2-4.2,6.6-4.9,7.8c-0.7,1.2-1.7,4.4-3.9,4.1c2.3,0.3,2.1,1.1,2.9,3.5
+                      c0.7,2.4,4.9,4.5,6.7,5.6s9,5.1,11.1,6.5s6.1,4.8,8.5,7.3s6.1,3.9,8.7,3.8s5.9-3,8.4-2.9s5.5,3.1,9.5,3s7.3-1.9,9-3.5
+                      s4.5-0.4,5.9-0.3c1.5,0.1,3.2-2,4.8-1.9c1.6,0.1,4.4,4.1,6.5,3.9s3.2-5.9,7-6s6.7,3.2,11.5,3.7s7.1,1,10.2-1.3s6.1-6.1,9.8-6.1
+                      c3.7-0.1,9.1,3.2,10.9,8.5c1.8,5.3,3.8,8.3,4.5,10.3s0.2,5.6-0.7,8.4s0.1,5.5,2.6,5.6s4.8-0.7,5.1,0.6c0,0,2.7-6.3,6-9.6
+                      c3.3-3.3,14.6-12.2,16.8-12.5c2.2-0.2,11-0.4,13.8-0.5s6-1.6,7.2-7.7s3.1-17.4,10.5-18.7c7.5-1.3,11.5,1,13.2,2.7s3.7,1.3,4.5,0.5
+                      s3.7-3.7,2.4-8.7c-1.2-5-4.4-8.1-7.2-8.6s-11.5-5.5-11.7-8.4s0.6-4.6,1.8-6.7s1-6.6,0.7-8.8c-0.2-2.2,0-4-3.2-4s-4.2,1.1-5.9-0.6
+                      s-3.5-3.7-6.4-5.3c-2.8-1.6-3.8-3.8,0.4-7.1c4.2-3.3,10.6-11,11.4-12.7s2.2-11.3,3.5-12.5C604.7,286.4,606.3,282.9,608.1,282.7z" />
+              <g id="canarias" class="map__comunidad">
+                <path d="M35.6,638.8c-3.3,1.8-5-1.3-6,0.7s-0.6,4.4,3,5.7s4.8,4,7,1.1s4.9-6.2,5.3-7.8c0.4-1.6,1-4.6-1.5-4.6
+                        C37.7,633.9,38.9,637,35.6,638.8z" />
+                <path d="M79.2,611.7c-0.9,2.04,0.2,4.4,1.7,6.2s2,3.7,4.8,2.9c2.8-0.7,4.9-1.5,5.3-3.8s0.9-7.5-2.6-7.8
+                        C84.9,608.8,80.5,608.2,79.2,611.7z" />
+                <path d="M41,569.2c-1.6,0.9-3.3,3.1-1.5,5.5s3.5,8.2,3.7,10.2c0.1,2,2.3,8.1,5.1,7.7c2.8-0.4,3.1-4.4,3.9-7.6
+                        c0.9-3.2,0.6-7,1.1-9.2s2.8-8.3,0-9.4C50.6,565.3,48.2,565.1,41,569.2z" />
+                <path d="M105.1,601.1c2.9,3.8,8.2,15.5,9.2,16.8c1,1.2,4.3,4.8,9.3,4.3c5-0.5,8.4-4.5,12.2-13.9s9.5-15.7,12.5-18.6
+                        c2.9-2.9,4.9-7.1,2.1-7.7c-2.8-0.6-2.9-0.4-7.2,0.7s-7.3,0.5-9.2,4.3s-2.8,4.4-4.4,5.1s-1.7,1.6-2.3,2c-0.6,0.4-2,0.6-5.5,0.6
+                        s-5.5,0.6-6.7,1.7c-1.2,1.1-1.8,2.2-5,2.1C106.8,598.3,102.9,598.2,105.1,601.1z" />
+                <path d="M177,615.2c-2.3,2.6-4,4-5.7,5.5s-2.3,5.5-1.6,7.2s3.2,6.5,5.5,8.4c2.3,2,3.9,2.9,9.5,2.8
+                        c5.6-0.1,6.8-1.1,9.4-4.2s5.6-4.9,5.4-8.7c-0.2-3.8,0.6-3.8-1.3-6.6s-2.8-3.1-2.6-6.4c0.2-3.3,2.4-4.4-1.8-4.3
+                        c-4.3,0.1-6.4-2-10.6,0.5C178.9,612,177,615.2,177,615.2z" />
+                <path d="M271.9,586.6c-2.9,0.6-4.5,7.2-4.6,9.7c-0.1,2.4,1.8,7.6-3.8,9.9c-5.6,2.3-13,9-10.5,10.5
+                        c2.4,1.5,5.5,1.1,7.9,0s14.1-9.3,16.6-10.2c2.6-0.9,7.1-2.8,8.6-6.7s3.3-12.4,2.4-20.9s0.5-12.4-3.2-11.4s-7.6,6.7-8.2,10.2
+                        C276.6,581.1,273.1,586.3,271.9,586.6z" />
+                <path
+                  d="M288.8,553.2c-1.1,3.1-3.1,8.8,0,8.9c3.1,0.1,5.2-2.3,8.3-3.9c3.2-1.6,4.6-1.2,7-2.3s6.5-6.1,7.3-10.4
+                        c0.9-4.3,2.2-9.4,1-9.2s-1.7,1.6-4.2,3.4c-2.4,1.8-5.7,3.4-9.8,5.1C294.4,546.6,289.9,550.1,288.8,553.2z" />
+                <path
+                  d="M305.4,533.1c1.7,1.8,3.8,2.9,5.5,0.6c1.7-2.3,0.6-4.9-2.4-4.4C305.4,529.8,304.2,531.9,305.4,533.1z" />
+              </g>
+              <g id="baleares" class="map__comunidad">
+                <path
+                  d="M801.1,292.5c-3.3,3.6-7.3,4.9-8.1,7.6s2.4,6.4,5.1,7.6c2.7,1.2,3.9-1.2,7.6-3.2c3.7-2,6.6-1.7,7.3-0.7
+                        s2,4.1,2,7.7s3.6,3.8,5.9,3.8c2.3,0,6.2,0.5,6.8,1.8c0.7,1.3,1.3,2.6,4.7,2.3c3.4-0.3,9.5-8.5,12.4-15.8s5.1-14.7,3.1-17.9
+                        c-2-3.3-6.4-0.5-8,0s-4.7-0.4-5.5-1.6s0.7-9.2-2.4-9.7c-3.1-0.5-6.4,1.3-7.8,2.3C822.8,277.5,811,281.7,801.1,292.5z" />
+                <path d="M866.8,263.8c-1.1,2.9,0.5,7.3,3.9,7.8s6.8,0.2,9.9,1.3c3.1,1.1,3.8,4.1,6.8,4.2s8-0.3,7.8-3s0-3.3-4.4-7.1
+                        c-4.4-3.8-4.6-7.2-7.5-7s-1.6,1.3-6.2,1.8S867.6,261.6,866.8,263.8z" />
+                <path
+                  d="M823.1,326.9c-0.9,1.3-0.5,5.2,1.3,5.4c1.8,0.2,2.6-0.3,2.4-3.4C826.7,325.7,824.7,324.6,823.1,326.9z" />
+                <path d="M743,338.6c-3.4,2.3-7,9.6-6.2,12.2s2.9,4.6,5.4,4.2s4.7-5.7,5.1-7.5c0.3-1.8,0.8-2.3,3.1-2.1
+                        c2.3,0.2,5.4-0.7,5.7-2.9c0.3-2.3,0.5-8.5-3.3-8C749.1,335,743,338.6,743,338.6z" />
+                <path d="M746.5,361.6c-1.1,1.8-3.4,7.7-1.1,8c2.3,0.3,3.5-1.9,4.6-2.9s2-0.5,3.8-0.5s3.2-2.9,0.9-4.1
+                        C752.5,361,748.4,358.6,746.5,361.6z" />
+              </g>
+              <path class="map__comunidad" id="extremadura"
+                d="M302.6,405.2c2.3-0.1,3.5,3.9,6,4.2s3.2-0.3,4.4,0.6s2.4,4.2,5.4,4.5s3.5-0.2,6.1,0s3.3,0.2,6.5,1.8
+                      s6.4,3.9,11.6,3.8s10-4.3,11.8-6.5s4.9-6.8,7.1-6.6c2.2,0.2,3.3,1,4.2,4.5s3,2.4,4.5,1.1s6.1-5.8,6-8.4s-0.8-14.2,0-15.2
+                      s4.3-4.5,7.7-6.5c3.3-2,8.8-8.2,10.7-9.8c2-1.7,5.7-4.6,7.9-4.3c2.3,0.3,3-2.8,3.7-4s6.6-5.9,4.9-7.8c-1.7-2-4.2-4.2-4.4-6.1
+                      c-0.2-2,2.7-1.2,4.4-2.4c1.7-1.2,2.2-5.1,6.4-6.4c4.2-1.2,5.1-4.6,5.1-6.3s-2.2-4.7-2.4-8.6c-0.2-3.9-3.2-4.4-4.9-3.7
+                      c-1.7,0.7-1.5,2.9-7.6,0s-12.7-13-12.2-14.9c0.5-2,2.2-8.1,0-9.5c-8.8-4.6-8.1-9-8.8-12.2s1.5-10.4,1.5-10.4
+                      c-0.5-0.7-1.1-2.6-1.3-3.6c-0.2-1-1.8-2.6-4.1-2.6s-4.1,0.3-6.4,0s-3.8-3.8-7.7-5.5c-3.9-1.8-3.4-3.6-5.5-4.2
+                      c-1.3-0.4-4.1,3.9-6,4.9c-2,1-1.9-2.8-2.9-4.4c-3.8-5.7-8.8-8.3-11.1-8.5s-6.4,2.9-9.6,5.2c-3.3,2.3-9.8,6.8-13.7,8.2
+                      c-3.9,1.3-7.7-1.1-11.4-1.8c0,0-4-1.2-5.1,3s-0.2,7.4,1.8,10.8c2,3.3,2.1,11.8-1.7,16.9s-4,8.2-10.8,8s-18.4-2.3-19.8,0.8
+                      c-1.4,3.1,4.1,8.7,7.3,11.7s2.9,10,2.7,11.5c-0.2,1.5,4.5,8.2,10.2,13.4c5.7,5.2,6.2,5.9,6,9.4s0.6,6.3-6.6,13.1
+                      c-7.2,6.8-9.4,12.9-9.4,15.2s-0.7,12.7,1.8,15.8c2.4,3.1,6.9,8.7,9.8,9.4C297.4,402.9,301,403.9,302.6,405.2z" />
+            </svg>
+            <!-- FIN: Mapa interactivo -->
+            <!-- INICIO: Listado de comunidades autónomas (versión móvil)
+                    Funcionalidad: Muestra un listado de enlaces a las páginas de cada comunidad autónoma cuando el usuario navega desde dispositivos móviles.
+                  -->
+            <div class="map__list no-desktop">
+              <ul class="map__ul">
+                <li class="map__li"><a class="btn btn--red header__cta" href="./por-ccaa/andalucia.html"
+                    title="pagina de universidades de andalucia">Andalucía</a></li>
+                <li class="map__li"><a class="btn btn--red header__cta" href="./por-ccaa/aragon.html"
+                    title="pagina de universidades de aragon">Aragón</a></li>
+                <li class="map__li"><a class="btn btn--red header__cta" href="./por-ccaa/asturias.html"
+                    title="pagina de universidades de Asturias">Asturias</a></li>
+                <li class="map__li"><a class="btn btn--red header__cta" href="./por-ccaa/islas-baleares.html"
+                    title="pagina de universidades de Islas Baleares">Islas Baleares</a></li>
+                <li class="map__li"><a class="btn btn--red header__cta" href="./por-ccaa/islas-canarias.html"
+                    title="pagina de universidades de Islas Canarias">Islas Canarias</a></li>
+                <li class="map__li"><a class="btn btn--red header__cta" href="./por-ccaa/cantabria.html"
+                    title="pagina de universidades de Cantabria">Cantabria</a></li>
+                <li class="map__li"><a class="btn btn--red btn btn--red header__cta"
+                    href="./por-ccaa/castilla-la-mancha.html"
+                    title="pagina de universidades de Castilla-La Mancha">Castilla-La Mancha</a></li>
+                <li class="map__li"><a class="btn btn--red header__cta" href="./por-ccaa/castilla-y-leon.html"
+                    title="pagina de universidades de Castilla y León">Castilla y León</a></li>
+                <li class="map__li"><a class="btn btn--red header__cta" href="./por-ccaa/cataluna.html"
+                    title="pagina de universidades de Cataluña">Cataluña</a></li>
+                <li class="map__li"><a class="btn btn--red header__cta" href="./por-ccaa/extremadura.html"
+                    title="pagina de universidades de Extremadura">Extremadura</a></li>
+                <li class="map__li"><a class="btn btn--red header__cta" href="./por-ccaa/galicia.html"
+                    title="pagina de universidades de Galicia">Galicia</a></li>
+                <li class="map__li"><a class="btn btn--red header__cta" href="./por-ccaa/la-rioja.html"
+                    title="pagina de universidades de La Rioja">La Rioja</a></li>
+                <li class="map__li"><a class="btn btn--red header__cta" href="./por-ccaa/comunidad-de-madrid.html"
+                    title="pagina de universidades de la Comunidad de Madrid">Comunidad de Madrid</a></li>
+                <li class="map__li"><a class="btn btn--red header__cta" href="./por-ccaa/region-de-murcia.html"
+                    title="pagina de universidades de la Región de Murcia">Región de Murcia</a></li>
+                <li class="map__li"><a class="btn btn--red header__cta" href="./por-ccaa/navarra.html"
+                    title="pagina de universidades de Navarra">Navarra</a></li>
+                <li class="map__li"><a class="btn btn--red header__cta" href="./por-ccaa/pais-vasco.html"
+                    title="pagina de universidades del País Vasco">País Vasco</a></li>
+                <li class="map__li"><a class="btn btn--red header__cta" href="./por-ccaa/comunidad-valenciana.html"
+                    title="pagina de universidades de la Comunidad Valenciana">Comunidad Valenciana</a></li>
+              </ul>
+              <!-- FIN: Listado de comunidades autónomas (versión móvil) -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- FIN: Mapa-->
+
+    <!-- INICIO: Sección "Universidades por Tipo"
+            Funcionalidad: Presenta diferentes categorías de universidades y accesos rápidos a sus respectivas páginas. 
+          -->
+    <section class="type">
+      <div class="type__block block-3xl">
+        <h2>Universidades por Tipo</h2>
+        <!--INICIO: Grid de categorías
+                  Funcionalidad: Agrupa las tarjetas que representan las distintas clasificaciones de universidades. 
+                -->
+        <div class="type__grids">
+          <!-- INICIO: Card - Sistema Público
+                  Funcionalidad: Muestra el número de universidades públicas y enlaza a la página correspondiente.
+                -->
+          <a class="type__grid public" title="pagina de universidades publicas" href="./tipos.html">
+            <div class="type__introduction">
+              <p class="h5">Sistema Público</p>
+              <p class="h1">49</p>
+              <p class="h4">Universidades Públicas</p>
+            </div>
+            <div class="type__info">
+              <p class="type__p ">Financiadas por el Estado. Acceso meritocrático, tasas reguladas y fuerte tradición
+                investigadora.</p>
+              <p class="btn btn--transparent">Explorar<i class="ri-arrow-right-line icon" aria-hidden="true"></i></p>
+            </div>
+            <!-- FIN: Card - Sistema Público -->
+          </a>
+          <!-- INICIO: Card - Ranking
+                    Funcionalidad: Presenta un resumen de las comunidades autónomas con mayor número de universidades y enlaza a la página con el listado completo.
+                  -->
+          <a class="type__grid rankings" href="./rankings/qs-world-university-rankings.html" title="pagina de rankings de universidades">
+            <div class="type__introduction">
+              <p class="h5">QS World 2026</p>
+              <p class="btn btn--arrow">Explorar<i class="ri-arrow-right-line icon" aria-hidden="true"></i></p>
+            </div>
+            <div class="type__list">
+              <ul class="type__ul">
+                <li class="type__li">
+                  <p>Universitat de Barcelona </p>
+                  <p class="type__ranking h3">1</p>
+                </li>
+                <li class="type__li">
+                  <p>Universidad Autónoma de Madrid</p>
+                  <p class="type__ranking h3">2</p>
+                </li>
+                <li class="type__li">
+                  <p>Universitat Autònoma de Barcelona</p>
+                  <p class="type__ranking h3">3</p>
+                </li>
+                <li class="type__li">
+                  <p>Universidad Complutense de Madrid</p>
+                  <p class="type__ranking h3">4</p>
+                </li>
+              </ul>
+            </div>
+            <!--FIN: Card - Ranking-->
+          </a>
+          <!-- INICIO: Card - Sistema Privado
+                    Funcionalidad: Muestra el número de universidades privadas y enlaza a la página correspondiente.
+                  -->
+          <a class="type__grid private" title="pagina con las universidades privadas" href="./tipos.html">
+            <div class="type__introduction">
+              <p class="h5 h5--primary">Sistema Privado</p>
+              <p class="h1">23</p>
+              <p class="h4">Universidades Privadas</p>
+            </div>
+            <p class="btn btn--arrow">Explorar<i class="ri-arrow-right-line icon" aria-hidden="true"></i></p>
+            <!--FIN: Card - Sistema Privado-->
+          </a>
+          <!-- INICIO: Card - CCAA
+                    Funcionalidad: Muestra las universidades españolas por Comunidad Autónoma
+          -->
+          <a class="type__grid ccaa" title="pagina de universidades por comunidad autonoma" href="./por-ccaa.html">
+            <p class="h5 h5--white">Por Región</p>
+            <ul class="type__regions">
+              <li class="type__region">
+                <p>Madrid</p>
+                <p>14</p>
+              </li>
+              <li class="type__region">
+                <p>Cataluña</p>
+                <p>12</p>
+              </li>
+              <li class="type__region">
+                <p>Andalucia</p>
+                <p>10</p>
+              </li>
+              <li class="type__region">
+                <p>C.Valenciana</p>
+                <p>6</p>
+              </li>
+              <li class="type__region">
+                <p>País Vasco</p>
+                <p>3</p>
+              </li>
+            </ul>
+            <!--FIN: Card - CCAA -->
+          </a>
+          <!-- FIN: Grid de cateorías -->
+        </div>
+      </div>
+    </section>
+    <!-- FIN: Sección Universidades por Tipo-->
+
+    <!-- INICIO: Sección Ranking
+              Funcionalidad: Muestra las cinco universidades españolas mejor posicionadas según el ranking Times Higher Education.
+          -->
+    <section class="ranking">
+      <div class="ranking__block block-3xl">
+        <div class="ranking__intro section__intro">
+          <h2>Las Mejores Universidades Españolas</h2>
+          <a class="btn btn--arrow" href="./rankings.html" title="todas las guias para universitarios">Todos los
+            rankings<i class="ri-arrow-right-line icon" aria-hidden="true"></i></a>
+        </div>
+        <!-- INICIO: Listado del ranking
+                Funcionalidad: Cada elemento representa una universidad con su posición nacional, clasificación mundial, localización y puntuación.ç
+                El listado completo actúa como un único enlace para facilitar el acceso a la página del ranking completo.
+              -->
+        <a class="ranking__list" title="pagina de ranking times higher education"
+          href="./rankings/times-higher-education-world-university.html">
+          <div class="ranking__item">
+            <p class="h2 h2--secondary">01</p>
+            <p class="badge">#171</p>
+            <div class="ranking__info">
+              <p class="ranking__name h4">Universitat de Barcelona</p>
+              <p>Barcelona</p>
+            </div>
+            <div class="ranking__score">
+              <p>61.2</p>
+              <!-- El icono de flecha se muestra mediante CSS al hacer hover sobre cada elemento del ranking. -->
+              <i class="ri-arrow-right-line icon" aria-hidden="true"></i>
+            </div>
+          </div>
+          <div class="ranking__item">
+            <p class="h2 h2--secondary">02</p>
+            <p class="badge">#201</p>
+            <div class="ranking__info">
+              <p class="ranking__name h4">Universidad Autónoma de Madrid</p>
+              <p>Madrid</p>
+            </div>
+            <div class="ranking__score">
+              <p>57.8</p>
+              <i class="ri-arrow-right-line icon" aria-hidden="true"></i>
+            </div>
+          </div>
+          <div class="ranking__item">
+            <p class="h2 h2--secondary">03</p>
+            <p class="badge">#208</p>
+            <div class="ranking__info">
+              <p class="ranking__name h4">Universitat Autònoma de Barcelona</p>
+              <p>Barcelona</p>
+            </div>
+            <div class="ranking__score">
+              <p>56.4</p>
+              <i class="ri-arrow-right-line icon" aria-hidden="true"></i>
+            </div>
+          </div>
+          <div class="ranking__item">
+            <p class="h2 h2--secondary">04</p>
+            <p class="badge">#218</p>
+            <div class="ranking__info">
+              <p class="ranking__name h4">Universidad Complutense de Madrid</p>
+              <p>Madrid</p>
+            </div>
+            <div class="ranking__score">
+              <p>54.9</p>
+              <i class="ri-arrow-right-line icon" aria-hidden="true"></i>
+            </div>
+          </div>
+          <div class="ranking__item">
+            <p class="h2 h2--secondary">05</p>
+            <p class="badge">#299</p>
+            <div class="ranking__info">
+              <p class="ranking__name h4">Universitat Pompeu Fabra</p>
+              <p>Barcelona</p>
+            </div>
+            <div class="ranking__score">
+              <p>49.1</p>
+              <i class="ri-arrow-right-line icon" aria-hidden="true"></i>
+            </div>
+          </div>
+          <!--FIN: Listado del ranking -->
+        </a>
+      </div>
+      <!-- FIN: Sección Ranking -->
+    </section>
+    <!--INICIO: Sección Guías para Estudiantes
+            Funcionalidad: Destaca las principales guías de orientación para futuros universitarios.
+          -->
+    <section class="guias">
+      <div class="guias__block block-3xl">
+        <div class="guias__info section__intro">
+          <h2>Guías para Estudiantes</h2>
+          <a class="btn btn--arrow" href="./guias.html" title="pagina con todas las guias para estudiantes">Todas las
+            guías<i class="ri-arrow-right-line icon" aria-hidden="true"></i></a>
+        </div>
+        <!--INICIO: Grid de guías 
+                Funcionalidad: Organiza las tarjetas con las guías destacadas.
+              -->
+        <div class="guias__grid">
+          <!--INICIO: Card de guía
+                  Funcionalidad: Presenta una guía con su imagen, categoría, tiempo estimado de lectura y acceso al contenido.-->
+          <a class="guias__card" href="./guias/como-elegir-universidad.html"
+            title="guia sobre como elegir una universidad en españa">
+            <!-- El elemento <picture> permite servir formatos de imagen modernos (WebP) y utilizar JPEG como alternativa para navegadores que no lo soporten.-->
+            <picture class="guias__picture">
+              <source srcset="./media/como-elegir-tu-universidad.webp" type="image/webp">
+              <source srcset="./media/como-elegir-tu-universidad.jpeg" type="image/jpeg">
+              <!-- loading="lazy" retrasa la carga de la imagen hasta que entra en el área visible del navegador decoding="async" evita bloquear el renderizado mientras se decodifica la imagen. -->
+              <img width="300" height="260" src="./media/como-elegir-tu-universidad.jpg" loading="lazy" decoding="async"
+                alt="imagen post como elegir tu universidad en espana">
+            </picture>
+            <div class="guias__title h5 h5--details">
+              <p class="guias__p">Orientación</p>
+              <p class="guias__p">12 min</p>
+            </div>
+            <h3 class="h4">¿Cómo acceder a la universidad?</h3>
+            <!-- La flecha se muestra únicamente mediante CSS al hacer hover sobre la tarjeta.-->
+            <p class="guias__button">Leer guía<i class="ri-arrow-right-line icon" aria-hidden="true"></i></p>
+            <!-- FIN: Card de guía -->
+          </a>
+          <a class="guias__card" href="./guias/publicas-vs-privadas.html"
+            title="guias sobre las universidades publicas y privadas en españa">
+            <picture class="guias__picture">
+              <source srcset="./media/universidades-publicas-privadas.webp" type="image/webp">
+              <source srcset="./media/universidades-publicas-privadas.jpeg" type="image/jpeg">
+              <img width="300" height="260" src="./media/universidades-publicas-privadas.jpg" loading="lazy"
+                decoding="async" alt="imagen post universidades publicas y privadas">
+            </picture>
+            <div class="guias__title h5 h5--details">
+              <p class="guias__p">Comparativa</p>
+              <p class="guias__p">9 min</p>
+            </div>
+            <h3 class="h4">Universidades Públicas vs. Privadas en España</h3>
+            <p class="guias__button">Leer guía<i class="ri-arrow-right-line icon" aria-hidden="true"></i></p>
+          </a>
+          <a class="guias__card" href="./guias/acceso-a-la-universidad.html"
+            title="guia de acceso a la universidad española">
+            <picture class="guias__picture">
+              <source srcset="./media/guia-acceso-universidad.webp" type="image/webp">
+              <source srcset="./media/guia-acceso-universidad.jpeg" type="image/jpeg">
+              <img width="300" height="260" src="./media/guia-acceso-universidad.jpg" loading="lazy" decoding="async"
+                alt="imagen post guia acceso universidad">
+            </picture>
+            <div class="guias__title h5 h5--details">
+              <p class="guias__p">Acceso</p>
+              <p class="guias__p">15 min</p>
+            </div>
+            <h3 class="h4">Guía de Acceso a la Universidad</h3>
+            <p class="guias__button">Leer guía<i class="ri-arrow-right-line icon" aria-hidden="true"></i></p>
+          </a>
+          <a class="guias__card" title="guia sobre las becas y ayudas para estudiantes"
+            href="./guias/becas-y-ayudas.html">
+            <picture class="guias__picture">
+              <source srcset="./media/becas-y-ayudas-al-estudio-en-espana.webp" type="image/webp">
+              <source srcset="./media/becas-y-ayudas-al-estudio-en-espana.jpeg" type="image/jpeg">
+              <img width="300" height="260" src="./media/becas-y-ayudas-al-estudio-en-espana.jpg" loading="lazy"
+                decoding="async" alt="imagen post becas y ayudas al estudio en españa">
+            </picture>
+            <div class="guias__title h5 h5--details">
+              <p class="guias__p">Financiación</p>
+              <p class="guias__p">11 min</p>
+            </div>
+            <h3 class="h4">Becas y Ayudas al Estudio en España</h3>
+            <p class="guias__button">Leer guía<i class="ri-arrow-right-line icon" aria-hidden="true"></i></p>
+          </a>
+        </div>
+      </div>
+      <!-- FIN: Sección Guías para Estudiantes -->
+    </section>
+    <!-- INICIO: Banner CTA
+            Funcionalidad: Invita al usuario a explorar todas las universidades organizadas por comunidad autónoma.
+          -->
+    <div class="banner">
+      <div class="banner__block block-3xl">
+        <p class="h2"> Tu futuro acádemico
+          <span class="banner__highlight">empieza aquí</span>
+        </p>
+        <a class="btn btn--red btn--red--block" href="./por-ccaa.html"
+          title="pagina todas las universidades por ccaa">Explorar universidades</a>
+      </div>
+      <!-- FIN: Banner CTA -->
+    </div>
+    <!-- FIN: Contenido Principal-->
+  </main>
+
+  <!-- INICIO: Footer                                                 
+            Funcionalidad: Contiene información corporativa y enlaces de Navegación secundarios del sitio web.
+        -->
+  <footer class="footer">
+    <div class="footer__block block-3xl">
+      <div class="footer__navegation">
+        <div class="footer__column">
+          <!-- Elemento complejo
+                            Se utiliza <picture> para ofrecer el logotipo en formato SVG cuando el navegador lo soporta.
+                            El atributo loading="lazy" retrasa la carga de la imagen hasta que el usuario está próximo a visualizarla, mejorando el rendimiento de la página.
+                        -->
+          <picture class="header__picture">
+            <source srcset="../media/logotipo-rojo-universidades.svg" type="image/svg+xml">
+            <img width="245" height="29" class="header__logo" src="./media/logotipo-rojo-universidades.png"
+              alt="logotipo rojo universidadES" loading="lazy">
+          </picture>
+          <p class="p p--secondary">El portal de referencia para estudiantes que buscan información
+            universitaria en España.</p>
+        </div>
+        <div class="footer__column">
+          <p class="footer__title h4">Explorar</p>
+          <ul class="footer__ul">
+            <li class="p p--secondary"><a href="./por-ccaa.html" title="universidades por comunidad autonoma">Por
+                Comunidad Autónoma</a></li>
+            <li class="p p--secondary"><a href="./tipos.html"
+                title="universidades publicas y privadas en españa">Universidades Públicas y Privadas en
+                España</a></li>
+            <li class="p p--secondary"><a href="./rankings.html" title="rankings de universidades españolas">Rankings
+                Universitarios</a></li>
+          </ul>
+        </div>
+        <div class="footer__column">
+          <p class="footer__title h4">Rankings</p>
+          <ul class="footer__ul">
+            <li class="p p--secondary"><a href="./rankings/qs-world-university-rankings.html"
+                title="ranking qs world university">QS World University</a></li>
+            <li class="p p--secondary"><a href="./rankings/times-higher-education-world-university.html"
+                title="times higher education world university">Times Higher Education World
+                University</a></li>
+            <li class="p p--secondary"><a href="./rankings/arwu.html" title="ranking shangai arwu">Shanghai
+                ARWU</a></li>
+            <li class="p p--secondary"><a href="./rankings/us-news.html" title="ranking us new global">U.S.
+                News Global</a></li>
+          </ul>
+        </div>
+        <div class="footer__column">
+          <p class="footer__title h4">Guías</p>
+          <ul class="footer__ul">
+            <li class="p p--secondary"><a href="./guias/como-elegir-universidad.html"
+                title="guia sobre como elegir una universidad">¿Cómo elegir una universidad en
+                España?</a></li>
+            <li class="p p--secondary"><a href="./guias/publicas-vs-privadas.html"
+                title="guia sobre universidades publicas y privadas">Universidades Públicas vs
+                Privadas</a></li>
+            <li class="p p--secondary"><a href="./guias/acceso-a-la-universidad.html"
+                title="guia de acceso a la universidad">Guía de acceso a las universidades españolas</a>
+            </li>
+            <li class="p p--secondary"><a href="./guias/becas-y-ayudas.html"
+                title="guia de becas y ayudas para estudiar en españa">Guía de todas las becas y ayudas
+                en España</a></li>
+          </ul>
+        </div>
+      </div>
+      <p class="p p--secondary">© 2026 Universidades España · Información orientativa, sin carácter oficial</p>
+    </div>
+  </footer>
+  <!--FIN: Footer-->
+</body>
+
+</html>

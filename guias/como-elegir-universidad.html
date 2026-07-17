@@ -1,0 +1,470 @@
+<!--
+ESTRUCTURA GENERAL DEL DOCUMENTO
+Esta página muestra una guía informativa sobre cómo elegir una universidad en España.
+La estructura del documento es la siguiente:
+    - Imagen principal de la guía.
+    - Introducción:
+        - Botón para volver al listado de guías.
+        - Autor y fecha de publicación.
+        - Tiempo de lectura.
+        - Categoría.
+        - Título.
+        - Descripción introductoria.
+    - Contenido principal:
+        - Tabla de contenidos.
+        - Desarrollo de la guía.
+        - Preguntas frecuentes.
+    - Información complementaria:
+        - Resumen de la guía.
+        - Enlaces internos relacionados.
+    - Guías relacionadas.
+    - Footer con navegación secundaria e información corporativa.
+-->
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¿Cómo elegir tu universidad en España? | Guía 2026</title>
+    <meta name="description"
+        content="Descubre cómo elegir la universidad adecuada en España. Analizamos ubicación, prestigio, empleabilidad, costes y otros factores clave para tomar una decisión">
+    <link rel="canonical" href="#">
+    <link rel="stylesheet" href="../css/index.css">
+    <script defer src="../js/index.js"></script>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.9.1/fonts/remixicon.min.css">
+    <link rel="icon" type="image/svg+xml" href="../media/logotipo-rojo-universidades.svg">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+        rel="stylesheet">
+    <meta property="og:site_name" content="UniversidadES">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="#">
+    <meta property="og:title" content="¿Cómo elegir tu universidad en España? | Guía 2026">
+    <meta property="og:description"
+        content="Descubre cómo elegir la universidad adecuada en España. Analizamos ubicación, prestigio, empleabilidad, costes y otros factores clave para tomar una decisión">
+    <meta property="og:image" content="#">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:description"
+        content="Descubre cómo elegir la universidad adecuada en España. Analizamos ubicación, prestigio, empleabilidad, costes y otros factores clave para tomar una decisión">
+    <meta name="twitter:title" content="¿Cómo elegir tu universidad en España? | Guía 2026">
+    <meta name="twitter:url" content="#">
+    <meta name="twitter:image" content="#">
+</head>
+
+<body>
+    <!-- INICIO: Header 
+        Funcionalidad: Contiene el logotipo del sitio, el menú de navegación principal y el botón para desplegar el menú móvil 
+    -->
+    <header class="header">
+        <div class="header__block block-3xl">
+            <a href="../index.html" title="home">
+                <!-- Picture: Elemento complejo
+                Se utiliza <picture> para permitir diferentes formatos de imagen, priorizando SVG cuando el navegador lo soporta.
+                También se utiliza el elemento complejo: fetchpriority="high" 
+                indica al navegador que priorice la descarga del logotipo al formar parte del contenido visible al cargar la página.
+            -->
+                <picture class="header__picture">
+                    <source srcset="../media/logotipo-rojo-universidades.svg" type="image/svg+xml">
+                    <img width="245" height="29" class="header__logo" src="../media/logotipo-rojo-universidades.png"
+                        alt="logotipo rojo universidadES" fetchpriority="high">
+                </picture>
+            </a>
+            <nav id="headerNav" class="header__nav" aria-label="main navigation">
+                <ul class="header__ul">
+                    <li class="header__li"><a class="header__a" title="pagina de universidades por comunidad autonoma"
+                            href="../por-ccaa.html">Por Comunidad</a>
+                    </li>
+                    <li class="header__li"><a class="header__a" title="pagina de universidades por tipos"
+                            href="../tipos.html">Tipos</a>
+                    </li>
+                    <li class="header__li"><a class="header__a" title="pagina de universidades por rankings"
+                            href="../rankings.html">Rankings</a>
+                    </li>
+                    <li class="header__li"><a class="header__a" title="guias para universitarios"
+                            href="../guias.html">Guías</a>
+                    </li>
+                    <li class="header__li"><a title="buscador de universidades" class="btn btn--red header__cta"
+                            href="/index.html#hero__home"><i class="ri-search-line icon" aria-hidden="true"></i>busca tu CCAA</a>
+                    </li>
+                </ul>
+            </nav>
+            <!-- Elemento complejo
+                El botón controla la apertura y cierre del menú de navegación en dispositivos móviles mediante JavaScript.
+                    - aria-expanded indica el estado del menú.
+                    - aria-controls relaciona el botón con el elemento <nav> 
+            -->
+            <button class="header__button" aria-expanded="false" aria-controls="headerNav"
+                aria-label="Abrir menú de navegación" title="menu de navegacion en mobile">
+                <i class="ri-menu-line header__toggle-icon header__toggle-icon--open" aria-hidden="true"></i>
+            </button>
+        </div>
+    </header>
+    <!--FIN: Header-->
+    <!-- INICIO: Main
+            Funcionalidad: Contiene todo el contenido principal de la guía,incluyendo la imagen destacada, introducción, artículo, contenido relacionado y guías relacionadas.
+        -->
+    <main>
+        <!-- INICIO: Imagen principal                                                   
+            Funcionalidad: Imagen destacada del post
+        -->
+        <picture class="picture__header">
+            <source srcset="../media/como-elegir-tu-universidad.webp" type="image/webp">
+            <source srcset="../media/como-elegir-tu-universidad.jpeg" type="image/jpeg">
+            <img width="1600" height="380" src="../media/como-elegir-tu-universidad.jpg" loading="eager"
+                fetchpriority="high" alt="imagen post como elegir tu universidad en espana">
+        </picture>
+        <!-- FIN: Imagen principal -->
+        <!-- INICIO: Hero                                                   
+            Funcionalidad: Presenta información general del post:
+            - Autor 
+            - Tiempo de lectura
+            - Categoría
+            - Titulo
+            - Pequeña descripción
+        -->
+        <section class="hero__section">
+            <div class="block block-4xl">
+                <a class="btn btn--arrow" href="/guias.html" title="todas las guias para universitarios"><i
+                        class="ri-arrow-left-line icon" aria-hidden="true"></i>Todas las guías para universitarios</a>
+                <div class="introduction__info">
+                    <p class="p--secondary">Equipo Editorial · 15 de septiembre de 2024</p>
+                    <p class="p--secondary"><i class="ri-time-line icon"></i>12 min</p>
+                    <p class="guias__news">Orientación</p>
+
+                </div>
+                <h1 class="h2">Cómo Elegir tu Universidad</h1>
+                <p class="p--georgia p--secondary">Una guía completa para tomar la mejor decisión académica de tu vida
+                </p>
+            </div>
+        </section>
+        <!-- FIN: Hero -->
+        <!-- INICIO: Artículo principal
+            Funcionalidad: Agrupa todo el contenido principal de la guía:
+            - Tabla de contenidos.
+            - Desarrollo del artículo.
+            - Preguntas frecuentes.
+            - Información complementaria.
+        -->
+        <article class="content">
+            <div class="content__block block-4xl">
+                <!-- INICIO: Cuerpo del artículo
+                Funcionalidad: Agrupa el índice de contenidos, el texto principal y las preguntas frecuentes.
+                -->
+                <div class="content__body">
+                    <!-- INICIO: Tabla de contenidos
+                        Funcionalidad: Permite al usuario conocer la estructura del artículo y navegar rápidamente por sus apartados.
+                    -->
+                    <div class="table__content">
+                        <p class="h5 h5--secondary">Tabla de Contenidos</p>
+                        <ul class="table__list">
+                            <li class="table__li">
+                                <p class="p--georgia p--details">01</p>
+                                <p>Define tus objetivos académicos</p>
+                            </li>
+                            <li class="table__li">
+                                <p class="p--georgia p--details">02</p>
+                                <p>Evalúa la reputación y acreditaciones</p>
+                            </li>
+                            <li class="table__li">
+                                <p class="p--georgia p--details">03</p>
+                                <p>Considera la ubicación y el coste de vida</p>
+                            </li>
+                            <li class="table__li">
+                                <p class="p--georgia p--details">04</p>
+                                <p>Investiga las tasas de empleabilidad</p>
+                            </li>
+                            <li class="table__li">
+                                <p class="p--georgia p--details">05</p>
+                                <p>Visita los campus</p>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- Termina la tabla de contenidos-->
+                    <!--INICIO: Contenido del artículo
+                        Funcionalidad: Muestra el desarrollo completo de la guía organizado en diferentes apartados.
+                    -->
+                    <div class="article__section">
+                        <ul class="content__list">
+                            <li class="content__li">
+                                <div class="li__title">
+                                    <p class="h3 h3--primary">01</p>
+                                    <p class="h3">Define tus objetivos académicos</p>
+                                </div>
+                                <p class="p--secondary">Antes de comparar universidades, clarifica qué carrera quieres
+                                    estudiar y qué esperas de la experiencia universitaria. La oferta de grados, la
+                                    especialización y la calidad del profesorado son factores determinantes.</p>
+                            </li>
+                            <li class="content__li">
+                                <div class="li__title">
+                                    <p class="h3 h3--primary">02</p>
+                                    <p class="h3">Evalúa la reputación y acreditaciones</p>
+                                </div>
+                                <p class="p--secondary">Consulta los rankings nacionales e internacionales, pero también
+                                    verifica que los títulos estén homologados y que la universidad cuente con las
+                                    acreditaciones de calidad pertinentes (ANECA, AQU, etc.).</p>
+                            </li>
+                            <li class="content__li">
+                                <div class="li__title">
+                                    <p class="h3 h3--primary">03</p>
+                                    <p class="h3">Considera la ubicación y el coste de vida</p>
+                                </div>
+                                <p class="p--secondary">Estudiar en una ciudad grande ofrece más oportunidades de
+                                    networking y empleo, pero el coste de vida puede ser significativamente mayor.
+                                    Calcula el presupuesto total incluyendo matrícula, alojamiento, alimentación y
+                                    transporte.</p>
+                            </li>
+
+                            <li class="content__li">
+                                <div class="li__title">
+                                    <p class="h3 h3--primary">04</p>
+                                    <p class="h3">Investiga las tasas de empleabilidad</p>
+                                </div>
+                                <p class="p--secondary">Las estadísticas de inserción laboral de los graduados son uno
+                                    de los indicadores más importantes de la calidad real de una universidad. Compara
+                                    estos datos entre instituciones.</p>
+                            </li>
+
+                            <li class="content__li">
+                                <div class="li__title">
+                                    <p class="h3 h3--primary">05</p>
+                                    <p class="h3">Visita los campus</p>
+                                </div>
+                                <p class="p--secondary">Las jornadas de puertas abiertas son imprescindibles. Habla con
+                                    estudiantes actuales, conoce las instalaciones y evalúa el ambiente general del
+                                    campus.</p>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- FIN: Contenido del artículo -->
+                    <!-- INICIO: Preguntas frecuentes
+                        Funcionalidad: Responde las dudas más habituales relacionadas con el contenido de la guía.
+                    -->
+                    <div class="content__faqs">
+                        <h2 class="h3">Preguntas Frecuentes</h2>
+                        <div class="highlighted-box highlighted-box--guias">
+                            <h3 class="h4">¿Es mejor una universidad pública o privada?</h3>
+                            <p class="p--secondary">Las universidades públicas españolas son financiadas principalmente
+                                por el Estado y las Comunidades Autónomas. Sus tasas académicas están reguladas y son
+                                significativamente más bajas que en el sector privado. Dominan los rankings
+                                internacionales de investigación y suelen tener mayor número de estudiantes y mayor
+                                variedad de titulaciones.</p>
+                        </div>
+                        <div class="highlighted-box highlighted-box--guias">
+                            <h3 class="h4">¿Cuánto importan los rankings?</h3>
+                            <p class="p--secondary">Los rankings son útiles como referencia, pero no deben ser el único
+                                criterio. La adecuación del programa a tus objetivos, la calidad docente y las
+                                oportunidades prácticas son igualmente importantes.</p>
+                        </div>
+                        <div class="highlighted-box highlighted-box--guias">
+                            <h3 class="h4">¿Puedo cambiar de universidad después del primer año?</h3>
+                            <p class="p--secondary">Sí, es posible mediante el proceso de traslado de expediente, aunque
+                                implica ciertas condiciones y puede conllevar pérdida de créditos reconocidos.</p>
+                        </div>
+                        <!-- FIN: Preguntas frecuentes -->
+                    </div>
+                </div>
+                <!-- INICIO: Información complementaria
+                        Funcionalidad: Muestra contenido de apoyo mientras el usuario consulta la guía:
+                        - Resumen.
+                        - Enlaces relacionados.
+                    -->
+                <div class="content__cards">
+                    <!--INICIO: Resumen de la guía
+                                Funcionalidad: Resume el objetivo principal del artículo y proporciona contexto adicional al lector.
+                            -->
+                    <div class="content__about">
+                        <p class="h5">Sobre esta guía</p>
+                        <p>Elegir la universidad adecuada es una de las decisiones más importantes de tu vida académica
+                            y profesional. Esta guía te ayudará a evaluar todos los factores clave.</p>
+
+                    </div>
+                    <!-- FIN: Resumen de la guía -->
+                    <!-- INICIO: Enlaces relacionados
+                                Funcionalidad: Facilita la navegación hacia otras páginas relacionadas dentro del sitio web.
+                            -->
+                    <div class="content__related">
+                        <p class="h5">Explorar también</p>
+                        <a class="content__a" title="guia de acceso a la universidad" href="../por-ccaa.html">
+                            <p>Universidades por CCAA</p>
+                            <i class="ri-arrow-drop-right-line icon"></i>
+                        </a>
+                        <a class="content__a" title="rankings universitarios en españa" href="../rankings.html">
+                            <p>Rankings universitarios</p>
+                            <i class="ri-arrow-drop-right-line icon p"></i>
+                        </a>
+                        <a class="content__a" title="tipos de universidades en españa" href="../tipos.html">
+                            <p>Tipos de universidad</p>
+                            <i class="ri-arrow-drop-right-line icon"></i>
+                        </a>
+                        <!-- FIN: Enlaces relacionados -->
+                    </div>
+                    <!-- FIN: Información complementaria -->
+                </div>
+                <!-- FIN: Cuerpo del artículo -->
+            </div>
+            <!-- FIN: Artículo principal -->
+        </article>
+
+
+
+        <!-- INICIO: Guías relacionadas
+                Funcionalidad:Presenta otras guías del sitio mediante un grid de tarjetas para fomentar la navegación interna.
+            -->
+        <section class="guias__related">
+            <div class="related__block block-4xl">
+                <h2 class="h3">Guías relacionadas</h2>
+
+
+                <div class="guias__grid">
+                    <a class="guias__card" href="./guias/como-elegir-universidad.html"
+                        title="guia sobre como elegir una universidad en españa">
+                        <picture class="guias__picture">
+                            <source srcset="../media/como-elegir-tu-universidad.webp" type="image/webp">
+                            <source srcset="../media/como-elegir-tu-universidad.jpeg" type="image/jpeg">
+                            <img width="360" height="202" src="../media/como-elegir-tu-universidad.jpg" loading="lazy"
+                                decoding="async" alt="imagen post como elegir tu universidad en espana">
+                        </picture>
+                        <div class="guias__title">
+                            <p class="guias__news"><i class="ri-bard-line"></i>Nueva</p>
+                            <div class="guias__badges">
+                                <p class="guias__category">Orientación</p>
+                                <p class="p--secondary"><i class="ri-time-line icon" aria-hidden="true"></i>12 min</p>
+                            </div>
+                        </div>
+                        <h3 class="h4">¿Cómo acceder a la universidad?</h3>
+                        <p class="p--secondary">Elegir la universidad adecuada es una de las decisiones más importantes
+                            de tu vida académica y profesional</p>
+                        <!-- Este elemento aparece oculto de manera inicial en el grid y se muestra despues de que el usuario haga hover-->
+                        <p class="guias__button">Leer guía<i class="ri-arrow-right-line" aria-hidden="true"></i></p>
+                    </a>
+                    <a class="guias__card" href="./guias/publicas-vs-privadas.html"
+                        title="guias sobre las universidades publicas y privadas en españa">
+                        <picture class="guias__picture">
+                            <source srcset="../media/universidades-publicas-privadas.webp" type="image/webp">
+                            <source srcset="../media/universidades-publicas-privadas.jpeg" type="image/jpeg">
+                            <img width="360" height="202" src="../media/universidades-publicas-privadas.jpg"
+                                loading="lazy" decoding="async" alt="imagen post universidades publicas y privadas">
+                        </picture>
+                        <div class="guias__title">
+                            <div class="guias__badges">
+                                <p class="guias__category">Comparativa</p>
+                                <p class="p--secondary"><i class="ri-time-line icon" aria-hidden="true"></i>9 min</p>
+                            </div>
+                        </div>
+                        <h3 class="h4">Universidades Públicas vs. Privadas en España</h3>
+                        <p class="p--secondary">España cuenta con una dualidad universitaria entre el sistema público y
+                            el privado. Conoce las diferencias fundamentales…</p>
+                        <p class="guias__button">Leer guía<i class="ri-arrow-right-line icon" aria-hidden="true"></i>
+                        </p>
+                    </a>
+                    <a class="guias__card" href="./guias/acceso-a-la-universidad.html"
+                        title="guia de acceso a la universidad española">
+                        <picture class="guias__picture">
+                            <source srcset="../media/guia-acceso-universidad.webp" type="image/webp">
+                            <source srcset="../media/guia-acceso-universidad.jpeg" type="image/jpeg">
+                            <img width="360" height="202" src="../media/guia-acceso-universidad.jpg" loading="lazy"
+                                decoding="async" alt="imagen post guia acceso universidad">
+                        </picture>
+                        <div class="guias__title">
+                            <div class="guias__badges">
+                                <p class="guias__category">Orientación</p>
+                                <p class="p--secondary"><i class="ri-time-line icon"></i>15 min</p>
+                            </div>
+                        </div>
+                        <h3 class="h4">Guía de Acceso a la Universidad</h3>
+                        <p class="p--secondary">Comprende el sistema de acceso a la universidad en España: EBAU,
+                            ponderaciones, notas de corte y otras vías alternativas…</p>
+                        <p class="guias__button">Leer guía<i class="ri-arrow-right-line icon" aria-hidden="true"></i>
+                        </p>
+                    </a>
+                    <!-- FIN: Grid de guías relacionadas -->
+                </div>
+            </div>
+            <!-- FIN: Guías relacionadas -->
+        </section>
+        <!-- FIN: Main -->
+    </main>
+    <!-- INICIO: Footer                                                 
+            Funcionalidad: Contiene información corporativa y enlaces de Navegación secundarios del sitio web.
+    -->
+    <footer class="footer">
+        <div class="footer__block block-3xl">
+            <div class="footer__navegation">
+                <div class="footer__column">
+                    <!-- Elemento complejo
+                    Se utiliza <picture> para ofrecer el logotipo en formato SVG cuando el navegador lo soporta.
+                    El atributo loading="lazy" retrasa la carga de la imagen hasta que el usuario está próximo a visualizarla, mejorando el rendimiento de la página.
+                -->
+                    <picture class="header__picture">
+                        <source srcset="../media/logotipo-rojo-universidades.svg" type="image/svg+xml">
+                        <img width="245" height="29" class="header__logo" src="../media/logotipo-rojo-universidades.png"
+                            alt="logotipo rojo universidadES" loading="lazy">
+                    </picture>
+                    <p class="p p--secondary">El portal de referencia para estudiantes que buscan información
+                        universitaria en España.</p>
+                </div>
+                <div class="footer__column">
+                    <p class="footer__title h4">Explorar</p>
+                    <ul class="footer__ul">
+                        <li class="p p--secondary"><a href="../por-ccaa.html"
+                                title="universidades por comunidad autonoma">Por Comunidad Autónoma</a>
+                        </li>
+                        <li class="p p--secondary"><a href="../tipos.html"
+                                title="universidades publicas y privadas en españa">Universidades Públicas y Privadas en
+                                España</a>
+                        </li>
+                        <li class="p p--secondary"><a href="../rankings.html"
+                                title="rankings de universidades españolas">Rankings Universitarios</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="footer__column">
+                    <p class="footer__title h4">Rankings</p>
+                    <ul class="footer__ul">
+                        <li class="p p--secondary"><a href="../rankings/qs-world-university-rankings.html"
+                                title="ranking qs world university">QS World University</a>
+                        </li>
+                        <li class="p p--secondary"><a href="../rankings/times-higher-education-world-university.html"
+                                title="times higher education world university">Times Higher Education World
+                                University</a>
+                        </li>
+                        <li class="p p--secondary"><a href="../rankings/arwu.html" title="ranking shangai arwu">Shanghai
+                                ARWU</a>
+                        </li>
+                        <li class="p p--secondary"><a href="../rankings/us-news.html" title="ranking us new global">U.S.
+                                News Global</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="footer__column">
+                    <p class="footer__title h4">Guías</p>
+                    <ul class="footer__ul">
+                        <li class="p p--secondary"><a href="../guias/como-elegir-universidad.html"
+                                title="guia sobre como elegir una universidad">¿Cómo elegir una universidad en
+                                España?</a>
+                        </li>
+                        <li class="p p--secondary"><a href="../guias/publicas-vs-privadas.html"
+                                title="guia sobre universidades publicas y privadas">Universidades Públicas vs
+                                Privadas</a>
+                        </li>
+                        <li class="p p--secondary"><a href="../guias/acceso-a-la-universidad.html"
+                                title="guia de acceso a la universidad">Guía de acceso a las universidades españolas</a>
+                        </li>
+                        <li class="p p--secondary"><a href="../guias/becas-y-ayudas.html"
+                                title="guia de becas y ayudas para estudiar en españa">Guía de todas las becas y ayudas
+                                en España</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <p class="p p--secondary">© 2026 Universidades España · Información orientativa, sin carácter oficial</p>
+        </div>
+    </footer>
+    <!--FIN: Footer-->
+</body>
+
+</html>

@@ -1,0 +1,351 @@
+<!--
+ESTRUCTURA GENERAL DEL DOCUMENTO
+Esta página recopila el ranking universitario que hace el U.S. News Best Global Universities
+Su estructura se compone de:
+- Cabecera con el menú de navegación principal.
+- Hero con el título y una breve descripción.
+- Contenido principal:
+    - Listado de universidades según el ranking. Diferenciamos entre: el número en el podium, el nombre de la universidad, 
+    la ciudad española y la posición que ocupa la universidad en el ranking,
+    - A su vez, encontramos un apartado que explica la metodología que se utiliza para realizar el ranking, que acompaña
+    al scroll del usuario 
+    - Sección con enlaces a los otros rankings dentro del dominio
+    - Pie de página con enlaces de navegación e información del sitio.
+-->
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clasificación de universidades españolas según el U.S. News</title>
+    <meta name="description"
+        content="¿Cómo clasifica el ranking U.S. News a las universidades españolas?  Consulta el top 10 de las universidades de España en 2026 según este ranking educativo.">
+    <link rel="canonical" href="#">
+    <link rel="stylesheet" href="../css/index.css">
+    <script defer src="../js/index.js"></script>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.9.1/fonts/remixicon.min.css">
+    <link rel="icon" type="image/svg+xml" href="../media/logotipo-rojo-universidades.svg">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+        rel="stylesheet">
+    <meta property="og:site_name" content="UniversidadES">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="#">
+    <meta property="og:title" content="Clasificación de universidades españolas según el U.S. News">
+    <meta property="og:description"
+        content="¿Cómo clasifica el ranking U.S. News a las universidades españolas?  Consulta el top 10 de las universidades de España en 2026 según este ranking educativo.">
+    <meta property="og:image" content="#">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:description"
+        content="¿Cómo clasifica el ranking U.S. News a las universidades españolas?  Consulta el top 10 de las universidades de España en 2026 según este ranking educativo.">
+    <meta name="twitter:title" content="Clasificación de universidades españolas según el U.S. News">
+    <meta name="twitter:url" content="#">
+    <meta name="twitter:image" content="#">
+</head>
+
+<body>
+    <!-- INICIO: Header 
+            Funcionalidad: Contiene el logotipo del sitio, el menú de navegación principal y el botón para desplegar el menú móvil 
+        -->
+    <header class="header">
+        <div class="header__block block-3xl">
+            <a href="../index.html" title="home">
+                <!-- Picture: Elemento complejo
+                Se utiliza <picture> para permitir diferentes formatos de imagen, priorizando SVG cuando el navegador lo soporta.
+                También se utiliza el elemento complejo: fetchpriority="high" 
+                indica al navegador que priorice la descarga del logotipo al formar parte del contenido visible al cargar la página.
+            -->
+                <picture class="header__picture">
+                    <source srcset="../media/logotipo-rojo-universidades.svg" type="image/svg+xml">
+                    <img width="245" height="29" class="header__logo" src="../media/logotipo-rojo-universidades.png"
+                        alt="logotipo rojo universidadES" fetchpriority="high">
+                </picture>
+            </a>
+            <nav id="headerNav" class="header__nav" aria-label="main navigation">
+                <ul class="header__ul">
+                    <li class="header__li"><a class="header__a" title="pagina de universidades por comunidad autonoma"
+                            href="../por-ccaa.html">Por Comunidad</a></li>
+                    <li class="header__li"><a class="header__a" title="pagina de universidades por tipos"
+                            href="../tipos.html">Tipos</a></li>
+                    <li class="header__li"><a class="header__a" title="pagina de universidades por rankings"
+                            href="../rankings.html">Rankings</a></li>
+                    <li class="header__li"><a class="header__a" title="guias para universitarios"
+                            href="../guias.html">Guías</a></li>
+                    <li class="header__li"><a title="buscador de universidades" class="btn btn--red header__cta" href="/index.html#hero__home"><i
+                                class="ri-search-line icon" aria-hidden="true"></i>busca tu CCAA</a></li>
+                </ul>
+            </nav>
+            <!-- Elemento complejo
+                El botón controla la apertura y cierre del menú de navegación en dispositivos móviles mediante JavaScript.
+                    - aria-expanded indica el estado del menú.
+                    - aria-controls relaciona el botón con el elemento <nav> 
+            -->
+            <button class="header__button" aria-expanded="false" aria-controls="headerNav"
+                aria-label="Abrir menú de navegación" title="menu de navegacion en mobile">
+                <i class="ri-menu-line header__toggle-icon header__toggle-icon--open" aria-hidden="true"></i>
+            </button>
+        </div>
+    </header>
+    <!--Finish Header-->
+    <main>
+        <!--Hero-->
+        <section class="hero__section">
+            <div class="block block-3xl">
+                <a class="btn btn--arrow" href="../rankings.html" title="pagina con todos los rankings educativos"><i
+                        class="ri-arrow-left-line icon" aria-hidden="true"></i>Todos los rankings</a>
+                <h1>U.S. News Best Global Universities</h1>
+                <p class="p--secondary">El ranking global de U.S. News evalúa las universidades por su desempeño en
+                    investigación y reputación académica, siendo una referencia especialmente valorada en el ámbito
+                    anglosajón.</p>
+            </div>
+        </section>
+        <!-- FIN: Hero -->
+        <!-- INICIO: Listado de universidades según el U.S. News Best Global Universities                           
+                Funcionalidad: Muestra el ranking de universidades que hace esta entidad. Cada fila representa una universidad,
+                en la que se incluye información sobre: 
+                    - El número en el podium
+                    - El nombre de la universidad
+                    - La ciudad española
+                    - La posición que ocupa la universidad en el ranking,
+                Dentro de esta sección, se incluye también información sobre la metodología que aplica la entidad que hace el ranking.
+                Este bloque permanece visible mientras el usuario realiza scroll para facilitar la consulta de la metodología.                
+                Está formado por:
+                    - Un listado de todos los puntos más importantes
+                    - El nombre de la entidad que realiza el ranking
+            -->
+        <section class="ranking__page">
+            <div class="ranking__page--block block-3xl">
+                <h2 class="h3">U.S. News Best Global Universities · Edición 2026</h2>
+                <ul class="ranking__list">
+                    <li class="ranking__item">
+                        <p class="h2 h2--secondary">1</p>
+                        <p class="badge">#128</p>
+                        <div class="ranking__info">
+                            <h3 class="ranking__name h4">Universitat de Barcelona</h3>
+                            <p>Barcelona</p>
+                        </div>
+                        <div class="ranking__score">
+                            <p>58.4</p>
+                        </div>
+                    </li>
+                    <li class="ranking__item">
+                        <p class="h2 h2--secondary">2</p>
+                        <p class="badge">#165</p>
+                        <div class="ranking__info">
+                            <h3 class="ranking__name h4">Universitat Autònoma de Barcelona</h3>
+                            <p>Barcelona</p>
+                        </div>
+                        <div class="ranking__score">
+                            <p>72.1</p>
+                        </div>
+                    </li>
+                    <li class="ranking__item">
+                        <p class="h2 h2--secondary">3</p>
+                        <p class="badge">#181</p>
+                        <div class="ranking__info">
+                            <h3 class="ranking__name h4">Universidad Autónoma de Madrid</h3>
+                            <p>Madrid</p>
+                        </div>
+                        <div class="ranking__score">
+                            <p>68.4</p>
+                        </div>
+                    </li>
+                    <li class="ranking__item">
+                        <p class="h2 h2--secondary">4</p>
+                        <p class="badge">#201</p>
+                        <div class="ranking__info">
+                            <h3 class="ranking__name h4">Universidad Complutense de Madrid</h3>
+                            <p>Madrid</p>
+                        </div>
+                        <div class="ranking__score">
+                            <p>66.2</p>
+                        </div>
+                    </li>
+                    <li class="ranking__item">
+                        <p class="h2 h2--secondary">5</p>
+                        <p class="badge">#228</p>
+                        <div class="ranking__info">
+                            <h3 class="ranking__name h4">Universitat Politècnica de Catalunya</h3>
+                            <p>Barcelona</p>
+                        </div>
+                        <div class="ranking__score">
+                            <p>63.8</p>
+                        </div>
+                    </li>
+                    <li class="ranking__item">
+                        <p class="h2 h2--secondary">6</p>
+                        <p class="badge">#247</p>
+                        <div class="ranking__info">
+                            <h3 class="ranking__name h4">Universidad de Granada</h3>
+                            <p>Granada</p>
+                        </div>
+                        <div class="ranking__score">
+                            <p>61.5</p>
+                        </div>
+                    </li>
+                    <li class="ranking__item">
+                        <p class="h2 h2--secondary">7</p>
+                        <p class="badge">#265</p>
+                        <div class="ranking__info">
+                            <h3 class="ranking__name h4">Universitat Pompeu Fabra</h3>
+                            <p>Barcelona</p>
+                        </div>
+                        <div class="ranking__score">
+                            <p>59.3</p>
+                        </div>
+                    </li>
+                    <li class="ranking__item">
+                        <p class="h2 h2--secondary">8</p>
+                        <p class="badge">#289</p>
+                        <div class="ranking__info">
+                            <h3 class="ranking__name h4">Universidad de Sevilla</h3>
+                            <p>Sevilla</p>
+                        </div>
+                        <div class="ranking__score">
+                            <p>55.4</p>
+                        </div>
+                    </li>
+                    <li class="ranking__item">
+                        <p class="h2 h2--secondary">9</p>
+                        <p class="badge">#312</p>
+                        <div class="ranking__info">
+                            <h3 class="ranking__name h4">Universidad de Salamanca</h3>
+                            <p>Salamanca</p>
+                        </div>
+                        <div class="ranking__score">
+                            <p>53.1</p>
+                        </div>
+                    </li>
+                    <li class="ranking__item">
+                        <p class="h2 h2--secondary">10</p>
+                        <p class="badge">#334</p>
+                        <div class="ranking__info">
+                            <h3 class="ranking__name h4">Universitat de València</h3>
+                            <p>Valencia</p>
+                        </div>
+                        <div class="ranking__score">
+                            <p>51.6</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="ranking__method">
+                <h2 class="h4">Metodología</h2>
+                <ul class="ranking__items">
+                    <li><i class="ri-checkbox-circle-line icon p p--details" aria-hidden="true"></i>Reputación académica
+                        global (12.5%)</li>
+                    <li><i class="ri-checkbox-circle-line icon p p--details" aria-hidden="true"></i>Reputación regional
+                        (12.5%)</li>
+                    <li><i class="ri-checkbox-circle-line icon p p--details" aria-hidden="true"></i>Publicaciones de
+                        investigación (10%)</li>
+                    <li><i class="ri-checkbox-circle-line icon p p--details" aria-hidden="true"></i>Libros (2.5%)</li>
+                    <li><i class="ri-checkbox-circle-line icon p p--details" aria-hidden="true"></i>Conferencias (2.5%)
+                    </li>
+                    <li><i class="ri-checkbox-circle-line icon p p--details" aria-hidden="true"></i>Citas de
+                        investigación (27.5%)</li>
+                    <li><i class="ri-checkbox-circle-line icon p p--details" aria-hidden="true"></i>Normalización de
+                        citas (10%)</li>
+                    <li><i class="ri-checkbox-circle-line icon p p--details" aria-hidden="true"></i>Publicaciones en el
+                        10% más citado (12.5%)</li>
+                    <li><i class="ri-checkbox-circle-line icon p p--details" aria-hidden="true"></i>Colaboración
+                        internacional (10%)</li>
+                </ul>
+                <div class="ranking__source">
+                    <p>Fuente oficial</p>
+                    <p class="p--secondary">U.S. News & World Report</p>
+                </div>
+            </div>
+        </section>
+        <!-- FIN: Listado de universidades según el ranking U.S. News Best Global Universities-->
+        <!-- INICIO: Rankings relacionados
+                Funcionalidad: Contiene información corporativa y enlaces de navegación secundarios del sitio web.
+            -->
+        <section class="related__links">
+            <div class="related__links-block block-3xl">
+                <h2 class="h5">Otros rankings</h2>
+                <ul class="related__links-list">
+                    <li class="related__links-li"><a href="./qs-world-university-rankings.html"
+                            title="Página de ranking QS World University">QS World University</a></li>
+                    <li class="related__links-li"><a href="./times-higher-education-world-university.html"
+                            title="Página de ranking de Times Higher Education">Times Higher Education</a></li>
+                    <li class="related__links-li"><a href="./arwu.html" title="Página de ranking de ARWU">ARWU</a></li>
+                </ul>
+            </div>
+
+        </section>
+        <!-- FIN: Rankings relacionados-->
+    </main>
+    <!-- INICIO: Footer                                                 
+            Funcionalidad: Contiene información corporativa y enlaces de Navegación secundarios del sitio web.
+        -->
+    <footer class="footer">
+        <div class="footer__block block-3xl">
+            <div class="footer__navegation">
+                <div class="footer__column">
+                    <!-- Elemento complejo
+                            Se utiliza <picture> para ofrecer el logotipo en formato SVG cuando el navegador lo soporta.
+                            El atributo loading="lazy" retrasa la carga de la imagen hasta que el usuario está próximo a visualizarla, mejorando el rendimiento de la página.
+                        -->
+                    <picture class="header__picture">
+                        <source srcset="../media/logotipo-rojo-universidades.svg" type="image/svg+xml">
+                        <img width="245" height="29" class="header__logo" src="./media/logotipo-rojo-universidades.png"
+                            alt="logotipo rojo universidadES" loading="lazy">
+                    </picture>
+                    <p class="p p--secondary">El portal de referencia para estudiantes que buscan información
+                        universitaria en España.</p>
+                </div>
+                <div class="footer__column">
+                    <p class="footer__title h4">Explorar</p>
+                    <ul class="footer__ul">
+                        <li class="p p--secondary"><a href="../por-ccaa.html"
+                                title="universidades por comunidad autonoma">Por Comunidad Autónoma</a></li>
+                        <li class="p p--secondary"><a href="../tipos.html"
+                                title="universidades publicas y privadas en españa">Universidades Públicas y Privadas en
+                                España</a></li>
+                        <li class="p p--secondary"><a href="../rankings.html"
+                                title="rankings de universidades españolas">Rankings Universitarios</a></li>
+                    </ul>
+                </div>
+                <div class="footer__column">
+                    <p class="footer__title h4">Rankings</p>
+                    <ul class="footer__ul">
+                        <li class="p p--secondary"><a href="../rankings/qs-world-university-rankings.html"
+                                title="ranking qs world university">QS World University</a></li>
+                        <li class="p p--secondary"><a href="../rankings/times-higher-education-world-university.html"
+                                title="times higher education world university">Times Higher Education World
+                                University</a></li>
+                        <li class="p p--secondary"><a href="../rankings/arwu.html" title="ranking shangai arwu">Shanghai
+                                ARWU</a></li>
+                        <li class="p p--secondary"><a href="../rankings/us-news.html" title="ranking us new global">U.S.
+                                News Global</a></li>
+                    </ul>
+                </div>
+                <div class="footer__column">
+                    <p class="footer__title h4">Guías</p>
+                    <ul class="footer__ul">
+                        <li class="p p--secondary"><a href="../guias/como-elegir-universidad.html"
+                                title="guia sobre como elegir una universidad">¿Cómo elegir una universidad en
+                                España?</a></li>
+                        <li class="p p--secondary"><a href="../guias/publicas-vs-privadas.html"
+                                title="guia sobre universidades publicas y privadas">Universidades Públicas vs
+                                Privadas</a></li>
+                        <li class="p p--secondary"><a href="../guias/acceso-a-la-universidad.html"
+                                title="guia de acceso a la universidad">Guía de acceso a las universidades españolas</a>
+                        </li>
+                        <li class="p p--secondary"><a href="../guias/becas-y-ayudas.html"
+                                title="guia de becas y ayudas para estudiar en españa">Guía de todas las becas y ayudas
+                                en España</a></li>
+                    </ul>
+                </div>
+            </div>
+            <p class="p p--secondary">© 2026 Universidades España · Información orientativa, sin carácter oficial</p>
+        </div>
+    </footer>
+    <!--FIN: Footer-->
+</body>
+
+</html>
