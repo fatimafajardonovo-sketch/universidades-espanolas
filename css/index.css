@@ -79,27 +79,35 @@ ul {
 
 /* inter-regular - latin */
 @font-face {
-  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 400;
-  src: url('../fonts/inter-v20-latin-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+    font-display: swap;
+    /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    src: url('../fonts/inter-v20-latin-regular.woff2') format('woff2');
+    /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
+
 /* inter-500 - latin */
 @font-face {
-  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 500;
-  src: url('../fonts/inter-v20-latin-500.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+    font-display: swap;
+    /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    src: url('../fonts/inter-v20-latin-500.woff2') format('woff2');
+    /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
+
 /* inter-600 - latin */
 @font-face {
-  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 600;
-  src: url('../fonts/inter-v20-latin-600.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+    font-display: swap;
+    /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    src: url('../fonts/inter-v20-latin-600.woff2') format('woff2');
+    /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
 
 /* FIN: Tipografías */
@@ -630,6 +638,7 @@ section {
 
     }
 }
+
 .no-mobile {
     @media (max-width: 768px) {
         display: none;
@@ -676,31 +685,39 @@ section {
         align-items: start;
         gap: var(--space-3);
         border: var(--border);
+
         .p--secondary {
             margin-top: auto;
         }
+
+        &:hover {
+            border-color: var(--color-primary);
+        }
     }
 }
+
 /*  FILTRO y tabsDE UNIVERSIDADES (tipos.html)
 Se añaden y quitan clases
 */
 .university__list[data-filtro="publica"] .university__card:not([data-type="publica"]),
 .university__list[data-filtro="privada"] .university__card:not([data-type="privada"]) {
-  display: none;
+    display: none;
 }
 
 .university__list .highlighted-box {
-  display: none;
+    display: none;
 }
+
 .university__list[data-filtro="publica"] .highlighted-box[data-type="publica"],
 .university__list[data-filtro="privada"] .highlighted-box[data-type="privada"] {
-  display: block;
+    display: block;
 }
 
 .university__tab--activo {
-  background-color: var(--color-primary);
-  color: var(--color-white);
+    background-color: var(--color-primary);
+    color: var(--color-white);
 }
+
 /* FINAL: Grid de universidades: University Grid */
 
 
@@ -1087,56 +1104,56 @@ Este componente se reutiliza en páginas de categorías, rankings, guías y pág
         }
     }
 
-/* Adaptación del menú para dispositivos móviles */
-@media (max-width: 925px) {
-    .header__button {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        width: var(--space-12);
-        height: var(--space-12);
-        background-color: var(--color-transparent);
-        cursor: pointer;
-    }
-
-    .header__toggle-icon {
-        font-size: var(--space-5);
-        line-height: 1;
-    }
-
-    .header__nav {
-        position: absolute;
-        top: 100%;
-        left: 0;
-        width: 100%;
-        background-color: var(--color-background);
-        max-height: 0;
-        overflow: hidden;
-        pointer-events: none;
-        transition: max-height .5s ease;
-
-        .header__ul {
+    /* Adaptación del menú para dispositivos móviles */
+    @media (max-width: 925px) {
+        .header__button {
             display: flex;
-            flex-flow: column nowrap;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
-            padding: var(--space-6);
+            width: var(--space-12);
+            height: var(--space-12);
+            background-color: var(--color-transparent);
+            cursor: pointer;
+        }
 
-            .header__li {
-                margin: var(--space-2) 0;
+        .header__toggle-icon {
+            font-size: var(--space-5);
+            line-height: 1;
+        }
+
+        .header__nav {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            background-color: var(--color-background);
+            max-height: 0;
+            overflow: hidden;
+            pointer-events: none;
+            transition: max-height .5s ease;
+
+            .header__ul {
+                display: flex;
+                flex-flow: column nowrap;
+                justify-content: center;
+                align-items: center;
+                padding: var(--space-6);
+
+                .header__li {
+                    margin: var(--space-2) 0;
+                }
+            }
+        }
+
+        /* Estado del menú abierto */
+        &.header--open {
+
+            .header__nav {
+                max-height: 100vh;
+                pointer-events: auto;
             }
         }
     }
-
-    /* Estado del menú abierto */
-    &.header--open {
-
-        .header__nav {
-            max-height: 100vh;
-            pointer-events: auto;
-        }
-    }
-}
 }
 
 /* INICIO: Footer
@@ -1229,11 +1246,12 @@ Adaptación responsive:
 
 */
 .hero__home {
-    background: linear-gradient( 90deg, var(--color-home), var(--color-home) ), url("../media/banner-home-universidades.jpg");
+    background: linear-gradient(90deg, var(--color-home), var(--color-home)), url("../media/banner-home-universidades.jpg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     max-height: 40rem;
+
     .hero__block {
         display: flex;
         flex-direction: column;
@@ -1241,9 +1259,11 @@ Adaptación responsive:
         gap: var(--space-10);
         color: var(--color-white);
     }
+
     .hero__buttons {
         display: flex;
         gap: var(--space-4);
+
         @media (max-width: 865px) {
             flex-direction: column;
         }
@@ -1293,7 +1313,7 @@ Adaptación responsive:
 
 
 /* INICIO: Buscador 
-Buscador de domunidades autonomas por medio de JS
+Buscador de domunidades autonomas por medio de JS. 
 
 
 */
@@ -1301,15 +1321,13 @@ Buscador de domunidades autonomas por medio de JS
 .search {
     padding: var(--space-6);
 
-    /* .search__block es el contenedor de referencia (position:relative)
-       para poder posicionar el listado de resultados por encima del hero
-       sin que este desplace el contenido inferior */
     .search__block {
         display: flex;
         flex-direction: column;
         position: relative;
         gap: var(--space-2);
 
+        /* Campo de busqueda */
         .search__field {
             display: flex;
             align-items: center;
@@ -1317,40 +1335,22 @@ Buscador de domunidades autonomas por medio de JS
             justify-content: space-between;
             gap: var(--space-2);
             border: var(--border);
-            border-radius: var(--radius-md);
             transition: var(--transition-card);
-            padding-inline-start: var(--space-4);
+            padding-inline: var(--space-4);
 
-            &:focus-within {
-                border: var(--border-primary);
-                box-shadow: 0 0 0 2px var(--color-primary-light);
-
-            }
-
-            .ri-search-line {
-                color: var(--color-secondary-paragraph);
-                flex-shrink: 0;
-            }
-
+            /* Input de texto de búsqueda */
             .search__input {
                 padding: var(--space-4);
                 flex: 1;
                 min-width: 0;
                 border: none;
-                background-color: var(--color-transparent);
-                color: var(--color-paragraph);
-
-                &::placeholder {
-                    color: var(--color-secondary-paragraph);
-                }
 
                 &:focus {
                     outline: none;
                 }
             }
 
-            /* Botón de limpiar: icono redondo oculto por defecto,
-               se muestra con la clase "activo" cuando hay texto escrito */
+            /* Botón de limpiar; cuando hay algo escrito, sale*/
             .search__clear {
                 display: flex;
                 align-items: center;
@@ -1359,29 +1359,15 @@ Buscador de domunidades autonomas por medio de JS
                 width: var(--space-10);
                 height: var(--space-10);
                 border: none;
-                background-color: var(--color-transparent);
-                color: var(--color-primary);
-                border-radius: var(--radius-md);
                 cursor: pointer;
                 opacity: 0;
                 pointer-events: none;
-                transition: opacity 0.3s ease, background-color 0.2s ease, color 0.2s ease;
-
-                i {
-                    font-size: var(--space-5);
-                    line-height: 1;
-                }
 
                 &.activo {
                     opacity: 1;
                     pointer-events: auto;
                 }
 
-                &:hover,
-                &:active {
-                    background-color: var(--color-secondary-background);
-                    color: var(--color-primary);
-                }
             }
         }
 
@@ -1392,11 +1378,9 @@ Buscador de domunidades autonomas por medio de JS
             top: calc(100% + var(--space-2));
             left: 0;
             right: 0;
-            z-index: 10;
+            z-index: 1;
             background-color: var(--color-white);
             border: var(--border);
-            border-radius: var(--radius-md);
-            box-shadow: 0 .5rem 1.5rem rgba(0, 0, 0, .15);
             max-height: 16rem;
             overflow-y: auto;
             display: none;
@@ -1414,7 +1398,7 @@ Buscador de domunidades autonomas por medio de JS
 
                 &:hover,
                 &.is-active {
-                    background-color: var(--color-secondary-background);
+                    background-color: var(--color-white);
                 }
 
                 .search__result-link {
@@ -1440,7 +1424,7 @@ Buscador de domunidades autonomas por medio de JS
 
         .search__block {
             .search__field {
-                padding-inline-start: var(--space-3);
+                padding-inline: var(--space-3);
 
                 .search__input {
                     padding: var(--space-3);
@@ -1498,15 +1482,18 @@ Este componente también se reutiliza en la página pilar de Comunidades Autóno
     display: flex;
     flex-direction: column;
     gap: var(--space-10);
+
     .map__introduction {
         display: flex;
         flex-direction: column;
         gap: var(--space-4);
     }
+
     .map__card {
         display: flex;
         flex-direction: column;
         gap: var(--space-4);
+
         .map__map {
             display: flex;
             flex-direction: column;
@@ -1530,23 +1517,28 @@ Este componente también se reutiliza en la página pilar de Comunidades Autóno
                     &:active {
                         fill: var(--color-details);
                     }
+
                     &:focus {
                         outline: none;
                     }
+
                     &:focus-visible {
                         outline: none;
                         fill: var(--color-primary);
                     }
                 }
+            }
         }
-    }
+
         .map__list {
             .map__ul {
                 display: grid;
                 grid-template-columns: repeat(auto-fit, minmax(12.5rem, 1fr));
                 gap: var(--space-10);
+
                 .map__li {
                     display: flex;
+
                     .btn {
                         width: 100%;
                         align-items: center;
@@ -1559,6 +1551,7 @@ Este componente también se reutiliza en la página pilar de Comunidades Autóno
     }
 
 }
+
 /* FIN: Mapa interactivo */
 
 /* INICIO: Tipos de universidades
@@ -1580,16 +1573,20 @@ Este componente también se reutiliza en la página pilar de Comunidades Autóno
 
 .type {
     background-color: var(--color-background);
+
     .type__block {
         display: flex;
         flex-direction: column;
         gap: var(--space-10);
+
         .type__grids {
             display: grid;
             grid-template-columns: 2fr 1fr 1fr;
             gap: var(--space-3);
+
             .type__grid {
                 padding: var(--space-5);
+
                 /* Tarjeta: Universidades públicas */
                 &.public {
                     grid-column: 1 / 4;
@@ -1612,6 +1609,7 @@ Este componente también se reutiliza en la página pilar de Comunidades Autóno
                         gap: var(--space-4);
                     }
                 }
+
                 /* Tarjeta: Universidades privadas */
                 &.private {
                     grid-column: 2;
@@ -1632,6 +1630,7 @@ Este componente también se reutiliza en la página pilar de Comunidades Autóno
                         gap: var(--space-2);
                     }
                 }
+
                 /* Tarjeta: Rankings */
                 &.rankings {
                     grid-column: 1;
@@ -1666,6 +1665,7 @@ Este componente también se reutiliza en la página pilar de Comunidades Autóno
                     }
 
                 }
+
                 /* Tarjeta: Universidades por Comunidades Autónomas */
                 &.ccaa {
                     grid-column: 3;
@@ -1690,23 +1690,29 @@ Este componente también se reutiliza en la página pilar de Comunidades Autóno
                     }
 
                 }
+
                 /* Estados interactivos de las tarjetas, cambian en función de su background base */
-                &:hover, &:active {
+                &:hover,
+                &:active {
                     &.public {
                         background-color: var(--color-black);
                     }
+
                     &.private {
                         background-color: var(--color-secondary-background);
                     }
+
                     &.rankings {
                         background: var(--color-white);
                     }
+
                     &.ccaa {
                         background: var(--color-primary);
 
                     }
                 }
             }
+
             /* Adaptación responsive */
             @media (max-width: 768px) {
                 display: flex;
@@ -1754,18 +1760,21 @@ Incluye adaptación responsive para dispositivos móviles.
 
 .ranking {
     background-color: var(--color-white);
+
     .ranking__block {
-    display: flex;
-    flex-direction: column;
-    padding: var(--space-6);
-    gap: var(--space-6);
+        display: flex;
+        flex-direction: column;
+        padding: var(--space-6);
+        gap: var(--space-6);
     }
 
 
 }
+
 /* Listado de universidades del ranking */
 .ranking__list {
     padding: var(--space-6);
+
     .ranking__item {
         display: grid;
         grid-template-columns: 3rem max-content 1fr auto;
@@ -1774,20 +1783,26 @@ Incluye adaptación responsive para dispositivos móviles.
         border-bottom: var(--border);
         gap: var(--space-8);
         color: var(--color-paragraph);
+
         /* El icono de navegación permanece oculto hasta interactuar con la fila */
         .ranking__score {
             display: flex;
             gap: var(--space-4);
+
             i {
                 opacity: 0;
             }
         }
-                &:hover, &:active {
+
+        &:hover,
+        &:active {
             background-color: var(--color-background);
+
             i {
                 opacity: 1;
             }
         }
+
         @media (max-width: 480px) {
             display: flex;
             flex-direction: column;
@@ -1826,6 +1841,7 @@ Se utiliza el modificador banner__highlight para destacar la parte principal del
     color: var(--color-white);
     background-color: var(--color-black);
     padding: var(--space-9);
+
     .banner__block {
         display: flex;
         flex-direction: column;
@@ -1833,6 +1849,7 @@ Se utiliza el modificador banner__highlight para destacar la parte principal del
         align-items: center;
         text-align: center;
     }
+
     .banner__highlight {
         display: block;
         color: var(--color-primary-light);
@@ -1863,6 +1880,7 @@ La sección organiza las tarjetas mediante CSS Grid y mantiene la misma identida
 .map__ccaa {
     background-color: var(--color-background);
 }
+
 .ccaa {
     background-color: var(--color-background);
 
@@ -2045,6 +2063,7 @@ La sección organiza las tarjetas mediante CSS Grid y mantiene la misma identida
         display: flex;
         flex-direction: column;
         gap: var(--space-12);
+
         .university__list {
             display: flex;
             flex-direction: column;
@@ -2100,6 +2119,7 @@ La sección organiza las tarjetas mediante CSS Grid y mantiene la misma identida
 .ranking__grids {
     background-color: var(--color-background);
 }
+
 /* Grid responsive de las cards de ranking. Cada columna tiene un ancho mínimo de 18.75rem; auto-fit calcula automáticamente cuántas columnas caben por fila
    según el ancho disponible, repartiendo el espacio sobrante entre ellas. 
 */
@@ -2107,17 +2127,21 @@ La sección organiza las tarjetas mediante CSS Grid y mantiene la misma identida
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(28.125rem, 1fr));
     gap: var(--space-5);
+
     @media (max-width: 660px) {
         grid-template-columns: repeat(auto-fit, minmax(15.625rem, 1fr));
-        }
+    }
 }
+
 /* El podium (top 3 de cada ranking) ocupa siempre el 100% del ancho de la card para que su contenido no descuadre respecto al resto de elementos. */
 .ranking__podium {
     width: 100%;
+
     .ranking__list {
         gap: var(--space-4);
     }
 }
+
 /* Card individual de cada ranking. Se estructura en columna: nombre de la entidad + título, podium con el top 3, y botón de acceso al ranking completo.
    Toda la card actúa como enlace (title + href en el HTML). */
 .ranking__card {
@@ -2130,11 +2154,13 @@ La sección organiza las tarjetas mediante CSS Grid y mantiene la misma identida
     border: var(--border);
     color: var(--color-paragraph);
     cursor: pointer;
+
     /* Bloque superior: nombre de la entidad, título del ranking y descripción. */
     .ranking__name {
         display: flex;
         flex-direction: column;
         gap: var(--space-6);
+
         /* Cabecera del nombre de la entidad junto al icono de flecha, que permanece oculto por defecto y se revela en :hover/:active para
            reforzar visualmente la interacción con la card. */
         .ranking__arrow {
@@ -2148,6 +2174,7 @@ La sección organiza las tarjetas mediante CSS Grid y mantiene la misma identida
         }
 
     }
+
     /* Botón "Ver ranking completo": margin-top:auto empuja el botón al fondo de la card absorbiendo el espacio libre restante, de forma que queda
        siempre a la misma altura entre cards aunque el título o la descripción tengan longitudes distintas. 
        */
@@ -2215,11 +2242,13 @@ Esta sección contiene la estructura específica de la página individual de cad
     /* Columna del listado: ocupa el 60% del ancho disponible, dejando el 40% restante para la metodología */
     .ranking__page-block {
         width: 60%;
+
         .ranking__list {
             gap: var(--space-4);
         }
-        
+
     }
+
     /* Fila individual del ranking.*/
 
     .ranking__item {
@@ -2227,10 +2256,13 @@ Esta sección contiene la estructura específica de la página individual de cad
         grid-template-columns: 3rem 6rem 1fr 5rem;
         padding: var(--space-2);
         align-items: center;
-        &:hover, &:active {
+
+        &:hover,
+        &:active {
             background-color: var(--color-secondary-background);
         }
     }
+
     /* 
         Adaptación mobile: el contenedor principal pasa a columna única
         y la fila de cada universidad se simplifica a flex para evitar problemas de recorte de texto 
@@ -2276,6 +2308,7 @@ Esta sección contiene la estructura específica de la página individual de cad
     align-self: flex-start;
     position: sticky;
     top: calc(var(--space-18) + var(--space-4));
+
     /* Listado de puntos que componen la metodología del ranking */
     .ranking__items {
         display: flex;
@@ -2283,6 +2316,7 @@ Esta sección contiene la estructura específica de la página individual de cad
         gap: var(--space-3);
         color: var(--color-secondary-paragraph);
     }
+
     /* Bloque con el nombre de la entidad responsable del ranking */
     .ranking__source {
         display: flex;
@@ -2338,7 +2372,7 @@ Durante la interacción se resalta el borde de la tarjeta y se aplica un ligero 
 
         .featured__grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
+            grid-template-columns: repeat(2, 1fr);
             gap: var(--space-6);
 
             /* Tarjeta individual de guía destacada.
@@ -2434,7 +2468,7 @@ Durante la interacción se resalta el borde de la tarjeta y se aplica un ligero 
     */
             .guias__tab {
                 cursor: pointer;
-                transition: border-color .2s ease, color .2s ease;
+                transition: var(--transition-card);
                 border-bottom: 2px solid transparent;
                 background-color: var(--border);
 
@@ -2475,13 +2509,14 @@ Durante la interacción se resalta el borde de la tarjeta y se aplica un ligero 
         }
     }
 }
+
 /* FILTRO DE GUÍAS
     El estado se guarda en un atributo del contenedor (.guias__grid) y el CSS oculta las tarjetas que no coincidan
 */
 .guias__grid[data-filtro="orientacion"] .guias__card:not([data-category="orientacion"]),
 .guias__grid[data-filtro="comparativa"] .guias__card:not([data-category="comparativa"]),
 .guias__grid[data-filtro="financiacion"] .guias__card:not([data-category="financiacion"]) {
-  display: none;
+    display: none;
 }
 
 /* Estado visual del tab activo (BEM: modificador) */
@@ -2686,6 +2721,7 @@ Su estructura sigue el mismo orden que el HTML y está formada por los siguiente
             gap: var(--space-3);
             background-color: var(--color-white);
             padding: var(--space-5);
+
             .content__a {
                 display: flex;
                 justify-content: space-between;
@@ -2703,6 +2739,7 @@ Su estructura sigue el mismo orden que el HTML y está formada por los siguiente
         display: flex;
         flex-direction: column;
         gap: var(--space-6);
+
         .highlighted-box {
             display: flex;
             flex-direction: column;

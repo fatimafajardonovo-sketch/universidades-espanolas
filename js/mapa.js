@@ -1,17 +1,46 @@
-
 /*
 ESTRUCTURA GENERAL DEL DOCUMENTO
-Esta página recopila la impletación del mapa clicable por Comunidad Autónoma, que se encuentra en la home y en la página pilar de Por CCAA.
-La funcionalidad es la siguiente; al hacer click (o Enter/Espacio con teclado) sobre una 
-comunidad del mapa SVG, estaredirige a la página de esa comunidad. Se usa una tabla de 
-correspondencias porque el id de cada <path> no siempre coincide con el nombre del archivo HTML de destino.
+
+Este archivo JavaScript controla la interacción del mapa SVG de Comunidades Autónomas
+presente en la Home y en la página pilar de "Por CCAA".
+
+La funcionalidad principal es permitir que el usuario pueda acceder a la página
+correspondiente de cada Comunidad Autónoma haciendo click sobre una zona del mapa.
+
+Además, se añade soporte para navegación mediante teclado utilizando las teclas
+Enter y Espacio, mejorando la accesibilidad del componente.
+
+La estructura del archivo es la siguiente:
+
+1. Constantes:
+   - Objeto de correspondencias entre los identificadores del SVG y las rutas HTML.
+   - Ruta base donde se encuentran las páginas individuales de cada comunidad.
+
+2. Selección de elementos:
+   - Selección de todos los elementos SVG interactivos del mapa.
+
+3. Funciones:
+   - Validación de rutas disponibles.
+   - Gestión de navegación mediante click.
+   - Gestión de navegación mediante teclado.
+   - Configuración inicial de cada comunidad del mapa.
+
+4. Asignaciones:
+   - Aplicación de los eventos a cada comunidad del SVG.
+
 */
 
 (function () {
+ /* --- Constantes --- */
 
-  /* --- Constantes --- */
+  /*
+  rutaComunidades:
+  Objeto que relaciona el id de cada elemento <path> del SVG con el nombre
+  del archivo HTML correspondiente.
 
-  // rutaComunidades: mapa id del SVG -> slug del archivo HTML correspondiente
+  Se utiliza esta tabla de equivalencias porque algunos identificadores del
+  mapa no coinciden exactamente con el nombre de la página de destino.
+  */
   const rutaComunidades = {
     'andalucia': 'andalucia',
     'aragon': 'aragon',
@@ -33,7 +62,11 @@ correspondencias porque el id de cada <path> no siempre coincide con el nombre d
     'madrid': 'madrid'
   };
 
-  // comunidadesPath: carpeta relativa donde viven las páginas de cada comunidad
+    /*
+  comunidadesPath:
+  Ruta relativa donde se almacenan las páginas individuales
+  de cada Comunidad Autónoma.
+  */
   const comunidadesPath = './por-ccaa/';
 
   /* --- Selección de elementos --- */
@@ -41,12 +74,22 @@ correspondencias porque el id de cada <path> no siempre coincide con el nombre d
 
   /* --- Funciones --- */
 
-  // isRutaValida: comprueba que el id tiene una ruta asociada en el mapeo
+   /*
+  isRutaValida:
+  Comprueba si el identificador recibido dispone de una ruta asociada
+  dentro del objeto de correspondencias.
+  */
   function isRutaValida(idComunidad) {
     return Object.prototype.hasOwnProperty.call(rutaComunidades, idComunidad);
   }
 
-  // comunidadNavigateHandler: navega a la página de la comunidad 
+
+  /*
+  comunidadNavigateHandler:
+  Gestiona la navegación cuando el usuario interactúa con una Comunidad Autónoma.
+
+  Si existe una ruta válida, redirige hacia la página HTML correspondiente.
+  */
   function comunidadNavigateHandler(event) {
     const comunidad = event.currentTarget;
     const idComunidad = comunidad.id;
@@ -56,7 +99,13 @@ correspondencias porque el id de cada <path> no siempre coincide con el nombre d
     window.location.href =`${comunidadesPath}${rutaComunidades[idComunidad]}.html`;
   }
 
-  // comunidadKeydownHandler: permite activar la navegación con teclado
+    /*
+  comunidadKeydownHandler:
+  Permite activar la navegación mediante teclado.
+
+  Se utilizan las teclas Enter y Espacio para mantener el comportamiento
+  equivalente al click y mejorar la accesibilidad del mapa SVG.
+  */
   function comunidadKeydownHandler(event) {
     const isEnterKey = event.key === 'Enter';
     const isSpaceKey = event.key === ' ';
@@ -66,6 +115,17 @@ correspondencias porque el id de cada <path> no siempre coincide con el nombre d
     event.preventDefault();
     comunidadNavigateHandler(event);
   }
+   /*
+  comunidadSetupHandler:
+  Configura cada Comunidad Autónoma del SVG.
+
+  Añade:
+  - tabindex para permitir navegación mediante teclado.
+  - role link para indicar su comportamiento interactivo.
+  - aria-label para lectores de pantalla.
+  - title como ayuda visual.
+  - Eventos click y teclado.
+  */
   function comunidadSetupHandler(comunidad) {
     if (!isRutaValida(comunidad.id)) return;
 
@@ -79,7 +139,10 @@ correspondencias porque el id de cada <path> no siempre coincide con el nombre d
     comunidad.addEventListener('keydown', comunidadKeydownHandler);
   }
 
-  /* --- Asignaciones --- */
+  /* --- Asignaciones --- 
+  Se aplica la configuración inicial a cada Comunidad Autónoma
+  encontrada dentro del mapa SVG.
+  */
   mapComunidades.forEach(comunidadSetupHandler);
 
 })();

@@ -19,6 +19,7 @@ Se compone de:
     <link rel="canonical" href="https://fatimafajardonovo-sketch.github.io/universidades-espanolas/tipos.html">
     <link rel="icon" type="image/svg+xml" href="./media/logotipo-rojo-universidades.svg">
     <link rel="stylesheet" href="./css/index.css">
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.9.1/fonts/remixicon.min.css">
     <script defer src="./js/index.js"></script>
     <script defer src="./js/tabs.js"></script>
@@ -102,7 +103,7 @@ Se compone de:
                     Página de inicio
                 </a>
                 <h1>Tipos de Universidad</h1>
-                <p class="p-secondary">El sistema universitario español cuenta con 74 universidades repartidas entre 51
+                <p class="p--secondary">El sistema universitario español cuenta con 74 universidades repartidas entre 51
                     públicas y 23 privadas.</p>
             </div>
         </section>
@@ -283,6 +284,16 @@ Se compone de:
                             <p class="p--secondary"><i class="ri-map-pin-line icon" aria-hidden="true"></i>Toledo ·
                                 Fundada 1982</p>
                         </div>
+                        <div class="university__card" data-type="privada">
+                            <p class="badge badge--details">Privada</p>
+                            <h3 class="h4">Universidad Pontificia de Salamanca</h3>
+                            <p class="p--secondary"><i class="ri-map-pin-line icon"></i>Salamanca · Fundada 1940</p>
+                        </div>
+                        <div class="university__card" data-type="privada">
+                            <p class="badge badge--details">Privada</p>
+                            <h3 class="h4">IE University</h3>
+                            <p class="p--secondary"><i class="ri-map-pin-line icon"></i>Segovia · Fundada 2009</p>
+                        </div>
                         <div class="university__card" data-type="publica">
                             <p class="badge">Pública</p>
                             <h2 class="h4">Universitat de Barcelona</h2>
@@ -343,7 +354,6 @@ Se compone de:
                             <p class="p--secondary"><i class="ri-map-pin-line icon" aria-hidden="true"></i>Santiago de
                                 Compostela · Fundada 1495</p>
                         </div>
-                        <!-- FIN: Card de universidad -->
                         <div class="university__card" data-type="publica">
                             <p class="badge">Pública</p>
                             <h2 class="h4">Universidad de Vigo</h2>
@@ -367,6 +377,26 @@ Se compone de:
                             <h2 class="h4">Universitat de Vic - UCC </h2>
                             <p class="p--secondary"><i class="ri-map-pin-line icon" aria-hidden="true"></i>Vic · Fundada
                                 1997</p>
+                        </div>
+                        <div class="university__card" data-type="publica">
+                            <p class="badge">Pública</p>
+                            <h3 class="h4">Universidad de Salamanca</h3>
+                            <p class="p--secondary"><i class="ri-map-pin-line icon"></i>Salamanca · Fundada 1218</p>
+                        </div>
+                        <div class="university__card" data-type="publica">
+                            <p class="badge">Pública</p>
+                            <h3 class="h4">Universidad de Valladolid</h3>
+                            <p class="p--secondary"><i class="ri-map-pin-line icon"></i>Valladolid · Fundada 1241</p>
+                        </div>
+                        <div class="university__card" data-type="publica">
+                            <p class="badge">Pública</p>
+                            <h3 class="h4">Universidad de León</h3>
+                            <p class="p--secondary"><i class="ri-map-pin-line icon"></i>Salamanca · Fundada 1979</p>
+                        </div>
+                        <div class="university__card" data-type="publica">
+                            <p class="badge">Pública</p>
+                            <h3 class="h4">Universidad de Burgos</h3>
+                            <p class="p--secondary"><i class="ri-map-pin-line icon"></i>Burgos · Fundada 1994</p>
                         </div>
                         <div class="university__card" data-type="privada">
                             <p class="badge badge--details">Privada</p>
@@ -608,7 +638,7 @@ Se compone de:
                         <source srcset="./media/logotipo-rojo-universidades.svg" type="image/svg+xml">
                         <source srcset="./media/logotipo-rojo-universidades.png" type="image/png">
                         <img width="245" height="29" class="header__logo" src="./media/logotipo-rojo-universidades.webp"
-                            alt="logotipo rojo universidadES" fetchpriority="high">
+                            alt="logotipo rojo universidadES" loading="lazy">
                     </picture>
                     <p class="p p--secondary">El portal de referencia para estudiantes que buscan información
                         universitaria en España.</p>

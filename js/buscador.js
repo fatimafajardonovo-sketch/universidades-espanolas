@@ -1,10 +1,49 @@
 
-/*  buscador
-  Se hace un array reopilando toda la informacion de las comunidades autonomas: nombre, url y ccaa
-  se selecciona por ID cada uno de los elementos que componen el buscador:
-   searchInput
-searchClearBtn
-searchResults
+/*  ESTRUCTURA GENERAL DEL DOCUMENTO
+
+Este archivo JavaScript controla las funcionalidades interactivas relacionadascon el buscador de Comunidades Autónomas presente en la página principal.
+
+La estructura general es la siguiente:
+
+1. Datos iniciales:
+   - Array de comunidades autónomas con:
+        - Nombre visible.
+        - Identificador interno.
+        - Ruta de navegación.
+
+2. Selección de elementos del DOM:
+   - Input de búsqueda.
+   - Botón para limpiar la consulta.
+   - Contenedor de resultados.
+
+3. Funciones auxiliares:
+   - Normalización de texto para eliminar diferencias entre mayúsculas, minúsculas y acentos.
+   - Filtrado de comunidades según la búsqueda.
+
+4. Renderizado de resultados:
+   - Generación dinámica de elementos HTML.
+   - Control del estado visual del listado.
+
+5. Gestión de eventos:
+   - Escritura en el buscador.
+   - Limpieza de la búsqueda.
+   - Cierre mediante tecla Escape.
+   - Cierre al hacer click fuera del componente.
+
+La interacción se realiza mediante clases CSS y atributos ARIA para mantener la accesibilidad del componente.
+
+*/
+
+/* INICIO: Datos de Comunidades Autónomas
+
+Se crea un array de objetos con la información necesaria para construir los resultados del buscador.
+
+Cada elemento contiene:
+- nombre: texto que se muestra al usuario.
+- ccaa: identificador interno de la comunidad autónoma.
+- url: ruta hacia la página específica de la comunidad.
+
+Este array funciona como fuente de datos para el filtrado dinámico.
 
 */
 const universidades = [
@@ -28,20 +67,41 @@ const universidades = [
   { nombre: 'Universidades del País Vasco', ccaa: 'pais-vasco', url: './por-ccaa/pais-vasco.html' }
 ];
 
+/* FIN: Datos de Comunidades Autónomas */
+
+
+/* INICIO: Selección de elementos del DOM
+
+Se almacenan las referencias a los elementos HTML necesarios para controlar
+el funcionamiento del buscador:
+
+- searchInput: Campo donde el usuario introduce la búsqueda.
+
+- searchClearBtn:Botón encargado de limpiar la consulta actual.
+
+- searchResults:Contenedor donde se generan los resultados dinámicamente.
+
+*/
 const searchInput = document.getElementById('searchInput');
 const searchClearBtn = document.getElementById('searchClearBtn');
 const searchResults = document.getElementById('searchResults');
  
- 
- 
-/* =====================================================================
-   3. BUSCADOR - Filtrado en vivo de universidades
-   Filtra un listado de universidades según el texto introducido por
-   el usuario, ignorando mayúsculas y acentos. Pinta los resultados en
-   un listbox accesible y permite limpiar la búsqueda.
-   ===================================================================== */
- 
-// normalizarTexto: quita acentos y pasa a minúsculas para comparar sin errores
+/* FIN: Selección de elementos del DOM */
+
+
+/* INICIO: Funciones del buscador
+
+Este bloque contiene toda la lógica necesaria para:
+- Normalizar textos.
+- Filtrar comunidades.
+- Pintar resultados.
+- Controlar estados visuales.
+
+El filtrado se realiza sin distinguir entre mayúsculas, minúsculas o acentos para mejorar la experiencia del usuario.
+
+*/
+
+
 function normalizarTexto(texto) {
   return texto
     .toLowerCase()
@@ -49,7 +109,7 @@ function normalizarTexto(texto) {
     .replace(/[\u0300-\u036f]/g, '');
 }
  
-// filtrarUniversidades: devuelve las universidades que coinciden con el texto
+/* filtrarUniversidades: devuelve las universidades que coinciden con el texto */
 function filtrarUniversidades(texto) {
   const textoNormalizado = normalizarTexto(texto);
   return universidades.filter((universidad) =>
@@ -57,8 +117,6 @@ function filtrarUniversidades(texto) {
   );
 }
  
-// pintarResultados: renderiza el listado de coincidencias en el DOM
-// (si no hay coincidencias, muestra un mensaje en vez de cerrar la caja)
 function pintarResultados(lista) {
   const hayResultados = lista.length > 0;
  
@@ -90,19 +148,16 @@ function pintarResultados(lista) {
   });
 }
  
-// cerrarResultados: oculta el listbox y limpia su contenido
 function cerrarResultados() {
   searchResults.innerHTML = '';
   searchResults.classList.remove('activo');
   searchInput.setAttribute('aria-expanded', 'false');
 }
  
-// actualizarBotonLimpiar: muestra el botón de limpiar solo si hay texto escrito
 function actualizarBotonLimpiar(hayTexto) {
   searchClearBtn.classList.toggle('activo', hayTexto);
 }
  
-// searchInputHandler: se dispara al escribir en el buscador
 function searchInputHandler() {
   const texto = searchInput.value.trim();
   const hayTexto = texto.length > 0;
@@ -111,7 +166,6 @@ function searchInputHandler() {
   hayTexto ? pintarResultados(filtrarUniversidades(texto)) : cerrarResultados();
 }
  
-// searchClearHandler: vacía el input, oculta el botón y cierra los resultados
 function searchClearHandler() {
   searchInput.value = '';
   actualizarBotonLimpiar(false);
@@ -119,12 +173,10 @@ function searchClearHandler() {
   searchInput.focus();
 }
  
-// searchKeydownHandler: permite cerrar y limpiar la búsqueda con Escape
 function searchKeydownHandler(event) {
   if (event.key === 'Escape') searchClearHandler();
 }
  
-// searchOutsideClickHandler: cierra el listbox si se hace click fuera
 function searchOutsideClickHandler(event) {
   const isClickDentro = event.target.closest('.search__field, .search__results');
   if (!isClickDentro) cerrarResultados();
