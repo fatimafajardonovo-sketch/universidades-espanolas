@@ -28,29 +28,27 @@ Su estructura se compone de:
   <meta name="description"
     content="Accede a guías actualizadas para estudiantes universitarios en 2026 con información sobre estudios, becas, herramientas, organización y vida universitaria.">
   <link rel="canonical" href="https://fatimafajardonovo-sketch.github.io/universidades-espanolas/guias.html">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.9.1/fonts/remixicon.min.css">
   <link rel="stylesheet" href="./css/index.css">
   <script defer src="./js/index.js"></script>
-  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.9.1/fonts/remixicon.min.css">
+  <script defer src="./js/tabs.js"></script>
   <link rel="icon" type="image/svg+xml" href="./media/logotipo-rojo-universidades.svg">
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
-    rel="stylesheet">
   <meta property="og:site_name" content="UniversidadES">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://fatimafajardonovo-sketch.github.io/universidades-espanolas/guias.html">
   <meta property="og:title" content="Guías para Estudiantes Universitarios en 2026 | Recursos ">
   <meta property="og:description"
     content="Accede a guías actualizadas para estudiantes universitarios en 2026 con información sobre estudios, becas, herramientas, organización y vida universitaria.">
- <meta property="og:image" content="https://fatimafajardonovo-sketch.github.io/universidades-espanolas/media/logotipo-rojo-universidades.svg">
+  <meta property="og:image"
+    content="https://fatimafajardonovo-sketch.github.io/universidades-espanolas/media/logotipo-rojo-universidades.svg">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:description"
     content="Accede a guías actualizadas para estudiantes universitarios en 2026 con información sobre estudios, becas, herramientas, organización y vida universitaria.">
   <meta name="twitter:title" content="Guías para Estudiantes Universitarios en 2026 | Recursos ">
   <meta name="twitter:url" content="https://fatimafajardonovo-sketch.github.io/universidades-espanolas/guias.html">
-    <meta name="twitter:image" content="https://fatimafajardonovo-sketch.github.io/universidades-espanolas/media/logotipo-rojo-universidades.svg">
+  <meta name="twitter:image"
+    content="https://fatimafajardonovo-sketch.github.io/universidades-espanolas/media/logotipo-rojo-universidades.svg">
 </head>
 
 <body>
@@ -65,9 +63,10 @@ Su estructura se compone de:
                 También se utiliza el elemento complejo: fetchpriority="high" 
                 indica al navegador que priorice la descarga del logotipo al formar parte del contenido visible al cargar la página.
             -->
-        <picture class="header__picture">
+        <picture>
           <source srcset="./media/logotipo-rojo-universidades.svg" type="image/svg+xml">
-          <img width="245" height="29" class="header__logo" src="./media/logotipo-rojo-universidades.png"
+          <source srcset="./media/logotipo-rojo-universidades.png" type="image/png">
+          <img width="245" height="29" class="header__logo" src="./media/logotipo-rojo-universidades.webp"
             alt="logotipo rojo universidadES" fetchpriority="high">
         </picture>
       </a>
@@ -110,8 +109,8 @@ Su estructura se compone de:
     -->
     <section class="hero__section">
       <div class="block block-3xl">
-        <a class="btn btn--arrow" href="./index.html" title="boton volver hacia atras"><i class="ri-arrow-left-line icon"
-            aria-hidden="true"></i>Volver al inicio</a>
+        <a class="btn btn--arrow" href="./index.html" title="boton volver hacia atras"><i
+            class="ri-arrow-left-line icon" aria-hidden="true"></i>Volver al inicio</a>
         <h1>Guías para Estudiantes</h1>
         <p class="p p--secondary">Todo lo que necesitas saber para tomar la mejor decisión universitaria. Guías
           elaboradas por nuestro equipo editorial.</p>
@@ -141,7 +140,7 @@ Su estructura se compone de:
             - Título.
             - Resumen.
             -->
-          <a class="featured__card" data-category="comparativa" href="./guias/publicas-vs-privadas.html"
+          <a class="featured__card" href="./guias/publicas-vs-privadas.html"
             title="guias sobre las universidades publicas y privadas en españa">
             <picture class="featured__picture">
               <source srcset="./media/universidades-publicas-privadas.webp" type="image/webp">
@@ -165,12 +164,13 @@ Su estructura se compone de:
           <!-- Elemento complejo
              El atributo data-category identifica la categoría de la guía. Se utiliza posteriormente por JavaScript para realizar el filtrado de contenido.
             -->
-          <a class="featured__card" data-category="orientacion" href="./guias/acceso-a-la-universidad.html"
+          <a class="featured__card" href="./guias/acceso-a-la-universidad.html"
             title="guia de acceso a la universidad española">
             <picture class="featured__picture">
               <source srcset="./media/guia-acceso-universidad.webp" type="image/webp">
               <source srcset="./media/guia-acceso-universidad.jpeg" type="image/jpeg">
-              <img width="300" height="260" src="./media/guia-acceso-universidad.jpg" decoding="async" alt="imagen post guia acceso universidad">
+              <img width="300" height="260" src="./media/guia-acceso-universidad.jpg" decoding="async"
+                alt="imagen post guia acceso universidad">
             </picture>
             <div class="featured__introduction">
               <div class="featured__clasification">
@@ -185,7 +185,7 @@ Su estructura se compone de:
             </div>
           </a>
 
-          <a class="featured__card" data-category="financiacion" href="./guias/becas-y-ayudas.html"
+          <a class="featured__card" href="./guias/becas-y-ayudas.html"
             title="guia sobre las becas y ayudas para estudiantes">
             <picture class="featured__picture">
               <source srcset="./media/becas-y-ayudas-al-estudio-en-espana.webp" type="image/webp">
@@ -246,7 +246,7 @@ Su estructura se compone de:
         Funcionalidad: Representa una guía individual dentro del listado completo.
         Incluye la imagen, categoría, tiempo de lectura, título,descripción y acceso a la guía correspondiente.
         -->
-          <a class="guias__card" href="./guias/como-elegir-universidad.html"
+          <a class="guias__card" data-category="comparativa" href="./guias/como-elegir-universidad.html"
             title="guia sobre como elegir una universidad en españa">
             <!--Elemento complejo
               Se utiliza <picture> para servir imágenes en formato WebP cuando el navegador lo soporta.
@@ -264,7 +264,7 @@ Su estructura se compone de:
             <div class="guias__title">
               <p class="guias__news"><i class="ri-bard-line"></i>Nueva</p>
               <div class="guias__badges">
-                <p class="guias__category">Orientación</p>
+                <p class="guias__category">Comparativa</p>
                 <p class="p--secondary"><i class="ri-time-line icon"></i>12 min</p>
               </div>
             </div>
@@ -274,7 +274,7 @@ Su estructura se compone de:
             <p class="guias__button">Leer guía<i class="ri-arrow-right-line" aria-hidden="true"></i></p>
             <!-- FIN: Card de guía -->
           </a>
-          <a class="guias__card" href="./guias/publicas-vs-privadas.html"
+          <a class="guias__card" data-category="comparativa" href="./guias/publicas-vs-privadas.html"
             title="guias sobre las universidades publicas y privadas en españa">
             <picture class="guias__picture">
               <source srcset="./media/universidades-publicas-privadas.webp" type="image/webp">
@@ -293,7 +293,7 @@ Su estructura se compone de:
               Conoce las diferencias fundamentales…</p>
             <p class="guias__button">Leer guía<i class="ri-arrow-right-line icon" aria-hidden="true"></i></p>
           </a>
-          <a class="guias__card" href="./guias/acceso-a-la-universidad.html"
+          <a class="guias__card" data-category="orientacion" href="./guias/acceso-a-la-universidad.html"
             title="guia de acceso a la universidad española">
             <picture class="guias__picture">
               <!-- Elemento complejo
@@ -316,7 +316,7 @@ Su estructura se compone de:
               notas de corte y otras vías alternativas…</p>
             <p class="guias__button">Leer guía<i class="ri-arrow-right-line icon" aria-hidden="true"></i></p>
           </a>
-          <a class="guias__card" title="guia sobre las becas y ayudas para estudiantes"
+          <a class="guias__card" data-category="financiacion" title="guia sobre las becas y ayudas para estudiantes"
             href="./guias/becas-y-ayudas.html">
             <picture class="guias__picture">
               <source srcset="./media/becas-y-ayudas-al-estudio-en-espana.webp" type="image/webp">
@@ -335,7 +335,7 @@ Su estructura se compone de:
               independientemente de tu situación económica.</p>
             <p class="guias__button">Leer guía<i class="ri-arrow-right-line icon" aria-hidden="true"></i></p>
           </a>
-          <a class="guias__card" href="./guias/masters-y-posgrados-espana.html"
+          <a class="guias__card" data-category="financiacion" href="./guias/masters-y-posgrados-espana.html"
             title="guia sobre los masters y podgrados en espana">
             <picture class="guias__picture">
               <source srcset="./media/master-posgrados-espana.webp" type="image/webp">
@@ -354,12 +354,12 @@ Su estructura se compone de:
               empleos. Conoce el ecosistema de másters…</p>
             <p class="guias__button">Leer guía<i class="ri-arrow-right-line" aria-hidden="true"></i></p>
           </a>
-          <a class="guias__card" href="./guias/vida-universitaria-espana.html"
+          <a class="guias__card" data-category="orientacion" href="./guias/vida-universitaria-espana.html"
             title="guia sobre la vida universitaria en españa">
             <picture class="guias__picture">
-              <source srcset="./media/como-elegir-tu-universidad.webp" type="image/webp">
-              <source srcset="./media/como-elegir-tu-universidad.jpeg" type="image/jpeg">
-              <img width="360" height="202" src="./media/como-elegir-tu-universidad.jpg" loading="lazy" decoding="async"
+              <source srcset="./media/vida-universitaria-espana.webp" type="image/webp">
+              <source srcset="./media/vida-universitaria-espana.jpeg" type="image/jpeg">
+              <img width="360" height="202" src="./media/vida-universitaria-espana.jpg" loading="lazy" decoding="async"
                 alt="imagen post como elegir tu universidad en espana">
             </picture>
             <div class="guias__title">
@@ -379,73 +379,74 @@ Su estructura se compone de:
     </section>
     <!--FIN: Contenido principal-->
   </main>
-    <!-- INICIO: Footer                                                 
+  <!-- INICIO: Footer                                                 
         Funcionalidad: Contiene información corporativa y enlaces de Navegación secundarios del sitio web.
     -->
-    <footer class="footer">
-        <div class="footer__block block-3xl">
-            <div class="footer__navegation">
-                <div class="footer__column">
-                    <!-- Elemento complejo
+  <footer class="footer">
+    <div class="footer__block block-3xl">
+      <div class="footer__navegation">
+        <div class="footer__column">
+          <!-- Elemento complejo
                     Se utiliza <picture> para ofrecer el logotipo en formato SVG cuando el navegador lo soporta.
                     El atributo loading="lazy" retrasa la carga de la imagen hasta que el usuario está próximo a visualizarla, mejorando el rendimiento de la página.
                 -->
-                    <picture class="header__picture">
-                        <source srcset="./media/logotipo-rojo-universidades.svg" type="image/svg+xml">
-                        <img width="245" height="29" class="header__logo" src="./media/logotipo-rojo-universidades.png"
-                            alt="logotipo rojo universidadES" loading="lazy">
-                    </picture>
-                    <p class="p p--secondary">El portal de referencia para estudiantes que buscan información
-                        universitaria en España.</p>
-                </div>
-                <div class="footer__column">
-                    <p class="footer__title h4">Explorar</p>
-                    <ul class="footer__ul">
-                        <li class="p p--secondary"><a href="./por-ccaa.html"
-                                title="universidades por comunidad autonoma">Por Comunidad Autónoma</a></li>
-                        <li class="p p--secondary"><a href="./tipos.html"
-                                title="universidades publicas y privadas en españa">Universidades Públicas y Privadas en
-                                España</a></li>
-                        <li class="p p--secondary"><a href="./rankings.html"
-                                title="rankings de universidades españolas">Rankings Universitarios</a></li>
-                    </ul>
-                </div>
-                <div class="footer__column">
-                    <p class="footer__title h4">Rankings</p>
-                    <ul class="footer__ul">
-                        <li class="p p--secondary"><a href="./rankings/qs-world-university-rankings.html"
-                                title="ranking qs world university">QS World University</a></li>
-                        <li class="p p--secondary"><a href="./rankings/times-higher-education-world-university.html"
-                                title="times higher education world university">Times Higher Education World
-                                University</a></li>
-                        <li class="p p--secondary"><a href="./rankings/arwu.html" title="ranking shangai arwu">Shanghai
-                                ARWU</a></li>
-                        <li class="p p--secondary"><a href="./rankings/us-news.html" title="ranking us new global">U.S.
-                                News Global</a></li>
-                    </ul>
-                </div>
-                <div class="footer__column">
-                    <p class="footer__title h4">Guías</p>
-                    <ul class="footer__ul">
-                        <li class="p p--secondary"><a href="./guias/como-elegir-universidad.html"
-                                title="guia sobre como elegir una universidad">¿Cómo elegir una universidad en
-                                España?</a></li>
-                        <li class="p p--secondary"><a href="./guias/publicas-vs-privadas.html"
-                                title="guia sobre universidades publicas y privadas">Universidades Públicas vs
-                                Privadas</a></li>
-                        <li class="p p--secondary"><a href="./guias/acceso-a-la-universidad.html"
-                                title="guia de acceso a la universidad">Guía de acceso a las universidades españolas</a>
-                        </li>
-                        <li class="p p--secondary"><a href="./guias/becas-y-ayudas.html"
-                                title="guia de becas y ayudas para estudiar en españa">Guía de todas las becas y ayudas
-                                en España</a></li>
-                    </ul>
-                </div>
-            </div>
-            <p class="p p--secondary">© 2026 Universidades España · Información orientativa, sin carácter oficial</p>
+          <picture>
+            <source srcset="./media/logotipo-rojo-universidades.svg" type="image/svg+xml">
+            <source srcset="./media/logotipo-rojo-universidades.png" type="image/png">
+            <img width="245" height="29" class="header__logo" src="./media/logotipo-rojo-universidades.webp"
+              alt="logotipo rojo universidadES" fetchpriority="high">
+          </picture>
+          <p class="p p--secondary">El portal de referencia para estudiantes que buscan información
+            universitaria en España.</p>
         </div>
-    </footer>
-    <!--FIN: Footer-->
+        <div class="footer__column">
+          <p class="footer__title h4">Explorar</p>
+          <ul class="footer__ul">
+            <li class="p p--secondary"><a href="./por-ccaa.html" title="universidades por comunidad autonoma">Por
+                Comunidad Autónoma</a></li>
+            <li class="p p--secondary"><a href="./tipos.html"
+                title="universidades publicas y privadas en españa">Universidades Públicas y Privadas en
+                España</a></li>
+            <li class="p p--secondary"><a href="./rankings.html" title="rankings de universidades españolas">Rankings
+                Universitarios</a></li>
+          </ul>
+        </div>
+        <div class="footer__column">
+          <p class="footer__title h4">Rankings</p>
+          <ul class="footer__ul">
+            <li class="p p--secondary"><a href="./rankings/qs-world-university-rankings.html"
+                title="ranking qs world university">QS World University</a></li>
+            <li class="p p--secondary"><a href="./rankings/times-higher-education-world-university.html"
+                title="times higher education world university">Times Higher Education World
+                University</a></li>
+            <li class="p p--secondary"><a href="./rankings/arwu.html" title="ranking shangai arwu">Shanghai
+                ARWU</a></li>
+            <li class="p p--secondary"><a href="./rankings/us-news.html" title="ranking us new global">U.S.
+                News Global</a></li>
+          </ul>
+        </div>
+        <div class="footer__column">
+          <p class="footer__title h4">Guías</p>
+          <ul class="footer__ul">
+            <li class="p p--secondary"><a href="./guias/como-elegir-universidad.html"
+                title="guia sobre como elegir una universidad">¿Cómo elegir una universidad en
+                España?</a></li>
+            <li class="p p--secondary"><a href="./guias/publicas-vs-privadas.html"
+                title="guia sobre universidades publicas y privadas">Universidades Públicas vs
+                Privadas</a></li>
+            <li class="p p--secondary"><a href="./guias/acceso-a-la-universidad.html"
+                title="guia de acceso a la universidad">Guía de acceso a las universidades españolas</a>
+            </li>
+            <li class="p p--secondary"><a href="./guias/becas-y-ayudas.html"
+                title="guia de becas y ayudas para estudiar en españa">Guía de todas las becas y ayudas
+                en España</a></li>
+          </ul>
+        </div>
+      </div>
+      <p class="p p--secondary">© 2026 Universidades España · Información orientativa, sin carácter oficial</p>
+    </div>
+  </footer>
+  <!--FIN: Footer-->
 </body>
 
 </html>

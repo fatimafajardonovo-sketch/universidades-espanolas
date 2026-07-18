@@ -71,6 +71,39 @@ ul {
 
 /* FIN: Reset */
 
+/* INICIO: Tipografías
+   Se cargan las variantes locales de la fuente Inter utilizadas en el sitio.
+   Se emplea font-display: swap para mejorar el rendimiento y evitar que el
+   texto permanezca oculto mientras la fuente termina de descargarse.
+*/
+
+/* inter-regular - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../fonts/inter-v20-latin-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* inter-500 - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  src: url('../fonts/inter-v20-latin-500.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* inter-600 - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  src: url('../fonts/inter-v20-latin-600.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+/* FIN: Tipografías */
+
 /* INICIO: Hoja de estilos generales  */
 
 :root {
@@ -646,14 +679,28 @@ section {
         .p--secondary {
             margin-top: auto;
         }
-
-        &:hover,
-        &:active {
-            border-color: var(--color-primary);
-        }
     }
 }
+/*  FILTRO y tabsDE UNIVERSIDADES (tipos.html)
+Se añaden y quitan clases
+*/
+.university__list[data-filtro="publica"] .university__card:not([data-type="publica"]),
+.university__list[data-filtro="privada"] .university__card:not([data-type="privada"]) {
+  display: none;
+}
 
+.university__list .highlighted-box {
+  display: none;
+}
+.university__list[data-filtro="publica"] .highlighted-box[data-type="publica"],
+.university__list[data-filtro="privada"] .highlighted-box[data-type="privada"] {
+  display: block;
+}
+
+.university__tab--activo {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+}
 /* FINAL: Grid de universidades: University Grid */
 
 
@@ -1040,52 +1087,56 @@ Este componente se reutiliza en páginas de categorías, rankings, guías y pág
         }
     }
 
-    /* Adaptación del menú para dispositivos móviles */
-    @media (max-width: 925px) {
-        .header__button {
+/* Adaptación del menú para dispositivos móviles */
+@media (max-width: 925px) {
+    .header__button {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: var(--space-12);
+        height: var(--space-12);
+        background-color: var(--color-transparent);
+        cursor: pointer;
+    }
+
+    .header__toggle-icon {
+        font-size: var(--space-5);
+        line-height: 1;
+    }
+
+    .header__nav {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: var(--color-background);
+        max-height: 0;
+        overflow: hidden;
+        pointer-events: none;
+        transition: max-height .5s ease;
+
+        .header__ul {
             display: flex;
-            justify-content: space-between;
+            flex-flow: column nowrap;
+            justify-content: center;
             align-items: center;
-            width: var(--space-12);
-            height: var(--space-12);
-            background-color: var(--color-transparent);
-            cursor: pointer;
-        }
+            padding: var(--space-6);
 
-        .header__toggle-icon {
-            font-size: var(--space-5);
-            line-height: 1;
-        }
-
-        .header__nav {
-            position: absolute;
-            top: 100%;
-            left: 0;
-            background-color: var(--color-background);
-            width: 100%;
-            max-height: 0;
-            overflow: hidden;
-            pointer-events: none;
-            transition: max-height .5s ease;
-
-            &.activo {
-                pointer-events: auto;
-                max-height: 100vh;
-            }
-
-            .header__ul {
-                padding: var(--space-6);
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                flex-flow: column nowrap;
-
-                .header__li {
-                    margin: var(--space-2) 0;
-                }
+            .header__li {
+                margin: var(--space-2) 0;
             }
         }
     }
+
+    /* Estado del menú abierto */
+    &.header--open {
+
+        .header__nav {
+            max-height: 100vh;
+            pointer-events: auto;
+        }
+    }
+}
 }
 
 /* INICIO: Footer
@@ -1479,6 +1530,13 @@ Este componente también se reutiliza en la página pilar de Comunidades Autóno
                     &:active {
                         fill: var(--color-details);
                     }
+                    &:focus {
+                        outline: none;
+                    }
+                    &:focus-visible {
+                        outline: none;
+                        fill: var(--color-primary);
+                    }
                 }
         }
     }
@@ -1746,7 +1804,7 @@ Se reutiliza el componente general del grid de guías y la estructura section__i
 En esta sección únicamente se personalizan el fondo y la disposición del contenido.
 */
 .guias {
-    background-color: var(--color-background);
+    background-color: var(--color-secondary-background);
 
     .guias__block {
         display: flex;
@@ -1987,6 +2045,11 @@ La sección organiza las tarjetas mediante CSS Grid y mantiene la misma identida
         display: flex;
         flex-direction: column;
         gap: var(--space-12);
+        .university__list {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-4);
+        }
 
         .university__tabs {
             display: grid;
@@ -2047,7 +2110,6 @@ La sección organiza las tarjetas mediante CSS Grid y mantiene la misma identida
     @media (max-width: 660px) {
         grid-template-columns: repeat(auto-fit, minmax(15.625rem, 1fr));
         }
-
 }
 /* El podium (top 3 de cada ranking) ocupa siempre el 100% del ancho de la card para que su contenido no descuadre respecto al resto de elementos. */
 .ranking__podium {
@@ -2412,6 +2474,20 @@ Durante la interacción se resalta el borde de la tarjeta y se aplica un ligero 
             }
         }
     }
+}
+/* FILTRO DE GUÍAS
+    El estado se guarda en un atributo del contenedor (.guias__grid) y el CSS oculta las tarjetas que no coincidan
+*/
+.guias__grid[data-filtro="orientacion"] .guias__card:not([data-category="orientacion"]),
+.guias__grid[data-filtro="comparativa"] .guias__card:not([data-category="comparativa"]),
+.guias__grid[data-filtro="financiacion"] .guias__card:not([data-category="financiacion"]) {
+  display: none;
+}
+
+/* Estado visual del tab activo (BEM: modificador) */
+.guias__tab--activo {
+    border-bottom-color: var(--color-primary);
+
 }
 
 /* FINAL: Página pilar de Guías o guias.html  */

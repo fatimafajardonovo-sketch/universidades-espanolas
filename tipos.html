@@ -17,40 +17,27 @@ Se compone de:
     <meta name="description"
         content="Te contamos cuáles son todas las universidades públicas y privadas de España en 2026, dónde se encuentran, qué grados ofrecen y todo lo que necesitas para elegir">
     <link rel="canonical" href="https://fatimafajardonovo-sketch.github.io/universidades-espanolas/tipos.html">
+    <link rel="icon" type="image/svg+xml" href="./media/logotipo-rojo-universidades.svg">
     <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.9.1/fonts/remixicon.min.css">
     <script defer src="./js/index.js"></script>
     <script defer src="./js/tabs.js"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="icon" type="image/svg+xml" href="./media/logotipo-rojo-universidades.svg">
-<noscript>
-<link rel="stylesheet"
-href="https://cdn.jsdelivr.net/npm/remixicon@4.9.1/fonts/remixicon.min.css">
-
-</noscript>
-<link
-  rel="preload"
-  href="https://cdn.jsdelivr.net/npm/remixicon@4.9.1/fonts/remixicon.min.css"
-  as="style"
-  onload="this.onload=null;this.rel='stylesheet'">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
-        rel="stylesheet">
     <meta property="og:site_name" content="UniversidadES">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://fatimafajardonovo-sketch.github.io/universidades-espanolas/tipos.html">
     <meta property="og:title" content="Todas las universidades públicas y privadas de España">
     <meta property="og:description"
         content="Te contamos cuáles son todas las universidades públicas y privadas de España en 2026, dónde se encuentran, qué grados ofrecen y todo lo que necesitas para elegir">
-   <meta property="og:image" content="https://fatimafajardonovo-sketch.github.io/universidades-espanolas/media/logotipo-rojo-universidades.svg">
+    <meta property="og:image"
+        content="https://fatimafajardonovo-sketch.github.io/universidades-espanolas/media/logotipo-rojo-universidades.svg">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:description"
         content="Te contamos cuáles son todas las universidades públicas y privadas de España en 2026, dónde se encuentran, qué grados ofrecen y todo lo que necesitas para elegir">
     <meta name="twitter:title" content="Todas las universidades públicas y privadas de España">
     <meta name="twitter:url" content="https://fatimafajardonovo-sketch.github.io/universidades-espanolas/tipos.html">
-      <meta name="twitter:image" content="https://fatimafajardonovo-sketch.github.io/universidades-espanolas/media/logotipo-rojo-universidades.svg">
+    <meta name="twitter:image"
+        content="https://fatimafajardonovo-sketch.github.io/universidades-espanolas/media/logotipo-rojo-universidades.svg">
 </head>
-
 <body>
     <!-- INICIO: Header 
      Funcionalidad: Contiene el logotipo del sitio, el menú de navegación principal y el botón para desplegar el menú móvil 
@@ -63,9 +50,10 @@ href="https://cdn.jsdelivr.net/npm/remixicon@4.9.1/fonts/remixicon.min.css">
                 También se utiliza el elemento complejo: fetchpriority="high" 
                 indica al navegador que priorice la descarga del logotipo al formar parte del contenido visible al cargar la página.
             -->
-                <picture class="header__picture">
+                <picture>
                     <source srcset="./media/logotipo-rojo-universidades.svg" type="image/svg+xml">
-                    <img width="245" height="29" class="header__logo" src="./media/logotipo-rojo-universidades.png"
+                    <source srcset="./media/logotipo-rojo-universidades.png" type="image/png">
+                    <img width="245" height="29" class="header__logo" src="./media/logotipo-rojo-universidades.webp"
                         alt="logotipo rojo universidadES" fetchpriority="high">
                 </picture>
             </a>
@@ -137,17 +125,19 @@ href="https://cdn.jsdelivr.net/npm/remixicon@4.9.1/fonts/remixicon.min.css">
                     Su estado y comportamiento son controlados mediante JavaScript para mostrar la información correspondiente.
                 -->
                 <div class="university__tabs">
-                    <button class="university__tab">
+                    <button class="university__tab" title="ver todas las universidades">
                         <span class="h5">Total</span>
                         <span class="h2">74</span>
                         <span>Todas las universidades</span>
                     </button>
-                    <button class="university__tab" data-filter="publica" aria-label="Filtrar universidades públicas" title="Filtrar universidades públicas">
+                    <button class="university__tab" data-filter="publica" aria-label="Filtrar universidades públicas"
+                        title="Filtrar universidades públicas">
                         <span class="h5">Sistema Público</span>
                         <span class="h2">51</span>
                         <span> Universidades Públicas</span>
                     </button>
-                    <button class="university__tab" data-filter="privada" aria-label="Filtrar universidades privadas" title="Filtrar universidades privadas">
+                    <button class="university__tab" data-filter="privada" aria-label="Filtrar universidades privadas"
+                        title="Filtrar universidades privadas">
                         <span class="h5">Sistema Privado</span>
                         <span class="h2">23</span>
                         <span>Universidades Privadas</span>
@@ -158,14 +148,14 @@ href="https://cdn.jsdelivr.net/npm/remixicon@4.9.1/fonts/remixicon.min.css">
                         Estos bloques informativos permanecen ocultos por defecto.
                         JavaScript controla su visibilidad en función de la pestaña seleccionada por el usuario.
                     -->
-                    <div class="highlighted-box reveal">
+                    <div class="highlighted-box" data-type="publica">
                         <p class="p--secondary">Las universidades públicas españolas son financiadas principalmente por
                             el Estado y las Comunidades Autónomas. Sus tasas académicas están reguladas y son
                             significativamente más bajas que en el sector privado. Dominan los rankings internacionales
                             de investigación y suelen tener mayor número de estudiantes y mayor variedad de
                             titulaciones.</p>
                     </div>
-                    <div class="highlighted-box reveal">
+                    <div class="highlighted-box" data-type="privada">
                         <p class="p--secondary">Las universidades privadas españolas son promovidas por entidades
                             civiles, religiosas o empresariales. Sus tasas son más elevadas pero a menudo ofrecen menor
                             ratio de estudiantes por profesor, instalaciones más modernas y mayor flexibilidad
@@ -184,406 +174,406 @@ href="https://cdn.jsdelivr.net/npm/remixicon@4.9.1/fonts/remixicon.min.css">
                             - Año de fundación.
                             - Comunidad autónoma.
                         -->
-                        <div class="university__card">
+                        <div class="university__card" data-type="publica">
                             <p class="badge">Pública</p>
                             <h2 class="h4">Universidad de Sevilla</h2>
                             <p class="p--secondary"><i class="ri-map-pin-line icon" aria-hidden="true"></i>Sevilla ·
                                 Fundada 1505</p>
 
                         </div>
-                        <div class="university__card">
+                        <div class="university__card" data-type="publica">
                             <p class="badge">Pública</p>
                             <h2 class="h4">Universidad de Cádiz</h2>
                             <p class="p--secondary"><i class="ri-map-pin-line icon" aria-hidden="true"></i>Cádiz ·
                                 Fundada 1979</p>
                         </div>
-                        <div class="university__card">
+                        <div class="university__card" data-type="publica">
                             <p class="badge">Pública</p>
                             <h2 class="h4">Universidad de Almería</h2>
                             <p class="p--secondary"><i class="ri-map-pin-line icon" aria-hidden="true"></i>Almería ·
                                 Fundada 1933</p>
                         </div>
-                        <div class="university__card">
+                        <div class="university__card" data-type="publica">
                             <p class="badge">Pública</p>
                             <h2 class="h4">Universidad de Granada</h2>
                             <p class="p--secondary"><i class="ri-map-pin-line icon" aria-hidden="true"></i>Granada ·
                                 Fundada 1531</p>
                         </div>
-                        <div class="university__card">
+                        <div class="university__card" data-type="publica">
                             <p class="badge">Pública</p>
                             <h2 class="h4">Universidad de Córdoba</h2>
                             <p class="p--secondary"><i class="ri-map-pin-line icon" aria-hidden="true"></i>Córdoba ·
                                 Fundada 1972</p>
                         </div>
-                        <div class="university__card">
+                        <div class="university__card" data-type="publica">
                             <p class="badge">Pública</p>
                             <h2 class="h4">Universidad de Huelva</h2>
                             <p class="p--secondary"><i class="ri-map-pin-line icon" aria-hidden="true"></i>Huelva ·
                                 Fundada 1993</p>
                         </div>
-                        <div class="university__card">
+                        <div class="university__card" data-type="publica">
                             <p class="badge">Pública</p>
                             <h2 class="h4">Universidad de Málaga</h2>
                             <p class="p--secondary"><i class="ri-map-pin-line icon" aria-hidden="true"></i>Málaga ·
                                 Fundada 1972</p>
                         </div>
-                        <div class="university__card">
+                        <div class="university__card" data-type="publica">
                             <p class="badge">Pública</p>
                             <h2 class="h4">Universidad de Jaén</h2>
                             <p class="p--secondary"><i class="ri-map-pin-line icon" aria-hidden="true"></i>Jaén ·
                                 Fundada 1993</p>
                         </div>
-                        <div class="university__card">
+                        <div class="university__card" data-type="publica">
                             <p class="badge">Pública</p>
                             <h2 class="h4">Universidad Pablo de Olavide</h2>
                             <p class="p--secondary"><i class="ri-map-pin-line icon" aria-hidden="true"></i>Sevilla ·
                                 Fundada 1997</p>
                         </div>
-                        <div class="university__card">
+                        <div class="university__card" data-type="publica">
                             <p class="badge">Pública</p>
                             <h2 class="h4">Universidad de Zaragoza</h2>
                             <p class="p--secondary"><i class="ri-map-pin-line icon" aria-hidden="true"></i>Zaragoza ·
                                 Fundada 1542</p>
                         </div>
-                        <div class="university__card">
+                        <div class="university__card" data-type="privada">
                             <p class="badge badge--details">Privada</p>
                             <h2 class="h4">Universidad San Jorge</h2>
                             <p class="p--secondary"><i class="ri-map-pin-line icon" aria-hidden="true"></i>Zaragoza ·
                                 Fundada 2005</p>
                         </div>
-                        <div class="university__card">
+                        <div class="university__card" data-type="publica">
                             <p class="badge">Pública</p>
                             <h2 class="h4">Universidad de Oviedo</h2>
                             <p class="p--secondary"><i class="ri-map-pin-line icon" aria-hidden="true"></i>Oviedo ·
                                 Fundada 1608</p>
                         </div>
-                        <div class="university__card">
+                        <div class="university__card" data-type="publica">
                             <p class="badge">Pública</p>
                             <h2 class="h4">Universitat de les Illes Balears</h2>
                             <p class="p--secondary"><i class="ri-map-pin-line icon" aria-hidden="true"></i>Palma ·
                                 Fundada 1978</p>
                         </div>
-                        <div class="university__card">
+                        <div class="university__card" data-type="publica">
                             <p class="badge">Pública</p>
                             <h2 class="h4">Universidad de Las Palmas de Gran Canaria</h2>
                             <p class="p--secondary"><i class="ri-map-pin-line icon" aria-hidden="true"></i>Las Palmas ·
                                 Fundada 1989</p>
                         </div>
-                        <div class="university__card">
+                        <div class="university__card" data-type="publica">
                             <p class="badge">Pública</p>
                             <h2 class="h4">Universidad de La Laguna</h2>
                             <p class="p--secondary"><i class="ri-map-pin-line icon" aria-hidden="true"></i>La Laguna ·
                                 Fundada 1792</p>
                         </div>
-                        <div class="university__card">
+                        <div class="university__card" data-type="publica">
                             <p class="badge">Pública</p>
                             <h2 class="h4">Universidad de Cantabria</h2>
                             <p class="p--secondary"><i class="ri-map-pin-line icon" aria-hidden="true"></i>Santander ·
                                 Fundada 1972</p>
                         </div>
-                        <div class="university__card">
+                        <div class="university__card" data-type="publica">
                             <p class="badge">Pública</p>
                             <h2 class="h4">Univ. Internacional Menéndez Pelayo</h2>
                             <p class="p--secondary "><i class="ri-map-pin-line icon" aria-hidden="true"></i>Santander ·
                                 Fundada 1932</p>
                         </div>
-                        <div class="university__card">
+                        <div class="university__card" data-type="publica">
                             <p class="badge">Pública</p>
                             <h2 class="h4">Universidad de Castilla-La Mancha</h2>
                             <p class="p--secondary"><i class="ri-map-pin-line icon" aria-hidden="true"></i>Toledo ·
                                 Fundada 1982</p>
                         </div>
-                        <div class="university__card">
+                        <div class="university__card" data-type="publica">
                             <p class="badge">Pública</p>
                             <h2 class="h4">Universitat de Barcelona</h2>
                             <p class="p--secondary"><i class="ri-map-pin-line icon" aria-hidden="true"></i>Barcelona ·
                                 Fundada 1450</p>
                         </div>
-                        <div class="university__card">
+                        <div class="university__card" data-type="publica">
                             <p class="badge">Pública</p>
                             <h2 class="h4">Universitat Autònoma de Barcelona</h2>
                             <p class="p--secondary"><i class="ri-map-pin-line icon" aria-hidden="true"></i>Barcelona ·
                                 Fundada 1968</p>
                         </div>
-                        <div class="university__card">
+                        <div class="university__card" data-type="publica">
                             <p class="badge">Pública</p>
                             <h2 class="h4">Universitat Politècnica de Catalunya</h2>
                             <p class="p--secondary"><i class="ri-map-pin-line icon" aria-hidden="true"></i>Barcelona ·
                                 Fundada 1971</p>
                         </div>
-                        <div class="university__card">
+                        <div class="university__card" data-type="publica">
                             <p class="badge">Pública</p>
                             <h2 class="h4">Universitat Pompeu Fabra</h2>
                             <p class="p--secondary"><i class="ri-map-pin-line icon" aria-hidden="true"></i>Barcelona ·
                                 Fundada 1990</p>
                         </div>
-                        <div class="university__card">
+                        <div class="university__card" data-type="publica">
                             <p class="badge">Pública</p>
                             <h2 class="h4">Universitat de Girona</h2>
                             <p class="p--secondary"><i class="ri-map-pin-line icon" aria-hidden="true"></i>Girona ·
                                 Fundada 1991</p>
                         </div>
-                        <div class="university__card">
+                        <div class="university__card" data-type="publica">
                             <p class="badge">Pública</p>
                             <h2 class="h4">Universitat de Lleida</h2>
                             <p class="p--secondary"><i class="ri-map-pin-line icon" aria-hidden="true"></i>Lleida ·
                                 Fundada 1991</p>
                         </div>
-                        <div class="university__card">
+                        <div class="university__card" data-type="publica">
                             <p class="badge">Pública</p>
                             <h2 class="h4">Universitat Rovira i Virgili</h2>
                             <p class="p--secondary"><i class="ri-map-pin-line icon" aria-hidden="true"></i>Tarragona ·
                                 Fundada 1991</p>
                         </div>
-                        <div class="university__card">
+                        <div class="university__card" data-type="privada">
                             <p class="badge badge--details">Privada</p>
                             <h2 class="h4">Universitat Oberta de Catalunya</h2>
                             <p class="p--secondary"><i class="ri-map-pin-line icon" aria-hidden="true"></i>Barcelona ·
                                 Fundada 1994</p>
                         </div>
-                        <div class="university__card">
+                        <div class="university__card" data-type="privada">
                             <p class="badge badge--details">Privada</p>
                             <h2 class="h4">Universitat Ramon Llull</h2>
                             <p class="p--secondary"><i class="ri-map-pin-line icon" aria-hidden="true"></i>Barcelona ·
                                 Fundada 1990</p>
                         </div>
-                        <div class="university__card">
+                        <div class="university__card" data-type="publica">
                             <p class="badge">Pública</p>
                             <h2 class="h4">Universidad de Santiago de Compostela</h2>
                             <p class="p--secondary"><i class="ri-map-pin-line icon" aria-hidden="true"></i>Santiago de
                                 Compostela · Fundada 1495</p>
                         </div>
                         <!-- FIN: Card de universidad -->
-                        <div class="university__card">
+                        <div class="university__card" data-type="publica">
                             <p class="badge">Pública</p>
                             <h2 class="h4">Universidad de Vigo</h2>
                             <p class="p--secondary"><i class="ri-map-pin-line icon" aria-hidden="true"></i>Vigo ·
                                 Fundada 1990</p>
                         </div>
-                        <div class="university__card">
+                        <div class="university__card" data-type="publica">
                             <p class="badge">Pública</p>
                             <h2 class="h4">Universidade da Coruña</h2>
                             <p class="p--secondary"><i class="ri-map-pin-line icon" aria-hidden="true"></i>A Coruña ·
                                 Fundada 1989</p>
                         </div>
-                        <div class="university__card">
+                        <div class="university__card" data-type="privada">
                             <p class="badge badge--details">Privada</p>
                             <h2 class="h4">Universitat Internacional de Catalunya</h2>
                             <p class="p--secondary"><i class="ri-map-pin-line icon" aria-hidden="true"></i>Barcelona ·
                                 Fundada 1997</p>
                         </div>
-                        <div class="university__card">
+                        <div class="university__card" data-type="privada">
                             <p class="badge badge--details">Privada</p>
                             <h2 class="h4">Universitat de Vic - UCC </h2>
                             <p class="p--secondary"><i class="ri-map-pin-line icon" aria-hidden="true"></i>Vic · Fundada
                                 1997</p>
                         </div>
-                        <div class="university__card">
+                        <div class="university__card" data-type="privada">
                             <p class="badge badge--details">Privada</p>
                             <h2 class="h4">Universitat Abat Oliba CEU </h2>
                             <p class="p--secondary"><i class="ri-map-pin-line icon" aria-hidden="true"></i>Barcelona ·
                                 Fundada 2003</p>
                         </div>
-                        <div class="university__card">
+                        <div class="university__card" data-type="publica">
                             <p class="badge">Pública</p>
                             <h2 class="h4">Centro Universitario de Melilla (UGR)</h2>
                             <p class="p--secondary"><i class="ri-map-pin-line icon" aria-hidden="true"></i>Melilla ·
                                 Fundada 1969</p>
                         </div>
-                        <div class="university__card">
+                        <div class="university__card" data-type="publica">
                             <p class="badge">Pública</p>
                             <h2 class="h4">Centro Universitario de Ceuta (UGR)</h2>
                             <p class="p--secondary"><i class="ri-map-pin-line icon" aria-hidden="true"></i>Ceuta ·
                                 Fundada 1995</p>
                         </div>
-                        <div class="university__card">
+                        <div class="university__card" data-type="publica">
                             <p class="badge">Pública</p>
                             <h2 class="h4">Universidad de Extremadura</h2>
                             <p class="p--secondary"><i class="ri-map-pin-line icon" aria-hidden="true"></i>Badajoz ·
                                 Fundada 1973</p>
                         </div>
-                        <div class="university__card">
+                        <div class="university__card" data-type="privada">
                             <p class="badge badge--details">Privada</p>
                             <h2 class="h4">Universidad Internacional de La Rioja</h2>
                             <p class="p--secondary"><i class="ri-map-pin-line icon" aria-hidden="true"></i>Logroño ·
                                 Fundada 2011</p>
                         </div>
-                        <div class="university__card">
+                        <div class="university__card" data-type="publica">
                             <p class="badge">Pública</p>
                             <h2 class="h4">Universidad de La Rioja</h2>
                             <p class="p--secondary"><i class="ri-map-pin-line icon" aria-hidden="true"></i>Logroño ·
                                 Fundada 1992</p>
                         </div>
-                        <div class="university__card">
+                        <div class="university__card" data-type="privada">
                             <p class="badge badge--details">Privada</p>
                             <h2 class="h4">Universidad Pontificia Comillas</h2>
                             <p class="p--secondary"><i class="ri-map-pin-line icon" aria-hidden="true"></i>Madrid ·
                                 Fundada 1892</p>
                         </div>
 
-                        <div class="university__card">
+                        <div class="university__card" data-type="privada">
                             <p class="badge badge--details">Privada</p>
                             <h2 class="h4">Universidad San Pablo CEU</h2>
                             <p class="p--secondary"><i class="ri-map-pin-line icon" aria-hidden="true"></i>Madrid ·
                                 Fundada 1993</p>
                         </div>
-                        <div class="university__card">
+                        <div class="university__card" data-type="privada">
                             <p class="badge badge--details">Privada</p>
                             <h2 class="h4">Universidad Alfonso X El Sabio</h2>
                             <p class="p--secondary"><i class="ri-map-pin-line icon" aria-hidden="true"></i>Villanueva de
                                 la Cañada · Fundada 1993</p>
                         </div>
-                        <div class="university__card">
+                        <div class="university__card" data-type="privada">
                             <p class="badge badge--details">Privada</p>
                             <h2 class="h4">Universidad Francisco de Vitoria</h2>
                             <p class="p--secondary"><i class="ri-map-pin-line icon" aria-hidden="true"></i>Pozuelo de
                                 Alarcón · Fundada 1994</p>
                         </div>
-                        <div class="university__card">
+                        <div class="university__card" data-type="privada">
                             <p class="badge badge--details">Privada</p>
                             <h2 class="h4">Universidad Europea de Madrid</h2>
                             <p class="p--secondary"><i class="ri-map-pin-line icon" aria-hidden="true"></i>Villaviciosa
                                 de Odón · Fundada 1995</p>
                         </div>
-                        <div class="university__card">
+                        <div class="university__card" data-type="privada">
                             <p class="badge badge--details">Privada</p>
                             <h2 class="h4">Universidad Nebrija</h2>
                             <p class="p--secondary"><i class="ri-map-pin-line icon" aria-hidden="true"></i>Madrid ·
                                 Fundada 1995</p>
                         </div>
-                        <div class="university__card">
+                        <div class="university__card" data-type="privada">
                             <p class="badge badge--details">Privada</p>
                             <h2 class="h4">Universidad Camilo José Cela</h2>
                             <p class="p--secondary"><i class="ri-map-pin-line icon" aria-hidden="true"></i>Villanueva de
                                 la Cañada · Fundada 2000</p>
                         </div>
-                        <div class="university__card">
+                        <div class="university__card" data-type="publica">
                             <p class="badge">Pública</p>
                             <h2 class="h4">Universidad Complutense de Madrid</h2>
                             <p class="p--secondary"><i class="ri-map-pin-line icon" aria-hidden="true"></i>Madrid ·
                                 Fundada 1293</p>
                         </div>
-                        <div class="university__card">
+                        <div class="university__card" data-type="publica">
                             <p class="badge">Pública</p>
                             <h2 class="h4">Universidad Autónoma de Madrid</h2>
                             <p class="p--secondary"><i class="ri-map-pin-line icon" aria-hidden="true"></i>Madrid ·
                                 Fundada 1968</p>
                         </div>
-                        <div class="university__card">
+                        <div class="university__card" data-type="publica">
                             <p class="badge">Pública</p>
                             <h2 class="h4">Universidad Politécnica de Madrid</h2>
                             <p class="p--secondary"><i class="ri-map-pin-line icon" aria-hidden="true"></i>Madrid ·
                                 Fundada 1971</p>
                         </div>
-                        <div class="university__card">
+                        <div class="university__card" data-type="publica">
                             <p class="badge">Pública</p>
                             <h2 class="h4">Universidad Carlos III de Madrid</h2>
                             <p class="p--secondary"><i class="ri-map-pin-line icon" aria-hidden="true"></i>Leganés ·
                                 Fundada 1989</p>
                         </div>
-                        <div class="university__card">
+                        <div class="university__card" data-type="publica">
                             <p class="badge">Pública</p>
                             <h2 class="h4">Universidad de Alcalá</h2>
                             <p class="p--secondary"><i class="ri-map-pin-line icon" aria-hidden="true"></i>Alcalá de
                                 Henares · Fundada 1293</p>
                         </div>
-                        <div class="university__card">
+                        <div class="university__card" data-type="publica">
                             <p class="badge">Pública</p>
                             <h2 class="h4">Universidad Rey Juan Carlos</h2>
                             <p class="p--secondary"><i class="ri-map-pin-line icon" aria-hidden="true"></i>Móstoles ·
                                 Fundada 1996</p>
                         </div>
-                        <div class="university__card">
+                        <div class="university__card" data-type="publica">
                             <p class="badge">Pública</p>
                             <h2 class="h4">UNED</h2>
                             <p class="p--secondary"><i class="ri-map-pin-line icon" aria-hidden="true"></i>Madrid ·
                                 Fundada 1972</p>
                         </div>
-                        <div class="university__card">
+                        <div class="university__card" data-type="publica">
                             <p class="badge">Pública</p>
                             <h2 class="h4">Universidad de Murcia</h2>
                             <p class="p--secondary"><i class="ri-map-pin-line icon" aria-hidden="true"></i>Murcia ·
                                 Fundada 1915</p>
                         </div>
-                        <div class="university__card">
+                        <div class="university__card" data-type="publica">
                             <p class="badge">Pública</p>
                             <h2 class="h4">Universidad Politécnica de Cartagena</h2>
                             <p class="p--secondary"><i class="ri-map-pin-line icon" aria-hidden="true"></i>Cartagena ·
                                 Fundada 1998</p>
                         </div>
-                        <div class="university__card">
+                        <div class="university__card" data-type="privada">
                             <p class="badge badge--details">Privada</p>
                             <h2 class="h4">Universidad Católica San Antonio</h2>
                             <p class="p--secondary"><i class="ri-map-pin-line icon" aria-hidden="true"></i>Murcia ·
                                 Fundada 1996</p>
                         </div>
-                        <div class="university__card">
+                        <div class="university__card" data-type="privada">
                             <p class="badge badge--details">Privada</p>
                             <h2 class="h4">Universidad de Navarra</h2>
                             <p class="p--secondary"><i class="ri-map-pin-line icon" aria-hidden="true"></i>Pamplona ·
                                 Fundada 1952</p>
                         </div>
-                        <div class="university__card">
+                        <div class="university__card" data-type="publica">
                             <p class="badge">Pública</p>
                             <h2 class="h4">Universidad Pública de Navarra</h2>
                             <p class="p--secondary"><i class="ri-map-pin-line icon" aria-hidden="true"></i>Pamplona ·
                                 Fundada 1987</p>
                         </div>
-                        <div class="university__card">
+                        <div class="university__card" data-type="publica">
                             <p class="badge">Pública</p>
                             <h2 class="h4">UNED Navarra</h2>
                             <p class="p--secondary"><i class="ri-map-pin-line icon" aria-hidden="true"></i>Pamplona ·
                                 Fundada 1972</p>
                         </div>
-                        <div class="university__card">
+                        <div class="university__card" data-type="privada">
                             <p class="badge badge--details">Privada</p>
                             <h2 class="h4">Universidad de Deusto</h2>
                             <p class="p--secondary"><i class="ri-map-pin-line icon" aria-hidden="true"></i>Bilbao ·
                                 Fundada 1886</p>
                         </div>
-                        <div class="university__card">
+                        <div class="university__card" data-type="privada">
                             <p class="badge badge--details">Privada</p>
                             <h2 class="h4">Mondragon Unibertsitatea</h2>
                             <p class="p--secondary"><i class="ri-map-pin-line icon" aria-hidden="true"></i>Mondragón ·
                                 Fundada 1997</p>
                         </div>
-                        <div class="university__card">
+                        <div class="university__card" data-type="publica">
                             <p class="badge">Pública</p>
                             <h2 class="h4">Universidad del País Vasco (UPV/EHU)</h2>
                             <p class="p--secondary"><i class="ri-map-pin-line icon" aria-hidden="true"></i>Bilbao ·
                                 Fundada 1980</p>
                         </div>
-                        <div class="university__card">
+                        <div class="university__card" data-type="publica">
                             <p class="badge">Pública</p>
                             <h2 class="h4">Universitat de València</h2>
                             <p class="p--secondary"><i class="ri-map-pin-line icon" aria-hidden="true"></i>Valencia ·
                                 Fundada 1499</p>
                         </div>
-                        <div class="university__card">
+                        <div class="university__card" data-type="publica">
                             <p class="badge">Pública</p>
                             <h2 class="h4">Universitat Politècnica de València</h2>
                             <p class="p--secondary"><i class="ri-map-pin-line icon" aria-hidden="true"></i>Valencia ·
                                 Fundada 1971</p>
                         </div>
-                        <div class="university__card">
+                        <div class="university__card" data-type="privada">
                             <p class="badge badge--details">Privada</p>
                             <h2 class="h4">Universidad Católica de Valencia</h2>
                             <p class="p--secondary"><i class="ri-map-pin-line icon" aria-hidden="true"></i>Valencia ·
                                 Fundada 2003</p>
                         </div>
-                        <div class="university__card">
+                        <div class="university__card" data-type="privada">
                             <p class="badge badge--details">Privada</p>
                             <h2 class="h4">Universidad Europea de Valencia</h2>
                             <p class="p--secondary"><i class="ri-map-pin-line icon" aria-hidden="true"></i>Valencia ·
                                 Fundada 2006</p>
                         </div>
-                        <div class="university__card">
+                        <div class="university__card" data-type="publica">
                             <p class="badge">Pública</p>
                             <h2 class="h4">Universidad de Alicante</h2>
                             <p class="p--secondary"><i class="ri-map-pin-line icon" aria-hidden="true"></i>Alicante ·
                                 Fundada 1979</p>
                         </div>
-                        <div class="university__card">
+                        <div class="university__card" data-type="publica">
                             <p class="badge">Pública</p>
                             <h2 class="h4">Universitat Jaume I</h2>
                             <p class="p--secondary"><i class="ri-map-pin-line icon" aria-hidden="true"></i>Castellón ·
@@ -614,10 +604,11 @@ href="https://cdn.jsdelivr.net/npm/remixicon@4.9.1/fonts/remixicon.min.css">
                     Se utiliza <picture> para ofrecer el logotipo en formato SVG cuando el navegador lo soporta.
                     El atributo loading="lazy" retrasa la carga de la imagen hasta que el usuario está próximo a visualizarla, mejorando el rendimiento de la página.
                 -->
-                    <picture class="header__picture">
+                    <picture>
                         <source srcset="./media/logotipo-rojo-universidades.svg" type="image/svg+xml">
-                        <img width="245" height="29" class="header__logo" src="./media/logotipo-rojo-universidades.png"
-                            alt="logotipo rojo universidadES" loading="lazy">
+                        <source srcset="./media/logotipo-rojo-universidades.png" type="image/png">
+                        <img width="245" height="29" class="header__logo" src="./media/logotipo-rojo-universidades.webp"
+                            alt="logotipo rojo universidadES" fetchpriority="high">
                     </picture>
                     <p class="p p--secondary">El portal de referencia para estudiantes que buscan información
                         universitaria en España.</p>
