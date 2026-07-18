@@ -935,7 +935,7 @@ Este componente se reutiliza en páginas de categorías, rankings, guías y pág
 
     .related__links-list {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(9.375rem, 1fr));
         gap: var(--space-8);
 
         .related__links-li {
@@ -1286,7 +1286,7 @@ Buscador de domunidades autonomas por medio de JS
                 flex: 1;
                 min-width: 0;
                 border: none;
-                background-color: transparent;
+                background-color: var(--color-transparent);
                 color: var(--color-paragraph);
 
                 &::placeholder {
@@ -1308,7 +1308,7 @@ Buscador de domunidades autonomas por medio de JS
                 width: var(--space-10);
                 height: var(--space-10);
                 border: none;
-                background-color: transparent;
+                background-color: var(--color-transparent);
                 color: var(--color-primary);
                 border-radius: var(--radius-md);
                 cursor: pointer;
@@ -2151,7 +2151,7 @@ Esta sección contiene la estructura específica de la página individual de cad
     background-color: var(--color-secondary-background);
 
     /* Columna del listado: ocupa el 60% del ancho disponible, dejando el 40% restante para la metodología */
-    .ranking__page--block {
+    .ranking__page-block {
         width: 60%;
         .ranking__list {
             gap: var(--space-4);
@@ -2178,7 +2178,7 @@ Esta sección contiene la estructura específica de la página individual de cad
         flex-direction: column;
         align-items: flex-start;
 
-        .ranking__page--block {
+        .ranking__page-block {
             width: 100%;
         }
 
